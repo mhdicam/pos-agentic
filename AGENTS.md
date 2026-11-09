@@ -5,6 +5,7 @@
 - All files are **Draft for Review**. Do not begin implementation or claim sign-off solely because this scaffold exists.
 - Any changed domain rule needs FR mapping, negative tests, a migration/API review, and (for architecture decisions) an ADR.
 - Maintain Phase 2.3 traceability: `Screen → FR → API → Data → Permission → Acceptance → Slice`.
+- Load the project skill `internal/skills/orbis/SKILL.md` (ops: `internal/skills/orbis-devops/SKILL.md`); doc/ADR/skill format follows `internal/docs/operations/scaffold-docs.md`.
 
 ## Non-negotiable security and correctness
 - Tenant `tenant_id` must be derived from authenticated server-side scope; enforce authorization plus DB RLS, including background jobs.
@@ -16,3 +17,7 @@
 
 ## Evidence protocol
 Every task handoff must include: modified paths, FR/route mappings, tests executed and exact results, unsatisfied gates, documentation updates, and proposed decision requests. Never invent evidence or mark a test passed from a mockup.
+
+## Documentation-first and Definition of Done
+- Update touched docs in the same commit as the code, or state "no docs update needed".
+- Done = touched tests run with exact results · touched docs updated and linked from `internal/docs/README.md` · `python3 scripts/validate_docs.py` passes · evidence protocol above satisfied.

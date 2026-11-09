@@ -1,0 +1,4 @@
+interface:
+  display_name: "orbis-devops"
+  short_description: "Deploy and operate Orbis Commerce (Docker/Nginx pilot, PostgreSQL RLS roles, Redis worker, backups, incidents)"
+  default_prompt: "Use the orbis-devops skill to deploy or operate Orbis Commerce: Dockerized web/API/worker behind TLS Nginx, PostgreSQL roles with RLS, reviewed migrations, Redis/BullMQ, private storage, backup/restore drills, and offline POS or financial incident runbooks — without exposing secrets or mutating immutable ledgers."

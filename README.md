@@ -6,7 +6,7 @@
 
 This repository skeleton follows the **document organization** in the supplied `internal.zip`, adapted to Orbis Commerce rather than copying the unrelated Personal Cash Flow business rules.
 
-Start at [`internal/docs/README.md`](internal/docs/README.md). Source requirement baselines and Phase 2.3 CSV evidence are included under [`internal/docs/references`](internal/docs/references) and [`internal/docs/handoff`](internal/docs/handoff).
+Start at [`internal/docs/README.md`](internal/docs/README.md). Coding agents also read [`CLAUDE.md`](CLAUDE.md) and the project skill [`internal/skills/orbis/SKILL.md`](internal/skills/orbis/SKILL.md). Doc format standard: [`internal/docs/operations/scaffold-docs.md`](internal/docs/operations/scaffold-docs.md). Source requirement baselines and Phase 2.3 CSV evidence are included under [`internal/docs/references`](internal/docs/references) and [`internal/docs/handoff`](internal/docs/handoff).
 
 **Scope:** document scaffolding and engineering handoff structure. This package **is not a runnable SaaS application, not an installed offline PWA, and not an approved engineering implementation**. No production credentials, approvals, or test execution were created by this archive.
 
@@ -17,7 +17,7 @@ Start at [`internal/docs/README.md`](internal/docs/README.md). Source requiremen
 3. Product/UX/Engineering/Security/QA/Finance stakeholders approve canonical contracts before implementation.
 4. Treat all `/v1/*` endpoint names in domain files as **proposals** until OpenAPI is signed.
 5. Keep FR IDs traceable to baseline and Phase 2.3 CSV; never imply route smoke equals business acceptance.
-6. Run `python scripts/validate_docs.py` to check required scaffold files and relative links.
+6. Run `python scripts/validate_docs.py` to check required files, doc headers, ADR format, skill layout and relative links.
 
 ## Product direction preserved
 

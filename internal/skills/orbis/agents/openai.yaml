@@ -1,0 +1,4 @@
+interface:
+  display_name: "orbis"
+  short_description: "Orbis Commerce project guide — multi-tenant POS SaaS with offline cash POS, storefront, delivery/COD and docs Source of Truth"
+  default_prompt: "Use the orbis skill to align product, architecture (Next.js + Fastify + PostgreSQL RLS + Redis/BullMQ modular monolith), offline POS P0, financial invariants, tenant security, Phase 2.3 traceability and docs Source of Truth for this project."

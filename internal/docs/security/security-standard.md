@@ -13,4 +13,4 @@ Baseline: Orbis Commerce PRD v1.4.5 + Phase 2.3 handoff
 - Consent/retention for customer memories, contact channels and GPS; unofficial WA pilot requires explicit legal/security approval.
 
 ## Required proof
-Automated cross-tenant API/DB/worker/cache probes; authentication abuse/rate limit; object-level auth; supply chain audit; offline device tamper/replay; payment/COD/refund double-submit; data export/CSV injection; support access expiry. Follow `qa/2026-11-03-e2e-security-checklist.md`.
+Automated cross-tenant API/DB/worker/cache probes; authentication abuse/rate limit; object-level auth; supply chain audit; offline device tamper/replay; payment/COD/refund double-submit; data export/CSV injection; support access expiry. Follow `qa/2026-11-03-e2e-security-checklist-spec.md`.

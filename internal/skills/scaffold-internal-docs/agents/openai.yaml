@@ -1,0 +1,4 @@
+interface:
+  display_name: "scaffold-internal-docs"
+  short_description: "Create or restructure a project's internal/ docs and agent skills in the reference format"
+  default_prompt: "Use the scaffold-internal-docs skill to build or restructure internal/docs (Source of Truth index, entrypoints, requirements, ADRs, EARS, security, operations) and internal/skills, set up AGENTS.md, CLAUDE.md and the docs Stop hook, then run validate_internal.py until it passes."
