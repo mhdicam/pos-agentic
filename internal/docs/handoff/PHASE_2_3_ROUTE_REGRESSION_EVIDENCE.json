@@ -1,0 +1,4800 @@
+{
+  "source": "posverse_phase_2_2o_delivery_operations.html",
+  "environment": "Chromium Playwright set_content, external resources blocked; navigation smoke only",
+  "checked_at": "2026-11-03",
+  "total": 532,
+  "passed": 532,
+  "failed": 0,
+  "js_errors": [],
+  "failures": [],
+  "checks": [
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-dashboard",
+      "route": "n22-dashboard",
+      "passed": true,
+      "issue": "",
+      "header": "Platform Command Center"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-tenants",
+      "route": "n22-tenants",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Management"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-billing",
+      "route": "n22-billing",
+      "passed": true,
+      "issue": "",
+      "header": "Plans, Subscriptions & Billing"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-entitlements",
+      "route": "n22-entitlements",
+      "passed": true,
+      "issue": "",
+      "header": "Modules & Quota Control"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-providers",
+      "route": "n22-providers",
+      "passed": true,
+      "issue": "",
+      "header": "Integration Provider Registry"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-fleet",
+      "route": "n22-fleet",
+      "passed": true,
+      "issue": "",
+      "header": "Offline POS Device Fleet"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-health",
+      "route": "n22-health",
+      "passed": true,
+      "issue": "",
+      "header": "Health & Incident Center"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-tenant-detail",
+      "route": "n22-tenant-detail",
+      "passed": true,
+      "issue": "",
+      "header": "Kopi Awan"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-tickets",
+      "route": "n22-tickets",
+      "passed": true,
+      "issue": "",
+      "header": "Support & Access Requests"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-security",
+      "route": "n22-security",
+      "passed": true,
+      "issue": "",
+      "header": "Security, Approvals & Audit"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-settings",
+      "route": "n22-settings",
+      "passed": true,
+      "issue": "",
+      "header": "Platform Governance Settings"
+    },
+    {
+      "viewport": 320,
+      "role": "platform",
+      "requested_route": "n22-acceptance",
+      "route": "n22-acceptance",
+      "passed": true,
+      "issue": "",
+      "header": "UX Acceptance Matrix"
+    },
+    {
+      "viewport": 320,
+      "role": "support",
+      "requested_route": "n22-tickets",
+      "route": "n22-tickets",
+      "passed": true,
+      "issue": "",
+      "header": "Support & Access Requests"
+    },
+    {
+      "viewport": 320,
+      "role": "support",
+      "requested_route": "n22-tenants",
+      "route": "n22-tenants",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Management"
+    },
+    {
+      "viewport": 320,
+      "role": "support",
+      "requested_route": "n22-health",
+      "route": "n22-health",
+      "passed": true,
+      "issue": "",
+      "header": "Health & Incident Center"
+    },
+    {
+      "viewport": 320,
+      "role": "support",
+      "requested_route": "n22-security",
+      "route": "n22-security",
+      "passed": true,
+      "issue": "",
+      "header": "Security, Approvals & Audit"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "storefront",
+      "route": "storefront",
+      "passed": true,
+      "issue": "",
+      "header": "Toko Online & Branding"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "catalog",
+      "route": "catalog",
+      "passed": true,
+      "issue": "",
+      "header": "Product Catalog"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "product-ops",
+      "route": "product-ops",
+      "passed": true,
+      "issue": "",
+      "header": "Product Management · Detail"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "inventory",
+      "route": "inventory",
+      "passed": true,
+      "issue": "",
+      "header": "Inventory & Stock Ledger"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "ai-settings",
+      "route": "ai-settings",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Configuration"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "ai-analytics",
+      "route": "ai-analytics",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Analytics"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "delivery",
+      "route": "delivery",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Dispatch Board"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "couriers",
+      "route": "couriers",
+      "passed": true,
+      "issue": "",
+      "header": "Courier Management"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "channels",
+      "route": "channels",
+      "passed": true,
+      "issue": "",
+      "header": "WhatsApp Connections"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "outlets",
+      "route": "outlets",
+      "passed": true,
+      "issue": "",
+      "header": "Outlets & Service Modules"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "team",
+      "route": "team",
+      "passed": true,
+      "issue": "",
+      "header": "Team & Access Control"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "subscription",
+      "route": "subscription",
+      "passed": true,
+      "issue": "",
+      "header": "Subscription & Usage"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "security",
+      "route": "security",
+      "passed": true,
+      "issue": "",
+      "header": "Security & Audit"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 320,
+      "role": "owner",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "storefront",
+      "route": "storefront",
+      "passed": true,
+      "issue": "",
+      "header": "Toko Online & Branding"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "catalog",
+      "route": "catalog",
+      "passed": true,
+      "issue": "",
+      "header": "Product Catalog"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "product-ops",
+      "route": "product-ops",
+      "passed": true,
+      "issue": "",
+      "header": "Product Management · Detail"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 320,
+      "role": "brand",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "delivery",
+      "route": "delivery",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Dispatch Board"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "couriers",
+      "route": "couriers",
+      "passed": true,
+      "issue": "",
+      "header": "Courier Management"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "inventory",
+      "route": "inventory",
+      "passed": true,
+      "issue": "",
+      "header": "Inventory & Stock Ledger"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "outlets",
+      "route": "outlets",
+      "passed": true,
+      "issue": "",
+      "header": "Outlets & Service Modules"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 320,
+      "role": "manager",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 320,
+      "role": "cashier",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 320,
+      "role": "cashier",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 320,
+      "role": "cashier",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 320,
+      "role": "cashier",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 320,
+      "role": "cashier",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 320,
+      "role": "dispatcher",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 320,
+      "role": "dispatcher",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 320,
+      "role": "dispatcher",
+      "requested_route": "o22-tracking",
+      "route": "o22-tracking",
+      "passed": true,
+      "issue": "",
+      "header": "Monitoring Pengiriman"
+    },
+    {
+      "viewport": 320,
+      "role": "dispatcher",
+      "requested_route": "o22-fleet",
+      "route": "o22-fleet",
+      "passed": true,
+      "issue": "",
+      "header": "Ketersediaan & Kapasitas Kurir"
+    },
+    {
+      "viewport": 320,
+      "role": "dispatcher",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 320,
+      "role": "dispatcher",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 320,
+      "role": "dispatcher",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 320,
+      "role": "dispatcher",
+      "requested_route": "o22-reports",
+      "route": "o22-reports",
+      "passed": true,
+      "issue": "",
+      "header": "Laporan Delivery"
+    },
+    {
+      "viewport": 320,
+      "role": "dispatcher",
+      "requested_route": "o22-notifications",
+      "route": "o22-notifications",
+      "passed": true,
+      "issue": "",
+      "header": "Notifikasi Kurir"
+    },
+    {
+      "viewport": 320,
+      "role": "dispatcher",
+      "requested_route": "o22-acceptance",
+      "route": "o22-acceptance",
+      "passed": true,
+      "issue": "",
+      "header": "Acceptance Matrix"
+    },
+    {
+      "viewport": 320,
+      "role": "courier",
+      "requested_route": "o22-courier-home",
+      "route": "o22-courier-home",
+      "passed": true,
+      "issue": "",
+      "header": "Halo, Dimas 👋"
+    },
+    {
+      "viewport": 320,
+      "role": "courier",
+      "requested_route": "o22-courier-tasks",
+      "route": "o22-courier-tasks",
+      "passed": true,
+      "issue": "",
+      "header": "Tugas Saya"
+    },
+    {
+      "viewport": 320,
+      "role": "courier",
+      "requested_route": "o22-courier-cash",
+      "route": "o22-courier-cash",
+      "passed": true,
+      "issue": "",
+      "header": "Kas COD & Setoran"
+    },
+    {
+      "viewport": 320,
+      "role": "courier",
+      "requested_route": "o22-courier-history",
+      "route": "o22-courier-history",
+      "passed": true,
+      "issue": "",
+      "header": "Riwayat Tugas"
+    },
+    {
+      "viewport": 320,
+      "role": "courier",
+      "requested_route": "o22-courier-profile",
+      "route": "o22-courier-profile",
+      "passed": true,
+      "issue": "",
+      "header": "Profil & Lokasi"
+    },
+    {
+      "viewport": 320,
+      "role": "ai",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 320,
+      "role": "ai",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 320,
+      "role": "ai",
+      "requested_route": "ai-settings",
+      "route": "ai-settings",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Configuration"
+    },
+    {
+      "viewport": 320,
+      "role": "ai",
+      "requested_route": "ai-analytics",
+      "route": "ai-analytics",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Analytics"
+    },
+    {
+      "viewport": 320,
+      "role": "ai",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 320,
+      "role": "ai",
+      "requested_route": "channels",
+      "route": "channels",
+      "passed": true,
+      "issue": "",
+      "header": "WhatsApp Connections"
+    },
+    {
+      "viewport": 320,
+      "role": "ai",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 320,
+      "role": "cs",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 320,
+      "role": "cs",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 320,
+      "role": "cs",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 320,
+      "role": "cs",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 320,
+      "role": "cs",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 320,
+      "role": "finance",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 320,
+      "role": "finance",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 320,
+      "role": "finance",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 320,
+      "role": "finance",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 320,
+      "role": "finance",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 320,
+      "role": "finance",
+      "requested_route": "subscription",
+      "route": "subscription",
+      "passed": true,
+      "issue": "",
+      "header": "Subscription & Usage"
+    },
+    {
+      "viewport": 320,
+      "role": "finance",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 320,
+      "role": "finance",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 320,
+      "role": "finance",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 320,
+      "role": "finance",
+      "requested_route": "o22-reports",
+      "route": "o22-reports",
+      "passed": true,
+      "issue": "",
+      "header": "Laporan Delivery"
+    },
+    {
+      "viewport": 320,
+      "role": "customer",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-dashboard",
+      "route": "n22-dashboard",
+      "passed": true,
+      "issue": "",
+      "header": "Platform Command Center"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-tenants",
+      "route": "n22-tenants",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Management"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-billing",
+      "route": "n22-billing",
+      "passed": true,
+      "issue": "",
+      "header": "Plans, Subscriptions & Billing"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-entitlements",
+      "route": "n22-entitlements",
+      "passed": true,
+      "issue": "",
+      "header": "Modules & Quota Control"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-providers",
+      "route": "n22-providers",
+      "passed": true,
+      "issue": "",
+      "header": "Integration Provider Registry"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-fleet",
+      "route": "n22-fleet",
+      "passed": true,
+      "issue": "",
+      "header": "Offline POS Device Fleet"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-health",
+      "route": "n22-health",
+      "passed": true,
+      "issue": "",
+      "header": "Health & Incident Center"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-tenant-detail",
+      "route": "n22-tenant-detail",
+      "passed": true,
+      "issue": "",
+      "header": "Kopi Awan"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-tickets",
+      "route": "n22-tickets",
+      "passed": true,
+      "issue": "",
+      "header": "Support & Access Requests"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-security",
+      "route": "n22-security",
+      "passed": true,
+      "issue": "",
+      "header": "Security, Approvals & Audit"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-settings",
+      "route": "n22-settings",
+      "passed": true,
+      "issue": "",
+      "header": "Platform Governance Settings"
+    },
+    {
+      "viewport": 390,
+      "role": "platform",
+      "requested_route": "n22-acceptance",
+      "route": "n22-acceptance",
+      "passed": true,
+      "issue": "",
+      "header": "UX Acceptance Matrix"
+    },
+    {
+      "viewport": 390,
+      "role": "support",
+      "requested_route": "n22-tickets",
+      "route": "n22-tickets",
+      "passed": true,
+      "issue": "",
+      "header": "Support & Access Requests"
+    },
+    {
+      "viewport": 390,
+      "role": "support",
+      "requested_route": "n22-tenants",
+      "route": "n22-tenants",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Management"
+    },
+    {
+      "viewport": 390,
+      "role": "support",
+      "requested_route": "n22-health",
+      "route": "n22-health",
+      "passed": true,
+      "issue": "",
+      "header": "Health & Incident Center"
+    },
+    {
+      "viewport": 390,
+      "role": "support",
+      "requested_route": "n22-security",
+      "route": "n22-security",
+      "passed": true,
+      "issue": "",
+      "header": "Security, Approvals & Audit"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "storefront",
+      "route": "storefront",
+      "passed": true,
+      "issue": "",
+      "header": "Toko Online & Branding"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "catalog",
+      "route": "catalog",
+      "passed": true,
+      "issue": "",
+      "header": "Product Catalog"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "product-ops",
+      "route": "product-ops",
+      "passed": true,
+      "issue": "",
+      "header": "Product Management · Detail"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "inventory",
+      "route": "inventory",
+      "passed": true,
+      "issue": "",
+      "header": "Inventory & Stock Ledger"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "ai-settings",
+      "route": "ai-settings",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Configuration"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "ai-analytics",
+      "route": "ai-analytics",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Analytics"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "delivery",
+      "route": "delivery",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Dispatch Board"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "couriers",
+      "route": "couriers",
+      "passed": true,
+      "issue": "",
+      "header": "Courier Management"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "channels",
+      "route": "channels",
+      "passed": true,
+      "issue": "",
+      "header": "WhatsApp Connections"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "outlets",
+      "route": "outlets",
+      "passed": true,
+      "issue": "",
+      "header": "Outlets & Service Modules"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "team",
+      "route": "team",
+      "passed": true,
+      "issue": "",
+      "header": "Team & Access Control"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "subscription",
+      "route": "subscription",
+      "passed": true,
+      "issue": "",
+      "header": "Subscription & Usage"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "security",
+      "route": "security",
+      "passed": true,
+      "issue": "",
+      "header": "Security & Audit"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 390,
+      "role": "owner",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "storefront",
+      "route": "storefront",
+      "passed": true,
+      "issue": "",
+      "header": "Toko Online & Branding"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "catalog",
+      "route": "catalog",
+      "passed": true,
+      "issue": "",
+      "header": "Product Catalog"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "product-ops",
+      "route": "product-ops",
+      "passed": true,
+      "issue": "",
+      "header": "Product Management · Detail"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 390,
+      "role": "brand",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "delivery",
+      "route": "delivery",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Dispatch Board"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "couriers",
+      "route": "couriers",
+      "passed": true,
+      "issue": "",
+      "header": "Courier Management"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "inventory",
+      "route": "inventory",
+      "passed": true,
+      "issue": "",
+      "header": "Inventory & Stock Ledger"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "outlets",
+      "route": "outlets",
+      "passed": true,
+      "issue": "",
+      "header": "Outlets & Service Modules"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 390,
+      "role": "manager",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 390,
+      "role": "cashier",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 390,
+      "role": "cashier",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 390,
+      "role": "cashier",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 390,
+      "role": "cashier",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 390,
+      "role": "cashier",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 390,
+      "role": "dispatcher",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 390,
+      "role": "dispatcher",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 390,
+      "role": "dispatcher",
+      "requested_route": "o22-tracking",
+      "route": "o22-tracking",
+      "passed": true,
+      "issue": "",
+      "header": "Monitoring Pengiriman"
+    },
+    {
+      "viewport": 390,
+      "role": "dispatcher",
+      "requested_route": "o22-fleet",
+      "route": "o22-fleet",
+      "passed": true,
+      "issue": "",
+      "header": "Ketersediaan & Kapasitas Kurir"
+    },
+    {
+      "viewport": 390,
+      "role": "dispatcher",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 390,
+      "role": "dispatcher",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 390,
+      "role": "dispatcher",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 390,
+      "role": "dispatcher",
+      "requested_route": "o22-reports",
+      "route": "o22-reports",
+      "passed": true,
+      "issue": "",
+      "header": "Laporan Delivery"
+    },
+    {
+      "viewport": 390,
+      "role": "dispatcher",
+      "requested_route": "o22-notifications",
+      "route": "o22-notifications",
+      "passed": true,
+      "issue": "",
+      "header": "Notifikasi Kurir"
+    },
+    {
+      "viewport": 390,
+      "role": "dispatcher",
+      "requested_route": "o22-acceptance",
+      "route": "o22-acceptance",
+      "passed": true,
+      "issue": "",
+      "header": "Acceptance Matrix"
+    },
+    {
+      "viewport": 390,
+      "role": "courier",
+      "requested_route": "o22-courier-home",
+      "route": "o22-courier-home",
+      "passed": true,
+      "issue": "",
+      "header": "Halo, Dimas 👋"
+    },
+    {
+      "viewport": 390,
+      "role": "courier",
+      "requested_route": "o22-courier-tasks",
+      "route": "o22-courier-tasks",
+      "passed": true,
+      "issue": "",
+      "header": "Tugas Saya"
+    },
+    {
+      "viewport": 390,
+      "role": "courier",
+      "requested_route": "o22-courier-cash",
+      "route": "o22-courier-cash",
+      "passed": true,
+      "issue": "",
+      "header": "Kas COD & Setoran"
+    },
+    {
+      "viewport": 390,
+      "role": "courier",
+      "requested_route": "o22-courier-history",
+      "route": "o22-courier-history",
+      "passed": true,
+      "issue": "",
+      "header": "Riwayat Tugas"
+    },
+    {
+      "viewport": 390,
+      "role": "courier",
+      "requested_route": "o22-courier-profile",
+      "route": "o22-courier-profile",
+      "passed": true,
+      "issue": "",
+      "header": "Profil & Lokasi"
+    },
+    {
+      "viewport": 390,
+      "role": "ai",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 390,
+      "role": "ai",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 390,
+      "role": "ai",
+      "requested_route": "ai-settings",
+      "route": "ai-settings",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Configuration"
+    },
+    {
+      "viewport": 390,
+      "role": "ai",
+      "requested_route": "ai-analytics",
+      "route": "ai-analytics",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Analytics"
+    },
+    {
+      "viewport": 390,
+      "role": "ai",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 390,
+      "role": "ai",
+      "requested_route": "channels",
+      "route": "channels",
+      "passed": true,
+      "issue": "",
+      "header": "WhatsApp Connections"
+    },
+    {
+      "viewport": 390,
+      "role": "ai",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 390,
+      "role": "cs",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 390,
+      "role": "cs",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 390,
+      "role": "cs",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 390,
+      "role": "cs",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 390,
+      "role": "cs",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 390,
+      "role": "finance",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 390,
+      "role": "finance",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 390,
+      "role": "finance",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 390,
+      "role": "finance",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 390,
+      "role": "finance",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 390,
+      "role": "finance",
+      "requested_route": "subscription",
+      "route": "subscription",
+      "passed": true,
+      "issue": "",
+      "header": "Subscription & Usage"
+    },
+    {
+      "viewport": 390,
+      "role": "finance",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 390,
+      "role": "finance",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 390,
+      "role": "finance",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 390,
+      "role": "finance",
+      "requested_route": "o22-reports",
+      "route": "o22-reports",
+      "passed": true,
+      "issue": "",
+      "header": "Laporan Delivery"
+    },
+    {
+      "viewport": 390,
+      "role": "customer",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-dashboard",
+      "route": "n22-dashboard",
+      "passed": true,
+      "issue": "",
+      "header": "Platform Command Center"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-tenants",
+      "route": "n22-tenants",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Management"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-billing",
+      "route": "n22-billing",
+      "passed": true,
+      "issue": "",
+      "header": "Plans, Subscriptions & Billing"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-entitlements",
+      "route": "n22-entitlements",
+      "passed": true,
+      "issue": "",
+      "header": "Modules & Quota Control"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-providers",
+      "route": "n22-providers",
+      "passed": true,
+      "issue": "",
+      "header": "Integration Provider Registry"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-fleet",
+      "route": "n22-fleet",
+      "passed": true,
+      "issue": "",
+      "header": "Offline POS Device Fleet"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-health",
+      "route": "n22-health",
+      "passed": true,
+      "issue": "",
+      "header": "Health & Incident Center"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-tenant-detail",
+      "route": "n22-tenant-detail",
+      "passed": true,
+      "issue": "",
+      "header": "Kopi Awan"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-tickets",
+      "route": "n22-tickets",
+      "passed": true,
+      "issue": "",
+      "header": "Support & Access Requests"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-security",
+      "route": "n22-security",
+      "passed": true,
+      "issue": "",
+      "header": "Security, Approvals & Audit"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-settings",
+      "route": "n22-settings",
+      "passed": true,
+      "issue": "",
+      "header": "Platform Governance Settings"
+    },
+    {
+      "viewport": 768,
+      "role": "platform",
+      "requested_route": "n22-acceptance",
+      "route": "n22-acceptance",
+      "passed": true,
+      "issue": "",
+      "header": "UX Acceptance Matrix"
+    },
+    {
+      "viewport": 768,
+      "role": "support",
+      "requested_route": "n22-tickets",
+      "route": "n22-tickets",
+      "passed": true,
+      "issue": "",
+      "header": "Support & Access Requests"
+    },
+    {
+      "viewport": 768,
+      "role": "support",
+      "requested_route": "n22-tenants",
+      "route": "n22-tenants",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Management"
+    },
+    {
+      "viewport": 768,
+      "role": "support",
+      "requested_route": "n22-health",
+      "route": "n22-health",
+      "passed": true,
+      "issue": "",
+      "header": "Health & Incident Center"
+    },
+    {
+      "viewport": 768,
+      "role": "support",
+      "requested_route": "n22-security",
+      "route": "n22-security",
+      "passed": true,
+      "issue": "",
+      "header": "Security, Approvals & Audit"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "storefront",
+      "route": "storefront",
+      "passed": true,
+      "issue": "",
+      "header": "Toko Online & Branding"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "catalog",
+      "route": "catalog",
+      "passed": true,
+      "issue": "",
+      "header": "Product Catalog"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "product-ops",
+      "route": "product-ops",
+      "passed": true,
+      "issue": "",
+      "header": "Product Management · Detail"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "inventory",
+      "route": "inventory",
+      "passed": true,
+      "issue": "",
+      "header": "Inventory & Stock Ledger"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "ai-settings",
+      "route": "ai-settings",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Configuration"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "ai-analytics",
+      "route": "ai-analytics",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Analytics"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "delivery",
+      "route": "delivery",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Dispatch Board"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "couriers",
+      "route": "couriers",
+      "passed": true,
+      "issue": "",
+      "header": "Courier Management"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "channels",
+      "route": "channels",
+      "passed": true,
+      "issue": "",
+      "header": "WhatsApp Connections"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "outlets",
+      "route": "outlets",
+      "passed": true,
+      "issue": "",
+      "header": "Outlets & Service Modules"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "team",
+      "route": "team",
+      "passed": true,
+      "issue": "",
+      "header": "Team & Access Control"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "subscription",
+      "route": "subscription",
+      "passed": true,
+      "issue": "",
+      "header": "Subscription & Usage"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "security",
+      "route": "security",
+      "passed": true,
+      "issue": "",
+      "header": "Security & Audit"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 768,
+      "role": "owner",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "storefront",
+      "route": "storefront",
+      "passed": true,
+      "issue": "",
+      "header": "Toko Online & Branding"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "catalog",
+      "route": "catalog",
+      "passed": true,
+      "issue": "",
+      "header": "Product Catalog"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "product-ops",
+      "route": "product-ops",
+      "passed": true,
+      "issue": "",
+      "header": "Product Management · Detail"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 768,
+      "role": "brand",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "delivery",
+      "route": "delivery",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Dispatch Board"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "couriers",
+      "route": "couriers",
+      "passed": true,
+      "issue": "",
+      "header": "Courier Management"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "inventory",
+      "route": "inventory",
+      "passed": true,
+      "issue": "",
+      "header": "Inventory & Stock Ledger"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "outlets",
+      "route": "outlets",
+      "passed": true,
+      "issue": "",
+      "header": "Outlets & Service Modules"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 768,
+      "role": "manager",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 768,
+      "role": "cashier",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 768,
+      "role": "cashier",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 768,
+      "role": "cashier",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 768,
+      "role": "cashier",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 768,
+      "role": "cashier",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 768,
+      "role": "dispatcher",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 768,
+      "role": "dispatcher",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 768,
+      "role": "dispatcher",
+      "requested_route": "o22-tracking",
+      "route": "o22-tracking",
+      "passed": true,
+      "issue": "",
+      "header": "Monitoring Pengiriman"
+    },
+    {
+      "viewport": 768,
+      "role": "dispatcher",
+      "requested_route": "o22-fleet",
+      "route": "o22-fleet",
+      "passed": true,
+      "issue": "",
+      "header": "Ketersediaan & Kapasitas Kurir"
+    },
+    {
+      "viewport": 768,
+      "role": "dispatcher",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 768,
+      "role": "dispatcher",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 768,
+      "role": "dispatcher",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 768,
+      "role": "dispatcher",
+      "requested_route": "o22-reports",
+      "route": "o22-reports",
+      "passed": true,
+      "issue": "",
+      "header": "Laporan Delivery"
+    },
+    {
+      "viewport": 768,
+      "role": "dispatcher",
+      "requested_route": "o22-notifications",
+      "route": "o22-notifications",
+      "passed": true,
+      "issue": "",
+      "header": "Notifikasi Kurir"
+    },
+    {
+      "viewport": 768,
+      "role": "dispatcher",
+      "requested_route": "o22-acceptance",
+      "route": "o22-acceptance",
+      "passed": true,
+      "issue": "",
+      "header": "Acceptance Matrix"
+    },
+    {
+      "viewport": 768,
+      "role": "courier",
+      "requested_route": "o22-courier-home",
+      "route": "o22-courier-home",
+      "passed": true,
+      "issue": "",
+      "header": "Halo, Dimas 👋"
+    },
+    {
+      "viewport": 768,
+      "role": "courier",
+      "requested_route": "o22-courier-tasks",
+      "route": "o22-courier-tasks",
+      "passed": true,
+      "issue": "",
+      "header": "Tugas Saya"
+    },
+    {
+      "viewport": 768,
+      "role": "courier",
+      "requested_route": "o22-courier-cash",
+      "route": "o22-courier-cash",
+      "passed": true,
+      "issue": "",
+      "header": "Kas COD & Setoran"
+    },
+    {
+      "viewport": 768,
+      "role": "courier",
+      "requested_route": "o22-courier-history",
+      "route": "o22-courier-history",
+      "passed": true,
+      "issue": "",
+      "header": "Riwayat Tugas"
+    },
+    {
+      "viewport": 768,
+      "role": "courier",
+      "requested_route": "o22-courier-profile",
+      "route": "o22-courier-profile",
+      "passed": true,
+      "issue": "",
+      "header": "Profil & Lokasi"
+    },
+    {
+      "viewport": 768,
+      "role": "ai",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 768,
+      "role": "ai",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 768,
+      "role": "ai",
+      "requested_route": "ai-settings",
+      "route": "ai-settings",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Configuration"
+    },
+    {
+      "viewport": 768,
+      "role": "ai",
+      "requested_route": "ai-analytics",
+      "route": "ai-analytics",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Analytics"
+    },
+    {
+      "viewport": 768,
+      "role": "ai",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 768,
+      "role": "ai",
+      "requested_route": "channels",
+      "route": "channels",
+      "passed": true,
+      "issue": "",
+      "header": "WhatsApp Connections"
+    },
+    {
+      "viewport": 768,
+      "role": "ai",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 768,
+      "role": "cs",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 768,
+      "role": "cs",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 768,
+      "role": "cs",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 768,
+      "role": "cs",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 768,
+      "role": "cs",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 768,
+      "role": "finance",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 768,
+      "role": "finance",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 768,
+      "role": "finance",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 768,
+      "role": "finance",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 768,
+      "role": "finance",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 768,
+      "role": "finance",
+      "requested_route": "subscription",
+      "route": "subscription",
+      "passed": true,
+      "issue": "",
+      "header": "Subscription & Usage"
+    },
+    {
+      "viewport": 768,
+      "role": "finance",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 768,
+      "role": "finance",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 768,
+      "role": "finance",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 768,
+      "role": "finance",
+      "requested_route": "o22-reports",
+      "route": "o22-reports",
+      "passed": true,
+      "issue": "",
+      "header": "Laporan Delivery"
+    },
+    {
+      "viewport": 768,
+      "role": "customer",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-dashboard",
+      "route": "n22-dashboard",
+      "passed": true,
+      "issue": "",
+      "header": "Platform Command Center"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-tenants",
+      "route": "n22-tenants",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-billing",
+      "route": "n22-billing",
+      "passed": true,
+      "issue": "",
+      "header": "Plans, Subscriptions & Billing"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-entitlements",
+      "route": "n22-entitlements",
+      "passed": true,
+      "issue": "",
+      "header": "Modules & Quota Control"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-providers",
+      "route": "n22-providers",
+      "passed": true,
+      "issue": "",
+      "header": "Integration Provider Registry"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-fleet",
+      "route": "n22-fleet",
+      "passed": true,
+      "issue": "",
+      "header": "Offline POS Device Fleet"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-health",
+      "route": "n22-health",
+      "passed": true,
+      "issue": "",
+      "header": "Health & Incident Center"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-tenant-detail",
+      "route": "n22-tenant-detail",
+      "passed": true,
+      "issue": "",
+      "header": "Kopi Awan"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-tickets",
+      "route": "n22-tickets",
+      "passed": true,
+      "issue": "",
+      "header": "Support & Access Requests"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-security",
+      "route": "n22-security",
+      "passed": true,
+      "issue": "",
+      "header": "Security, Approvals & Audit"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-settings",
+      "route": "n22-settings",
+      "passed": true,
+      "issue": "",
+      "header": "Platform Governance Settings"
+    },
+    {
+      "viewport": 1440,
+      "role": "platform",
+      "requested_route": "n22-acceptance",
+      "route": "n22-acceptance",
+      "passed": true,
+      "issue": "",
+      "header": "UX Acceptance Matrix"
+    },
+    {
+      "viewport": 1440,
+      "role": "support",
+      "requested_route": "n22-tickets",
+      "route": "n22-tickets",
+      "passed": true,
+      "issue": "",
+      "header": "Support & Access Requests"
+    },
+    {
+      "viewport": 1440,
+      "role": "support",
+      "requested_route": "n22-tenants",
+      "route": "n22-tenants",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "support",
+      "requested_route": "n22-health",
+      "route": "n22-health",
+      "passed": true,
+      "issue": "",
+      "header": "Health & Incident Center"
+    },
+    {
+      "viewport": 1440,
+      "role": "support",
+      "requested_route": "n22-security",
+      "route": "n22-security",
+      "passed": true,
+      "issue": "",
+      "header": "Security, Approvals & Audit"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "storefront",
+      "route": "storefront",
+      "passed": true,
+      "issue": "",
+      "header": "Toko Online & Branding"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "catalog",
+      "route": "catalog",
+      "passed": true,
+      "issue": "",
+      "header": "Product Catalog"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "product-ops",
+      "route": "product-ops",
+      "passed": true,
+      "issue": "",
+      "header": "Product Management · Detail"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "inventory",
+      "route": "inventory",
+      "passed": true,
+      "issue": "",
+      "header": "Inventory & Stock Ledger"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "ai-settings",
+      "route": "ai-settings",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Configuration"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "ai-analytics",
+      "route": "ai-analytics",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Analytics"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "delivery",
+      "route": "delivery",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Dispatch Board"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "couriers",
+      "route": "couriers",
+      "passed": true,
+      "issue": "",
+      "header": "Courier Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "channels",
+      "route": "channels",
+      "passed": true,
+      "issue": "",
+      "header": "WhatsApp Connections"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "outlets",
+      "route": "outlets",
+      "passed": true,
+      "issue": "",
+      "header": "Outlets & Service Modules"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "team",
+      "route": "team",
+      "passed": true,
+      "issue": "",
+      "header": "Team & Access Control"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "subscription",
+      "route": "subscription",
+      "passed": true,
+      "issue": "",
+      "header": "Subscription & Usage"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "security",
+      "route": "security",
+      "passed": true,
+      "issue": "",
+      "header": "Security & Audit"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "owner",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "storefront",
+      "route": "storefront",
+      "passed": true,
+      "issue": "",
+      "header": "Toko Online & Branding"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "catalog",
+      "route": "catalog",
+      "passed": true,
+      "issue": "",
+      "header": "Product Catalog"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "product-ops",
+      "route": "product-ops",
+      "passed": true,
+      "issue": "",
+      "header": "Product Management · Detail"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "brand",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "delivery",
+      "route": "delivery",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Dispatch Board"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "couriers",
+      "route": "couriers",
+      "passed": true,
+      "issue": "",
+      "header": "Courier Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "inventory",
+      "route": "inventory",
+      "passed": true,
+      "issue": "",
+      "header": "Inventory & Stock Ledger"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "tenant-operations",
+      "route": "tenant-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Tenant Operations · Phase 2.2C"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "promotions",
+      "route": "promotions",
+      "passed": true,
+      "issue": "",
+      "header": "Promo & Diskon"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "outlets",
+      "route": "outlets",
+      "passed": true,
+      "issue": "",
+      "header": "Outlets & Service Modules"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "settings",
+      "route": "settings",
+      "passed": true,
+      "issue": "",
+      "header": "Profil Toko & Lokasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "manager",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 1440,
+      "role": "cashier",
+      "requested_route": "pos",
+      "route": "pos",
+      "passed": true,
+      "issue": "",
+      "header": "Kasir & Penjualan"
+    },
+    {
+      "viewport": 1440,
+      "role": "cashier",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "cashier",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 1440,
+      "role": "cashier",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 1440,
+      "role": "cashier",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 1440,
+      "role": "dispatcher",
+      "requested_route": "o22-dispatch",
+      "route": "o22-dispatch",
+      "passed": true,
+      "issue": "",
+      "header": "Delivery Operations Center"
+    },
+    {
+      "viewport": 1440,
+      "role": "dispatcher",
+      "requested_route": "o22-queue",
+      "route": "o22-queue",
+      "passed": true,
+      "issue": "",
+      "header": "Antrian & Assignment"
+    },
+    {
+      "viewport": 1440,
+      "role": "dispatcher",
+      "requested_route": "o22-tracking",
+      "route": "o22-tracking",
+      "passed": true,
+      "issue": "",
+      "header": "Monitoring Pengiriman"
+    },
+    {
+      "viewport": 1440,
+      "role": "dispatcher",
+      "requested_route": "o22-fleet",
+      "route": "o22-fleet",
+      "passed": true,
+      "issue": "",
+      "header": "Ketersediaan & Kapasitas Kurir"
+    },
+    {
+      "viewport": 1440,
+      "role": "dispatcher",
+      "requested_route": "o22-exceptions",
+      "route": "o22-exceptions",
+      "passed": true,
+      "issue": "",
+      "header": "Kendala & Retur Pengiriman"
+    },
+    {
+      "viewport": 1440,
+      "role": "dispatcher",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "dispatcher",
+      "requested_route": "o22-pods",
+      "route": "o22-pods",
+      "passed": true,
+      "issue": "",
+      "header": "Proof of Delivery Review"
+    },
+    {
+      "viewport": 1440,
+      "role": "dispatcher",
+      "requested_route": "o22-reports",
+      "route": "o22-reports",
+      "passed": true,
+      "issue": "",
+      "header": "Laporan Delivery"
+    },
+    {
+      "viewport": 1440,
+      "role": "dispatcher",
+      "requested_route": "o22-notifications",
+      "route": "o22-notifications",
+      "passed": true,
+      "issue": "",
+      "header": "Notifikasi Kurir"
+    },
+    {
+      "viewport": 1440,
+      "role": "dispatcher",
+      "requested_route": "o22-acceptance",
+      "route": "o22-acceptance",
+      "passed": true,
+      "issue": "",
+      "header": "Acceptance Matrix"
+    },
+    {
+      "viewport": 1440,
+      "role": "courier",
+      "requested_route": "o22-courier-home",
+      "route": "o22-courier-home",
+      "passed": true,
+      "issue": "",
+      "header": "Halo, Dimas 👋"
+    },
+    {
+      "viewport": 1440,
+      "role": "courier",
+      "requested_route": "o22-courier-tasks",
+      "route": "o22-courier-tasks",
+      "passed": true,
+      "issue": "",
+      "header": "Tugas Saya"
+    },
+    {
+      "viewport": 1440,
+      "role": "courier",
+      "requested_route": "o22-courier-cash",
+      "route": "o22-courier-cash",
+      "passed": true,
+      "issue": "",
+      "header": "Kas COD & Setoran"
+    },
+    {
+      "viewport": 1440,
+      "role": "courier",
+      "requested_route": "o22-courier-history",
+      "route": "o22-courier-history",
+      "passed": true,
+      "issue": "",
+      "header": "Riwayat Tugas"
+    },
+    {
+      "viewport": 1440,
+      "role": "courier",
+      "requested_route": "o22-courier-profile",
+      "route": "o22-courier-profile",
+      "passed": true,
+      "issue": "",
+      "header": "Profil & Lokasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "ai",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 1440,
+      "role": "ai",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 1440,
+      "role": "ai",
+      "requested_route": "ai-settings",
+      "route": "ai-settings",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Configuration"
+    },
+    {
+      "viewport": 1440,
+      "role": "ai",
+      "requested_route": "ai-analytics",
+      "route": "ai-analytics",
+      "passed": true,
+      "issue": "",
+      "header": "AI Agent Analytics"
+    },
+    {
+      "viewport": 1440,
+      "role": "ai",
+      "requested_route": "integrations",
+      "route": "integrations",
+      "passed": true,
+      "issue": "",
+      "header": "Pusat Integrasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "ai",
+      "requested_route": "channels",
+      "route": "channels",
+      "passed": true,
+      "issue": "",
+      "header": "WhatsApp Connections"
+    },
+    {
+      "viewport": 1440,
+      "role": "ai",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 1440,
+      "role": "cs",
+      "requested_route": "inbox",
+      "route": "inbox",
+      "passed": true,
+      "issue": "",
+      "header": "Unified AI Inbox"
+    },
+    {
+      "viewport": 1440,
+      "role": "cs",
+      "requested_route": "crm",
+      "route": "crm",
+      "passed": true,
+      "issue": "",
+      "header": "CRM & Follow-up"
+    },
+    {
+      "viewport": 1440,
+      "role": "cs",
+      "requested_route": "orders",
+      "route": "orders",
+      "passed": true,
+      "issue": "",
+      "header": "Order Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "cs",
+      "requested_route": "knowledge",
+      "route": "knowledge",
+      "passed": true,
+      "issue": "",
+      "header": "Knowledge Base"
+    },
+    {
+      "viewport": 1440,
+      "role": "cs",
+      "requested_route": "membership",
+      "route": "membership",
+      "passed": true,
+      "issue": "",
+      "header": "Membership & Loyalty"
+    },
+    {
+      "viewport": 1440,
+      "role": "finance",
+      "requested_route": "expenses",
+      "route": "expenses",
+      "passed": true,
+      "issue": "",
+      "header": "Expense Management"
+    },
+    {
+      "viewport": 1440,
+      "role": "finance",
+      "requested_route": "reports-deep",
+      "route": "reports-deep",
+      "passed": true,
+      "issue": "",
+      "header": "Reports Detail · Phase 2.2C"
+    },
+    {
+      "viewport": 1440,
+      "role": "finance",
+      "requested_route": "reports",
+      "route": "reports",
+      "passed": true,
+      "issue": "",
+      "header": "Sales & Operational Reports"
+    },
+    {
+      "viewport": 1440,
+      "role": "finance",
+      "requested_route": "transaction-integrity",
+      "route": "transaction-integrity",
+      "passed": true,
+      "issue": "",
+      "header": "Transaction Integrity"
+    },
+    {
+      "viewport": 1440,
+      "role": "finance",
+      "requested_route": "lifecycle-closure",
+      "route": "lifecycle-closure",
+      "passed": true,
+      "issue": "",
+      "header": "Lifecycle & Financial Closure"
+    },
+    {
+      "viewport": 1440,
+      "role": "finance",
+      "requested_route": "subscription",
+      "route": "subscription",
+      "passed": true,
+      "issue": "",
+      "header": "Subscription & Usage"
+    },
+    {
+      "viewport": 1440,
+      "role": "finance",
+      "requested_route": "pos-operations",
+      "route": "pos-operations",
+      "passed": true,
+      "issue": "",
+      "header": "Operasional POS"
+    },
+    {
+      "viewport": 1440,
+      "role": "finance",
+      "requested_route": "pos-reconcile",
+      "route": "pos-reconcile",
+      "passed": true,
+      "issue": "",
+      "header": "Harga & Rekonsiliasi POS"
+    },
+    {
+      "viewport": 1440,
+      "role": "finance",
+      "requested_route": "o22-cod",
+      "route": "o22-cod",
+      "passed": true,
+      "issue": "",
+      "header": "COD & Rekonsiliasi"
+    },
+    {
+      "viewport": 1440,
+      "role": "finance",
+      "requested_route": "o22-reports",
+      "route": "o22-reports",
+      "passed": true,
+      "issue": "",
+      "header": "Laporan Delivery"
+    },
+    {
+      "viewport": 1440,
+      "role": "customer",
+      "requested_route": "overview",
+      "route": "overview",
+      "passed": true,
+      "issue": "",
+      "header": "Ringkasan Bisnis"
+    }
+  ]
+}

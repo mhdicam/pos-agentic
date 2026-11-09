@@ -1,0 +1,27 @@
+﻿id,severity,signoff_gate,description,proposed_owner,acceptance_links,closure_evidence,status
+B-001,P0,UX sign-off,Full 12-role positive/negative E2E unverified,S8 QA,P23-X45,Video/log matrix 12 roles and signed results,OPEN
+B-002,P0,UX sign-off,"Real mobile devices, accessibility and CDN-rendered UI unverified",S8 UX,P23-X43;P23-X44,"iOS/Android 320–1440, keyboard, voiceover/talkback, axe",OPEN
+B-003,P0,Architecture & MVP,Legacy PRD contradicts Offline POS MVP P0,Product Owner,P23-X04,Canonical v1.4.5 decision approved; remove obsolete planning rows,DRAFT_RESOLVED_PENDING_SIGNOFF
+B-004,P0,Production,Offline POS not implemented as installable PWA with IndexedDB,S0A/S0B engineering,P23-X04;P23-X06,Offline sale restart crash/recovery demo with service worker,OPEN
+B-005,P0,Production,"Offline sync duplicate/replay, device revoke and conflict unresolved",S0C engineering,P23-X05;P23-X07;P23-X08,"Concurrency, authorization TTL and conflict journal tests",OPEN
+B-006,P0,Production,Server RLS/tenant/outlet object authorization not implemented,S0 security,P23-X01;P23-X02,API/DB authorization integration suite,OPEN
+B-007,P0,Production,"Transaction atomicity, idempotency, stock and payment ledger unproven",S1/S2/S5 engineering,P23-X11;P23-X17;P23-X20,Database concurrency+reconciliation suite,OPEN
+B-008,P0,Production,Cash refund on closed shift and financial allocation need backend decisions,Product/Finance engineering,P23-X12;P23-X13;P23-X14,Closed shift reversal policy and posting golden dataset,OPEN
+B-009,P0,Production,"COD settlement, Finance verification and real cash ledger not integrated",S4/S5 finance,P23-X28,Validated posting and bank/cash reconciliation,OPEN
+B-010,P0,Production,Secure POD media/OTP evidence lacks production implementation,S4 security,P23-X29,Private media/retention/OTP replay tests,OPEN
+B-011,P0,Production,Delivery stale offer/assignment and order lifecycle concurrency unverified,S4 engineering,P23-X25;P23-X27,Concurrent assignment test and canonical event stream,OPEN
+B-012,P0,Production,"GPS consent, privacy and foreground tracking need real device QA",S4 security,P23-X30,Real-device permission revoke/storage tests,OPEN
+B-013,P0,Production,Platform billing and entitlement API enforcement absent,S0/S7 engineering,P23-X38;P23-X39,Provider sandbox and locked entitlements integration tests,OPEN
+B-014,P0,Production,Platform maker-checker simulated with actor switch; not authentication,S7 security,P23-X40,Separate authenticated identities+MFA/audit tests,OPEN
+B-015,P0,Production,"Provider secrets, webhook security and lifecycle not integrated",S6/S7 security,P23-X35;P23-X37,Sandbox signed webhook/replay/secret rotation tests,OPEN
+B-016,P0,Production,Backup/restore and observability only demo metadata,S7 SRE,P23-X41,Restore drill RPO/RTO and telemetry incident evidence,OPEN
+B-017,P0,UX sign-off,Error/empty/loading/offline/403/409 critical paths not systematically exercised,S8 QA,P23-X47,Fault injection matrix on critical screens,OPEN
+B-018,P0,Product decision,Offline tender allowed: cash only; offline loyalty/promos with global cap denied pending sync,Product/Finance,P23-X04;P23-X15;P23-X16,Commercial policy approval and explicit UX copy,PENDING_APPROVAL
+B-019,P0,Product decision,"Refund proration, tax/service, rounding and inventory costing require final policy",Product/Finance,P23-X12;P23-X20,Documented golden examples and ledger signatures,PENDING_APPROVAL
+B-020,P1,Pilot conditional,Unofficial WhatsApp policy/legal and provider risk approval outstanding,Legal/InfoSec/Product,P23-X36,Written go/no-go and explicit per-tenant opt-in,BLOCKED_PENDING_APPROVAL
+B-021,P0,Production,"AI tool permission, handoff race, credit budget and consent unverified",S6 AI security,P23-X32;P23-X33;P23-X34,Adversarial test and atomic quota evidence,OPEN_MVPPLUS
+B-022,P0,Engineering handoff,"API request/response schema, error codes and DB migrations are proposed, not signed",Backend leads,P23-X01;P23-X47,"OpenAPI schemas, ERD/DDL, ADRs, versioning decision",PENDING_REVIEW
+B-023,P0,UX sign-off,Public storefront customer and auth paths not in role-route smoke count,S8 QA,P23-UX-public-checkout;P23-UX-auth-onboarding,Public auth/checkout/tracking scripted E2E,OPEN
+B-024,P0,UX sign-off,Legacy screens can bypass new delivery/COD controls unless backend canonical,S4 engineering,P23-X28,All entry points map to common state transition service,OPEN
+B-025,P1,UX sign-off,Published storefront builder section toggles not E2E verified with saved theme,S3 UX,P23-UX-storefront,Save/publish/preview/draft sync and responsive QA,OPEN
+B-026,P0,Production,"Privacy and evidence retention for AI chats, GPS, POD and membership PII unspecified in enforceable rules",Security/Legal,P23-X24;P23-X29;P23-X33,"Retention matrix, data subject workflows and DPIA decision",OPEN
