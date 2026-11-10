@@ -26,6 +26,7 @@ Baseline FR: FR-01, FR-03, FR-13, FR-18; Phase 2.3 B-001/B-003/B-022. Primary cr
 - **RD01-13** (Event): When the tenant owner saves the business profile, the system shall validate name (2-60), category, email, phone (9-15 digits) and NPWP (15/16 digits) and write a tenant-scoped audit event. Tests: `tests/tenant.test.js` (saveProfile) — prototype only
 - **RD01-14** (Unwanted): If outlet opening hours have a closing time not after the opening time, or the outlet belongs to another tenant, then the system shall reject the change. Tests: `tests/tenant.test.js` (saveHours)
 - **RD01-15** (Ubiquitous): The system shall show the tenant audit log only to the tenant owner and only for rows of the session tenant, read-only. Tests: `tests/tenant.test.js` (audit)
+- **RD01-16** (Event): When a tenant user switches outlet, the system shall accept only an active outlet of the session tenant and scope POS, shift and stock actions to it. Tests: `P23-X01` (gap), prototype UI only
 
 ## Primary workflow
 Create tenant, invite member, switch tenant, assign outlet role, suspend/re-activate by maker/checker, deny cross-tenant export and background processing.

@@ -65,19 +65,33 @@
     var method = spec.method || 'pickup';
     Orbis.need(METHODS.indexOf(method) >= 0, 'VALIDATION', 'Metode pesanan tidak valid');
     Orbis.need(Array.isArray(spec.items) && spec.items.length > 0, 'EMPTY_CART', 'Keranjang kosong');
-    var merged = {}, order = [];
+    // lines with identical sku + modifier set + note merge; different modifiers stay separate lines
+    var picks = {}, order = [];
     spec.items.forEach(function (it) {
       Orbis.int(it.qty, 'Qty');
       Orbis.need(it.qty >= 1, 'VALIDATION', 'Qty minimal 1');
-      if (!merged[it.skuId]) { merged[it.skuId] = 0; order.push(it.skuId); }
-      merged[it.skuId] += it.qty;
+      var mods = Array.isArray(it.modifiers) ? it.modifiers.slice().sort() : [];
+      var key = it.skuId + '|' + mods.join(',') + '|' + (it.note || '');
+      if (!picks[key]) { picks[key] = { skuId: it.skuId, qty: 0, modifiers: mods, note: it.note || '' }; order.push(key); }
+      picks[key].qty += it.qty;
     });
-    var items = order.map(function (skuId) {
+    var H = Orbis.hooks, outlet = d.session.outlet;
+    var items = order.map(function (key) {
+      var src = picks[key], skuId = src.skuId;
       var sku = d.skus.filter(function (s) { return s.id === skuId && s.tenant === d.session.tenant; })[0];
       Orbis.need(sku, 'NOT_FOUND', 'SKU tidak ditemukan');
+      Orbis.need(!sku.archived, 'NOT_FOUND', 'SKU sudah diarsipkan');
       var p = d.products.filter(function (x) { return x.id === sku.productId; })[0] || {};
+      Orbis.need(!p.archived, 'NOT_FOUND', 'Produk sudah diarsipkan');
       var name = (p.name || sku.sku) + (sku.label && sku.label !== 'Standar' ? ' - ' + sku.label : '');
-      return { skuId: skuId, name: name, qty: merged[skuId], price: Orbis.int(sku.price, 'Harga'), cost: Orbis.int(sku.cost, 'HPP') };
+      var hp = H.skuPrice ? H.skuPrice(d, sku, outlet) : undefined;
+      var price = Orbis.int(hp == null ? sku.price : hp, 'Harga');
+      var mods = src.modifiers && src.modifiers.length ? (H.resolveModifiers ? H.resolveModifiers(d, sku, src.modifiers) : null) : [];
+      Orbis.need(mods, 'VALIDATION', 'Modifier belum didukung');
+      var line = { skuId: skuId, name: name, qty: src.qty, price: price + Orbis.sum(mods, function (m) { return Orbis.int(m.price, 'Harga modifier'); }), cost: Orbis.int(sku.cost, 'HPP') };
+      if (mods.length) { line.modifiers = mods.map(function (m) { return { id: m.id, name: m.name, price: m.price }; }); line.basePrice = price; }
+      if (src.note) line.note = String(src.note).trim().slice(0, 120);
+      return line;
     });
     var subtotal = Orbis.sum(items, function (i) { return i.qty * i.price; });
     var customer = { name: String((spec.customer && spec.customer.name) || '').trim(), phone: String((spec.customer && spec.customer.phone) || '').trim() };
@@ -107,12 +121,17 @@
     var discount = Math.min(subtotal, (promo ? promo.discount : 0) + redeem);
     var st = orders.settings(d);
     var base = subtotal - discount;
-    var tax = Math.round(base * st.tax / 100), service = Math.round(base * st.service / 100);
+    var tax = Math.round(base * st.tax / 100), service = Math.round(base * st.service / 100), rounding = 0;
+    if (H.charges) {
+      var ch = H.charges(d, { base: base, outlet: outlet, channel: channel, method: method });
+      tax = Orbis.int(ch.tax, 'Pajak'); service = Orbis.int(ch.service, 'Service'); rounding = Orbis.int(ch.rounding || 0, 'Pembulatan');
+      if (ch.taxLabel) var taxLabel = String(ch.taxLabel);
+    }
     var deliveryFee = method === 'delivery' ? DELIVERY_FEE : 0;
     return {
       channel: channel, method: method, items: items, customer: customer, address: address, subtotal: subtotal, discount: discount,
-      promo: promo, redeemValue: redeem, redeemPoints: redeemPoints, tax: tax, service: service, deliveryFee: deliveryFee,
-      total: base + tax + service + deliveryFee
+      promo: promo, redeemValue: redeem, redeemPoints: redeemPoints, tax: tax, taxLabel: taxLabel || 'Pajak', service: service, rounding: rounding, deliveryFee: deliveryFee,
+      total: base + tax + service + rounding + deliveryFee
     };
   };
 
@@ -139,6 +158,9 @@
       Orbis.need(TENDERS.indexOf(type) >= 0, 'VALIDATION', 'Jenis pembayaran tidak valid');
       legs = [{ type: type, amount: total }];
     }
+    if (Orbis.hooks.tenderEnabled && spec._d) {
+      legs.forEach(function (l) { Orbis.need(Orbis.hooks.tenderEnabled(spec._d, l.type) !== false, 'TENDER_DISABLED', 'Metode ' + l.type + ' tidak aktif di pengaturan'); });
+    }
     var cashDue = Orbis.sum(legs.filter(function (l) { return l.type === 'cash'; }), function (l) { return l.amount; });
     var tendered = cashDue, change = 0;
     if (cashDue > 0 && pay.tendered != null) {
@@ -157,7 +179,7 @@
     var tenantRow = d.tenants.filter(function (t) { return t.id === d.session.tenant; })[0];
     Orbis.need(tenantRow && tenantRow.status !== 'SUSPENDED', 'TENANT_SUSPENDED', 'Tenant sedang ditangguhkan; transaksi baru ditolak');
     var q = orders.quote(d, spec);
-    var pay = normalisePayment(spec, q.total, q.method);
+    var pay = normalisePayment(Object.assign({ _d: d }, spec), q.total, q.method);
     var hasCash = pay.legs.some(function (l) { return l.type === 'cash'; });
     var shift = null;
     if (channel === 'pos') {
@@ -176,7 +198,7 @@
     var status = pay.status === 'PAID' ? 'ACCEPTED' : 'PLACED';
     var order = {
       id: id, tenant: d.session.tenant, outlet: d.session.outlet, channel: channel, customer: q.customer, items: q.items,
-      subtotal: q.subtotal, discount: q.discount, tax: q.tax, service: q.service, deliveryFee: q.deliveryFee, total: q.total,
+      subtotal: q.subtotal, discount: q.discount, tax: q.tax, taxLabel: q.taxLabel, service: q.service, rounding: q.rounding, deliveryFee: q.deliveryFee, total: q.total,
       method: q.method, address: q.address, status: status, paymentStatus: pay.status, shiftId: shift ? shift.id : null,
       memberId: spec.memberId || null, promoId: q.promo ? q.promo.promoId : null, tendered: pay.tendered, change: pay.change,
       refunded: 0, refundDue: 0, createdAt: now, createdBy: d.session.actor,
@@ -250,6 +272,11 @@
   orders.setPaymentStatus = function (d, id, status) {
     Orbis.need(PAY_STATUSES.indexOf(status) >= 0, 'VALIDATION', 'Status pembayaran tidak valid');
     var o = must(d, id);
+    // COD cash becomes a payment row only once finance verifies it (QA D7); written once per order
+    if (status === 'PAID' && (o.paymentStatus === 'COLLECTION_PENDING' || o.paymentStatus === 'COD_COLLECTED') &&
+        !Orbis.mine(d, 'payments').some(function (p) { return p.orderId === o.id && p.type === 'cod'; })) {
+      d.payments.push({ id: Orbis.nextId(d, 'PAY', 5), tenant: d.session.tenant, orderId: o.id, type: 'cod', amount: o.total, at: Orbis.clock.now(), shiftId: null });
+    }
     o.paymentStatus = status;
     return o;
   };
@@ -369,7 +396,12 @@
       if (r.orderId !== order.id || r.status === 'REJECTED') return;
       r.lines.forEach(function (l) { used[l.skuId] = (used[l.skuId] || 0) + l.qty; });
     });
-    return order.items.map(function (it) { return { skuId: it.skuId, name: it.name, price: it.price, sold: it.qty, remaining: it.qty - (used[it.skuId] || 0) }; });
+    var agg = {}, keys = [];   // one row per sku even when lines differ by modifiers
+    order.items.forEach(function (it) {
+      if (!agg[it.skuId]) { agg[it.skuId] = { skuId: it.skuId, name: it.name, price: it.price, sold: 0 }; keys.push(it.skuId); }
+      agg[it.skuId].sold += it.qty;
+    });
+    return keys.map(function (k) { var a = agg[k]; a.remaining = a.sold - (used[k] || 0); return a; });
   };
   /** Orders a refund may still be requested for. */
   refunds.eligibleOrders = function (d) {
@@ -382,10 +414,10 @@
   /** Share of the refundable pool (total minus delivery fee) owed to one sku; the last sku absorbs rounding. */
   function skuPools(o) {
     var pool = o.total - o.deliveryFee, out = {}, left = pool;
-    if (!o.subtotal) { o.items.forEach(function (it, i) { out[it.skuId] = i === 0 ? pool : 0; }); return out; }
+    if (!o.subtotal) { o.items.forEach(function (it, i) { out[it.skuId] = (out[it.skuId] || 0) + (i === 0 ? pool : 0); }); return out; }
     o.items.forEach(function (it, i) {
       var share = i === o.items.length - 1 ? left : Math.round(it.qty * it.price * pool / o.subtotal);
-      out[it.skuId] = share; left -= share;
+      out[it.skuId] = (out[it.skuId] || 0) + share; left -= share;
     });
     return out;
   }

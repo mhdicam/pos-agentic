@@ -66,20 +66,36 @@ test('audit is tenant-scoped and owner-only', (O, T) => {
   T.throws(() => t.audit(O.db()), 'FORBIDDEN');
 });
 
-test('seedDemoSales uses real pipeline, once, and fills onboarding sale step', (O, T) => {
+test('demoHistory: 30 days via real flows, both outlets, once, rolls back on failure', (O, T) => {
   const t = O.domain.tenant;
   T.eq(t.onboarding(O.db()).steps.find(s => s.key === 'sale').done, false);
-  const ids = t.seedDemoSales();
+  const st = O.demoHistory();
   const d = O.db(), orders = O.mine(d, 'orders');
-  T.eq(orders.length, ids.length);
-  T.ok(ids.length >= 21, 'about 3+ per day for 7 days');
-  T.ok(orders.every(o => d.payments.some(p => p.orderId === o.id)), 'every order has a payment row');
-  T.ok(d.stockMoves.filter(m => m.type === 'SALE').length > 0, 'stock moved via inventory');
-  T.ok(orders.some(o => o.createdAt < O.clock.now() - 5 * 86400000), 'back-dated');
+  T.eq(orders.length, st.orders);
+  T.ok(orders.some(o => o.outlet === 'o1') && orders.some(o => o.outlet === 'o2'), 'both outlets');
+  T.ok(orders.some(o => o.channel === 'store') && O.mine(d, 'deliveries').some(x => x.status === 'DELIVERED'), 'online + delivered');
+  T.ok(orders.filter(o => o.paymentStatus === 'PAID').every(o => d.payments.some(p => p.orderId === o.id)), 'paid orders have payment rows (incl. verified COD)');
+  T.ok(orders.filter(o => o.paymentStatus === 'COD_COLLECTED').every(o => !d.payments.some(p => p.orderId === o.id)), 'unverified COD has no payment row');
+  T.ok(O.mine(d, 'shifts').some(s => s.variance < 0), 'a closed shift with shortage');
+  T.ok(O.mine(d, 'refunds').some(r => r.status === 'REQUESTED') && O.mine(d, 'expenses').some(e => e.status === 'PENDING'), 'pending approvals');
+  T.ok(O.domain.inventory.catalog(d).every(r => r.available >= 0), 'no negative stock');
+  T.eq(d.session.role, 'owner'); T.eq(d.session.outlet, 'o1');
   T.eq(t.onboarding(d).steps.find(s => s.key === 'sale').done, true);
-  T.throws(() => t.seedDemoSales(), 'NO_CHANGE');
-  T.as('cashier');
-  T.throws(() => t.seedDemoSales(), 'FORBIDDEN');
+  T.throws(() => O.demoHistory(), 'NO_CHANGE');
+  const before = JSON.stringify(O.db());
+  T.throws(() => O.batch(() => { O.tx(x => { x.members.push({ id: 'X', tenant: 't1' }); }); throw O.Err('BOOM', 'x'); }), 'BOOM');
+  T.eq(JSON.stringify(O.db()), before, 'batch rolled back');
+});
+
+test('outlet switch hooks: per-outlet price and charges flow into the quote', (O, T) => {
+  O.hooks.skuPrice = (d, sku, outlet) => outlet === 'o2' ? sku.price + 2000 : undefined;
+  O.hooks.charges = (d, x) => ({ tax: Math.round(x.base / 10), service: 0, rounding: 0, taxLabel: 'PBJT 10%' });
+  try {
+    const q1 = O.domain.orders.quote(O.db(), { channel: 'pos', items: [{ skuId: 'k1', qty: 1 }] });
+    O.tx(d => { d.session.outlet = 'o2'; });
+    const q2 = O.domain.orders.quote(O.db(), { channel: 'pos', items: [{ skuId: 'k1', qty: 1 }] });
+    T.eq(q2.subtotal - q1.subtotal, 2000); T.eq(q1.tax, 2800); T.eq(q1.taxLabel, 'PBJT 10%');
+  } finally { delete O.hooks.skuPrice; delete O.hooks.charges; }
 });
 
 test('attention lists pending refunds-free baseline and counts store orders', (O, T) => {

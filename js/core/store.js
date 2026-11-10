@@ -4,8 +4,9 @@
   'use strict';
   var Orbis = g.Orbis;
   var KEY = 'orbis-v2-prototype';
-  var VERSION = 2;
+  var VERSION = 3;   // bump when seed shape changes so stale localStorage reseeds
   var listeners = [];
+  var batchDepth = 0, batchDirty = false;
   var db = null;
 
   function storage() { try { return g.localStorage; } catch (e) { return null; } }
@@ -44,7 +45,8 @@
   Orbis.tx = function (fn, opts) {
     opts = opts || {};
     var base = Orbis.db();
-    var draft = Orbis.clone(base);
+    // inside a batch the whole batch is the rollback unit (snapshot taken once), so skip the per-tx deep copy
+    var draft = batchDepth ? base : Orbis.clone(base);
     var ctx = Orbis.session(draft);
     var outer = Orbis._txDraft; Orbis._txDraft = draft;   // permission checks inside fn read THIS draft's session
     var result;
@@ -57,9 +59,18 @@
       });
     }
     db = draft;
-    persist();
-    Orbis.emit();
+    if (batchDepth) batchDirty = true; else { persist(); Orbis.emit(); }
     return result;
+  };
+  /** Run many tx with ONE persist + render at the end (bulk demo/import). The whole batch is the rollback unit:
+      any throw restores the snapshot taken at batch start (callers must not catch-and-continue inside a batch). */
+  Orbis.batch = function (fn) {
+    if (batchDepth) return fn();
+    var snapshot = Orbis.clone(Orbis.db());
+    batchDepth = 1;
+    try { return fn(); }
+    catch (e) { db = snapshot; batchDirty = false; throw e; }   // all-or-nothing
+    finally { batchDepth = 0; if (batchDirty) { batchDirty = false; persist(); Orbis.emit(); } }
   };
 
   /** Read-only view; callers must not mutate. */

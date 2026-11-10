@@ -56,7 +56,7 @@
         '<div class="meter mb"><div style="width:' + Math.round(ob.done / ob.steps.length * 100) + '%"></div></div><ol class="checklist">' + ob.steps.map(function (s) {
           return '<li class="' + (s.done ? 'done' : '') + '"><span class="ck">' + (s.done ? Orbis.icon('check', 14) : '') + '</span><span>' + esc(s.label) + '</span>' + (s.done ? Orbis.chip('ACTIVE', 'Selesai') : Orbis.btn('Kerjakan', 'go', [s.route], { kind: 'sm' })) + '</li>';
         }).join('') + '</ol>') : '') +
-      (isOwner && !orders.length ? '<div class="banner row sp"><span>Belum ada transaksi. Isi data contoh 7 hari (melalui alur pesanan asli) agar grafik dan laporan terisi.</span>' + Orbis.btn('Isi data contoh', 'ownerDemoSales', null, { kind: 'primary' }) + '</div>' : '') +
+      (isOwner && !orders.length ? '<div class="banner row sp"><span>Belum ada transaksi. Isi riwayat demo 30 hari di kedua outlet (kasir, toko online, kurir & COD, refund, biaya, pembelian) lewat alur asli agar semua menu terisi.</span>' + Orbis.btn('Isi data demo', 'ownerDemoSales', null, { kind: 'primary' }) + '</div>' : '') +
       '<div class="grid g4">' +
       Orbis.stat('Penjualan hari ini', Orbis.idr(todayRev), delta == null ? 'belum ada pembanding' : (delta >= 0 ? '▲ ' : '▼ ') + Math.abs(delta) + '% vs kemarin') +
       Orbis.stat('Pendapatan 7 hari', Orbis.idr(Orbis.sum(days, function (x) { return x.v; })), 'rata-rata ' + Orbis.idr(aov) + ' / pesanan') +
@@ -87,7 +87,7 @@
       ], low)) : '');
   };
   Orbis.actions.ownerDemoSales = function () {
-    var ids = Orbis.domain.tenant.seedDemoSales();
-    Orbis.toast(ids.length + ' pesanan contoh dibuat');
+    var s = Orbis.demoHistory();
+    Orbis.toast('Data demo 30 hari: ' + s.orders + ' pesanan, ' + s.deliveries + ' pengiriman, ' + s.shifts + ' shift');
   };
 })(typeof window !== 'undefined' ? window : globalThis);

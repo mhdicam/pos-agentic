@@ -54,7 +54,9 @@
   };
 
   Orbis.can = function (perm, role) {
-    var r = role || (Orbis._txDraft || Orbis.db()).session.role;
+    var d = Orbis._txDraft || Orbis.db(), r = role || d.session.role;
+    var o = Orbis.hooks.can ? Orbis.hooks.can(perm, r, d) : undefined;
+    if (o === true || o === false) return o;
     return (Orbis.PERMS[perm] || []).indexOf(r) >= 0;
   };
   /** Domain guard: throws FORBIDDEN so negative tests and UI share one code path. */

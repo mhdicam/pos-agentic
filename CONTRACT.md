@@ -16,6 +16,16 @@ Styling: Tailwind v4 + shadcn/ui look, light mode only. Edit `css/src/app.css`, 
 9. Tests: `tests/<module>.test.js` using `test(name, fn(O, T))`, helpers `T.eq, T.ok, T.throws(fn, 'CODE'), T.as(role, tenant)`. Each test starts from a fresh seed. Cover happy path **and** negative paths (forbidden role, wrong tenant, double-submit/idempotency, invalid transition, boundary values). Run: `node tests/run.js`. Also `node --check` every file you write.
 10. Indonesian UI copy, concise. Mobile first (390px), tables use `class="tbl stack"` on mobile.
 
+## Extension points (tenant back-office, 2026-11-10)
+Feature batches must not edit each other's files. They plug in through these core hooks instead:
+- `Orbis.hooks.skuPrice(d, sku, outlet)` → int|undefined (per-outlet price) · `Orbis.hooks.resolveModifiers(d, sku, ids)` → `[{id,name,price}]` (throws on invalid pick) — **B2 catalog**
+- `Orbis.hooks.charges(d, {base, outlet, channel, method})` → `{tax, service, rounding, taxLabel}` · `Orbis.hooks.tenderEnabled(d, type)` → bool — **B6 settings**
+- `Orbis.hooks.can(perm, role, d)` → true|false|undefined (tenant role overrides; undefined = default `Orbis.PERMS`) — **B4 team**
+- `Orbis.seedHooks.push(fn(db, T0))` adds base seed rows for your own collections. `Orbis.batch(fn)` = many tx, one persist/render, all-or-nothing.
+- Order lines may carry `modifiers:[{id,name,price}]`, `basePrice`, `note`; same sku with different modifiers = separate lines. Orders carry `rounding`, `taxLabel`.
+- `d.session.outlet` is switchable in the topbar (`setOutlet`): POS, shift, stock and outlet filters must read it, never assume `o1`.
+- `Orbis.demoHistory()` (js/core/demo.js) builds ~30 days of history through real domain calls; extend it by adding your own seedHooks/demo steps in your own files, not by editing demo.js.
+
 ## Shared shapes (data contract; extend only your own collections)
 ```
 order   {id,tenant,outlet,channel:'pos'|'store',customer:{name,phone},items:[{skuId,name,qty,price,cost}],

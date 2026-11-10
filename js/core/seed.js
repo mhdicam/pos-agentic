@@ -5,6 +5,8 @@
   'use strict';
   var Orbis = g.Orbis;
 
+  /** Seed extension point: Orbis.seedHooks.push(function (db, T0) { ... }) — runs after base data, in script order. */
+  Orbis.seedHooks = Orbis.seedHooks || [];
   Orbis.seed = function () {
     var T0 = Orbis.clock.now();
     var db = {
@@ -91,7 +93,9 @@
 
     db.devices.push({ id: 'DEV-001', tenant: 't1', outlet: 'o1', name: 'Kasir 1 (Tablet)', status: 'ACTIVE', grantExpiresAt: T0 + 7 * 86400000, pending: 0, conflicts: 0 });
     db.platform.flags.push({ id: 'ff1', name: 'ai_inbox', on: true }, { id: 'ff2', name: 'unofficial_wa', on: false });
-    db.platform.invoices.push({ id: 'INV-001', tenant: 't1', amount: 399000, status: 'PAID' }, { id: 'INV-002', tenant: 't2', amount: 0, status: 'TRIAL' });
+    db.platform.invoices.push({ id: 'INV-001', tenant: 't1', amount: 399000, status: 'PAID', createdAt: T0 - 9 * 86400000, paidAt: T0 - 8 * 86400000 }, { id: 'INV-002', tenant: 't2', amount: 0, status: 'TRIAL', createdAt: T0 - 3 * 86400000 });
+    // feature modules extend the base data (own collections, their own seed rows) without editing this file
+    (Orbis.seedHooks || []).forEach(function (fn) { fn(db, T0); });
     return db;
   };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -9,6 +9,14 @@
     return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) { return ESC[c]; });
   };
 
+  /** Single-slot extension points owned by feature modules (last assignment wins). Core code calls them only if set:
+      skuPrice(d, sku, outlet) -> int | undefined      per-outlet price (B2)
+      resolveModifiers(d, sku, ids) -> [{id,name,price}] validates modifier picks (B2)
+      charges(d, {base, outlet, channel, method}) -> {tax, service, rounding}  tax/service/rounding (B6)
+      tenderEnabled(d, type) -> bool                   payment-method switch (B6)
+      can(perm, role, d) -> true|false|undefined        tenant role overrides (B4) */
+  Orbis.hooks = Orbis.hooks || {};
+
   /** Integer IDR only. Throws on non-integers so float money can never enter the ledger. */
   Orbis.int = function (n, label) {
     if (typeof n !== 'number' || !isFinite(n) || Math.floor(n) !== n) {

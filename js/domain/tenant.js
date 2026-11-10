@@ -139,41 +139,6 @@
     }, { audit: function (x) { return { action: 'platform.plan.request.' + (approve ? 'approve' : 'reject'), entity: 'planRequest', entityId: x.id, tenant: x.tenant }; } });
   };
 
-  /**
-   * Demo helper: 7 days of completed sales through the real order pipeline (server pricing, stock moves, payments),
-   * then back-dated. Owner only, once per tenant (refused when the tenant already has orders).
-   * ponytail: fixed deterministic pattern; replace with an import/fixture loader if demos need varied data.
-   */
-  T.seedDemoSales = function () {
-    Orbis.require('tenant.settings');
-    return Orbis.tx(function (d) {
-      Orbis.need(!Orbis.mine(d, 'orders').length, 'NO_CHANGE', 'Tenant sudah punya pesanan; data contoh hanya untuk tenant kosong');
-      var O = Orbis.domain.orders;
-      Orbis.need(O && O.place, 'UNAVAILABLE', 'Modul penjualan belum tersedia');
-      var skus = Orbis.mine(d, 'skus').filter(function (s) { return Orbis.domain.inventory.available(d, s.id, d.session.outlet) > 0; });
-      Orbis.need(skus.length, 'INSUFFICIENT_STOCK', 'Tidak ada stok untuk data contoh');
-      var pays = ['qris', 'transfer', 'qris'], made = [], now = Orbis.clock.now(), n = 0;
-      for (var day = 6; day >= 0; day--) {
-        var count = 3 + ((day * 5) % 4);
-        for (var k = 0; k < count; k++, n++) {
-          var a = skus[n % skus.length], b = skus[(n * 3 + 1) % skus.length];
-          var items = [{ skuId: a.id, qty: 1 + (n % 2) }];
-          if (b.id !== a.id && n % 3 === 0) items.push({ skuId: b.id, qty: 1 });
-          var store = n % 4 === 3;
-          var o = O.place(d, { channel: store ? 'store' : 'pos', items: items, method: 'pickup', payment: { type: pays[n % 3] }, customer: store ? { name: 'Pelanggan ' + (n + 1), phone: '0812000' + String(10000 + n) } : undefined });
-          var at = now - day * 86400000 - (k + 1) * 47 * 60000;
-          if (new Date(at).toISOString().slice(0, 10) !== new Date(now - day * 86400000).toISOString().slice(0, 10)) at = now - day * 86400000;   // keep inside its UTC day bucket
-          o.createdAt = at; o.history.forEach(function (h) { h.at = at; });
-          d.payments.forEach(function (p) { if (p.orderId === o.id) p.at = at; });
-          if (day > 0 || k > 1) ['PREPARING', 'READY', 'COMPLETED'].forEach(function (s) { O.transition(d, o.id, s); });
-          o.history.forEach(function (h) { h.at = at; });
-          made.push(o.id);
-        }
-      }
-      return made;
-    }, { audit: function (ids) { return { action: 'tenant.demo.sales', entity: 'tenant', detail: { orders: ids.length } }; } });
-  };
-
   /** Onboarding checklist (PRD activation: outlet + 5 items + 1 sale; plus store published, team invited). */
   T.onboarding = function (d) {
     var sf = (d.storefront || {})[d.session.tenant];

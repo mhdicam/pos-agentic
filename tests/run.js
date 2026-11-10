@@ -21,6 +21,7 @@ function load(rel) {
 ['js/core/util.js', 'js/core/store.js', 'js/core/rbac.js', 'js/core/seed.js'].forEach(load);
 const domainDir = path.join(root, 'js/domain');
 if (fs.existsSync(domainDir)) fs.readdirSync(domainDir).filter(f => f.endsWith('.js')).sort().forEach(f => load('js/domain/' + f));
+load('js/core/demo.js');
 
 const Orbis = sandbox.Orbis;
 const results = [];

@@ -91,12 +91,13 @@ test('status machine: invalid jump, full path, delivery enqueue at READY', funct
   T.throws(function () { O.domain.orders.advance(o.id); }, 'INVALID_TRANSITION');
   T.eq(O.db().orders[0].history.length, 4);
   var enq = [];
+  var realDelivery = O.domain.delivery;
   O.domain.delivery = { enqueue: function (d, ord) { enq.push(ord.id); } };
   var dv = sell(O, [{ skuId: 'k2', qty: 1 }], { method: 'delivery', address: 'Jl B', customer: { name: 'Ani', phone: '081234567890' } });
   O.domain.orders.advance(dv.id);
   T.eq(enq.length, 0); O.domain.orders.advance(dv.id); T.eq(enq, [dv.id]);
   T.throws(function () { O.domain.orders.advance(dv.id); }, 'INVALID_TRANSITION', 'delivery stops at READY');
-  delete O.domain.delivery;
+  O.domain.delivery = realDelivery;   // restore: later test files rely on the real module
 });
 
 test('PLACED to ACCEPTED requires payment', function (O, T) {
@@ -253,6 +254,7 @@ test('refund: full return refunds exactly total and sets REFUNDED; split legs su
 });
 
 test('refund: discount shared proportionally (stub promo), delivery fee returned only on full return', function (O, T) {
+  var realPromos = O.domain.promos;
   O.domain.promos = { quote: function (d, q) { return { promoId: 'pr1', discount: 10000 }; }, consume: function () {} };
   openShift(O, T, 0);
   var o = sell(O, [{ skuId: 'k1', qty: 1 }, { skuId: 'k2', qty: 1 }], { promoCode: 'AWAN10', method: 'delivery', address: 'Jl D', customer: { name: 'Fit', phone: '081234567890' }, payment: { type: 'transfer' } });
@@ -261,7 +263,7 @@ test('refund: discount shared proportionally (stub promo), delivery fee returned
   T.eq(r1.amount, 28000 - Math.round(10000 * 28000 / 52000) + 0 - 0 + (r1.amount - (28000 - Math.round(10000 * 28000 / 52000))));
   var r2 = O.domain.refunds.request(o.id, [{ skuId: 'k2', qty: 1 }], 'retur dua');
   T.eq(r1.amount + r2.amount, o.total, 'cumulative equals total incl. delivery fee');
-  delete O.domain.promos;
+  O.domain.promos = realPromos;
 });
 
 test('refund: unpaid/COD-pending orders not refundable; cross-tenant order hidden', function (O, T) {

@@ -43,6 +43,8 @@
       '<div class="brand">' + logoSvg() + '<b>Orbis</b><span class="chip chip-mute">Demo</span></div><div class="top-sp"></div>' +
       '<label class="sel"><span>Peran (demo)</span><select data-change="setRole">' + roles + '</select></label>' +
       (scope === 'tenant' ? '<label class="sel"><span>Tenant</span><select data-change="setTenant">' + tenants + '</select></label>' : '') +
+      (scope === 'tenant' && s.role !== 'courier' ? '<label class="sel"><span>Outlet</span><select data-change="setOutlet">' + d.outlets.filter(function (o) { return o.tenant === s.tenant && o.active !== false; }).map(function (o) {
+        return '<option value="' + esc(o.id) + '"' + (o.id === s.outlet ? ' selected' : '') + '>' + esc(o.name) + '</option>'; }).join('') + '</select></label>' : '') +
       (t && scope === 'tenant' ? '' : '') +
       '<button type="button" class="btn btn-sm top-reset" data-act="resetDemo" aria-label="Reset demo" title="Reset data demo">' + Orbis.icon('undo', 16) + '<span>Reset demo</span></button></header>';
   }
@@ -133,6 +135,16 @@
       d.session.courierId = (d.couriers.filter(function (c) { return c.tenant === tenant; })[0] || {}).id || null;
     });
     state.route = null; Orbis.go(Orbis.firstRoute(Orbis.db().session.role));
+  };
+  /** Outlet scopes POS, shift, stock and outlet-filtered views. Must belong to the session tenant and be active. */
+  A.setOutlet = function (outlet) {
+    Orbis.tx(function (d) {
+      var o = d.outlets.filter(function (x) { return x.id === outlet && x.tenant === d.session.tenant; })[0];
+      if (!o) throw Orbis.Err('NOT_FOUND', 'Outlet tidak ditemukan');
+      if (o.active === false) throw Orbis.Err('OUTLET_INACTIVE', 'Outlet nonaktif');
+      d.session.outlet = o.id;
+    });
+    Orbis.toast('Outlet: ' + (Orbis.db().outlets.filter(function (x) { return x.id === outlet; })[0] || {}).name);
   };
   A.resetDemo = function () {
     if (!g.confirm('Reset seluruh data demo ke kondisi awal?')) return;
