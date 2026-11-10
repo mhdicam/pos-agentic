@@ -1,0 +1,14 @@
+{
+  "name": "orbis-prototype",
+  "private": true,
+  "description": "Orbis v2 prototype. CSS is built with Tailwind CLI; the browser loads the committed css/app.css (no build needed to open index.html).",
+  "scripts": {
+    "css": "tailwindcss -i css/src/app.css -o css/app.css --minify",
+    "css:watch": "tailwindcss -i css/src/app.css -o css/app.css --watch",
+    "test": "node tests/run.js"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.1.11",
+    "tailwindcss": "4.1.11"
+  }
+}

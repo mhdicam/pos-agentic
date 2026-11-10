@@ -23,6 +23,9 @@ Baseline FR: FR-01, FR-03, FR-13, FR-18; Phase 2.3 B-001/B-003/B-022. Primary cr
 - **RD01-10** (Optional): Where support access is requested, the system shall require MFA and independent approval before the grant becomes active. Tests: `P23-X40`, `P23-UX-n22-security`, `P23-UX-n22-tickets`
 - **RD01-11** (Unwanted): If the storefront host does not resolve to a verified brand or domain, then the system shall return no tenant data. Tests: NONE (gap)
 - **RD01-12** (Unwanted): If the support grant requester and approver are the same identity, then the system shall reject the approval. Tests: `P23-X40`, `P23-ROLE-013`
+- **RD01-13** (Event): When the tenant owner saves the business profile, the system shall validate name (2-60), category, email, phone (9-15 digits) and NPWP (15/16 digits) and write a tenant-scoped audit event. Tests: `tests/tenant.test.js` (saveProfile) — prototype only
+- **RD01-14** (Unwanted): If outlet opening hours have a closing time not after the opening time, or the outlet belongs to another tenant, then the system shall reject the change. Tests: `tests/tenant.test.js` (saveHours)
+- **RD01-15** (Ubiquitous): The system shall show the tenant audit log only to the tenant owner and only for rows of the session tenant, read-only. Tests: `tests/tenant.test.js` (audit)
 
 ## Primary workflow
 Create tenant, invite member, switch tenant, assign outlet role, suspend/re-activate by maker/checker, deny cross-tenant export and background processing.

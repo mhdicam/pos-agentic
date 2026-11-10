@@ -19,6 +19,11 @@ Start at [`internal/docs/README.md`](internal/docs/README.md). Coding agents als
 5. Keep FR IDs traceable to baseline and Phase 2.3 CSV; never imply route smoke equals business acceptance.
 6. Run `python scripts/validate_docs.py` to check required files, doc headers, ADR format, skill layout and relative links.
 
+## Clickable prototype (v2)
+
+Open `index.html` directly in a browser (works from `file://`, no server). Module rules: [`CONTRACT.md`](CONTRACT.md). Tests: `node tests/run.js`.
+Styling is Tailwind v4 with a shadcn/ui light theme: edit `css/src/app.css`, then `npm install && npm run css` to rebuild the committed `css/app.css`.
+
 ## Product direction preserved
 
 Multi-tenant POS SaaS, white-label multi-brand storefront, SKU inventory/procurement, register/cash shift, expense/finance, membership/promotions, delivery courier/COD/POD, AI+CRM and multichannel integrations, Super Admin platform operations. **Offline POS is mandatory P0 in MVP.** Unofficial WhatsApp is experimental opt-in only.

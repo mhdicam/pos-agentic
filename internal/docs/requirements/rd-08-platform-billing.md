@@ -20,6 +20,10 @@ Baseline FR: FR-01, FR-13, FR-PLT (Phase 2.2N). Primary crosswalk: [`handoff tra
 - **RD08-07** (Optional): Where a support grant is requested, the system shall require reason, scope and expiry. Tests: `P23-ROLE-002`, `P23-ROLE-016`
 - **RD08-08** (Unwanted): If a plan excludes a module, then the API shall deny direct requests to it even when client navigation shows an old link. Tests: `P23-ROLE-018`, `P23-X39`, `P23-UX-n22-entitlements`
 - **RD08-09** (Unwanted): If a maker and checker are the same identity, then the system shall reject the approval. Tests: `P23-ROLE-013`, `P23-X40`
+- **RD08-10** (Event): When a tenant owner requests a plan change, the system shall record one PENDING request per tenant and leave the active plan unchanged until a platform admin approves it. Tests: `tests/tenant.test.js` (requestPlan, reject plan request) — prototype only
+- **RD08-11** (Unwanted): If a requested lower plan is below current outlet or staff usage, then the system shall reject the request with `DOWNGRADE_BLOCKED` and keep all data. Tests: `tests/tenant.test.js` (requestPlan)
+- **RD08-12** (Unwanted): If a platform admin rejects a tenant plan request without a reason of at least 5 characters, then the system shall refuse the rejection. Tests: `tests/tenant.test.js` (reject plan request)
+- **RD08-13** (Ubiquitous): The system shall let only owner and finance roles read their own tenant's plan usage and invoices; only the owner may request plan changes. Tests: `tests/tenant.test.js` (billing read)
 
 ## Primary workflow
 Plan/entitlement edit → invoice issue/settle → tenant state → monitor fleet sync conflicts → support access approval → audit/recovery.

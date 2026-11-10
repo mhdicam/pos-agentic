@@ -67,18 +67,20 @@ Date: 2026-11-10
 60. [MVP acceptance spec 2026-11-03](qa/2026-11-03-mvp-acceptance-spec.md) - P0 suites and test record template
 61. [E2E & security checklist 2026-11-03](qa/2026-11-03-e2e-security-checklist-spec.md) - checklist by area
 62. [Phase 2.3 evidence index](qa/2026-11-03-phase-2-3-evidence-spec.md) - verifiable historical evidence, what it does not prove
-63. [Source PRD v1.4.5](references/MASTER_PRD_SaaS_POS_MultiTenant_Delivery_AI_v1.4.5.md) - full baseline PRD, retained unchanged
-64. [Phase 2.2N super admin QA report](references/PHASE_2_2N_SUPERADMIN_UX_QA_REPORT.md) - scoped UX QA report, platform super admin
-65. [Phase 2.2O dispatcher/courier QA report](references/PHASE_2_2O_DISPATCHER_COURIER_QA_REPORT.md) - scoped UX QA report, delivery operations
-66. [Phase 2.2O prototype](references/posverse_phase_2_2o_delivery_operations.html) - single-file UI prototype, not production code
-67. [Phase 2.3 handoff](handoff/PHASE_2_3_ENGINEERING_HANDOFF_DRAFT.md) - UX acceptance and engineering handoff
-68. [Phase 2.3 regression & sign-off report](handoff/PHASE_2_3_REGRESSION_AND_SIGNOFF_REPORT.md) - route smoke evidence and pending gates
-69. [Screen traceability](handoff/PHASE_2_3_SCREEN_FR_API_DATA_PERMISSION_TRACEABILITY.csv) - Screen to FR to API to Data to Permission to Acceptance to Slice
-70. [Acceptance case inventory](handoff/PHASE_2_3_UX_ACCEPTANCE_CASES.csv) - 109 UX acceptance cases
-71. [12-role journeys](handoff/PHASE_2_3_12_ROLE_E2E_JOURNEYS.csv) - 36 cross-role E2E scenarios
-72. [Blocker register](handoff/PHASE_2_3_BLOCKER_AND_DECISION_REGISTER.csv) - blockers and decisions
-73. [Route regression evidence](handoff/PHASE_2_3_ROUTE_REGRESSION_EVIDENCE.json) - route smoke result data
-74. [EARS to test traceability](handoff/EARS_TEST_TRACEABILITY.csv) - EARS criterion to P23 test ID map, gaps marked NO_TEST_DEFINED
+63. [Orbis v2 prototype QA 2026-11-10](qa/2026-11-10-orbis-v2-prototype-qa-spec.md) - redesign record, test evidence, defects D1-D7, not-verified list
+64. [Source PRD v1.4.5](references/MASTER_PRD_SaaS_POS_MultiTenant_Delivery_AI_v1.4.5.md) - full baseline PRD, retained unchanged
+65. [Phase 2.2N super admin QA report](references/PHASE_2_2N_SUPERADMIN_UX_QA_REPORT.md) - scoped UX QA report, platform super admin
+66. [Phase 2.2O dispatcher/courier QA report](references/PHASE_2_2O_DISPATCHER_COURIER_QA_REPORT.md) - scoped UX QA report, delivery operations
+67. [Phase 2.2O prototype](references/posverse_phase_2_2o_delivery_operations.html) - single-file UI prototype, not production code
+68. [Tenant back-office benchmark 2026-11-10](references/2026-11-10-tenant-backoffice-benchmark.md) - Indonesian + global POS back-office features, gaps, UX patterns
+69. [Phase 2.3 handoff](handoff/PHASE_2_3_ENGINEERING_HANDOFF_DRAFT.md) - UX acceptance and engineering handoff
+70. [Phase 2.3 regression & sign-off report](handoff/PHASE_2_3_REGRESSION_AND_SIGNOFF_REPORT.md) - route smoke evidence and pending gates
+71. [Screen traceability](handoff/PHASE_2_3_SCREEN_FR_API_DATA_PERMISSION_TRACEABILITY.csv) - Screen to FR to API to Data to Permission to Acceptance to Slice
+72. [Acceptance case inventory](handoff/PHASE_2_3_UX_ACCEPTANCE_CASES.csv) - 109 UX acceptance cases
+73. [12-role journeys](handoff/PHASE_2_3_12_ROLE_E2E_JOURNEYS.csv) - 36 cross-role E2E scenarios
+74. [Blocker register](handoff/PHASE_2_3_BLOCKER_AND_DECISION_REGISTER.csv) - blockers and decisions
+75. [Route regression evidence](handoff/PHASE_2_3_ROUTE_REGRESSION_EVIDENCE.json) - route smoke result data
+76. [EARS to test traceability](handoff/EARS_TEST_TRACEABILITY.csv) - EARS criterion to P23 test ID map, gaps marked NO_TEST_DEFINED
 
 ## Canonical Files
 - Product direction: `product/blueprint.md`, `product/scope-principles.md`, `product/objective-brief.md`, latest Product Owner requirements (offline POS is mandatory MVP P0).
