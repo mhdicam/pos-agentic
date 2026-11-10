@@ -111,6 +111,16 @@
     customer: []
   };
 
+  /** Feature modules add routes without editing NAV: addNav(role, groupTitle, [route,label,icon], afterRoute?).
+      Creates the group at the end if missing; no-op if the route already exists for that role. */
+  Orbis.addNav = function (role, groupTitle, item, afterRoute) {
+    var groups = Orbis.NAV[role] = Orbis.NAV[role] || [];
+    if (groups.some(function (gr) { return gr.items.some(function (i) { return i[0] === item[0]; }); })) return;
+    var grp = groups.filter(function (gr) { return gr.title === groupTitle; })[0];
+    if (!grp) { grp = G(groupTitle, []); groups.push(grp); }
+    var at = afterRoute ? grp.items.map(function (i) { return i[0]; }).indexOf(afterRoute) : -1;
+    if (at >= 0) grp.items.splice(at + 1, 0, item); else grp.items.push(item);
+  };
   Orbis.navFor = function (role) { return Orbis.NAV[role] || []; };
   Orbis.firstRoute = function (role) {
     if (role === 'customer') return 'store';

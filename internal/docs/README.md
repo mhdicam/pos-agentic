@@ -31,6 +31,11 @@ Date: 2026-11-10
 24. [RD-09 Finance & analytics](requirements/rd-09-finance-analytics.md) - expenses, ledgers, reporting
 25. [RD-10 UX acceptance](requirements/rd-10-ux-acceptance.md) - responsive UX, states, acceptance
 26. [RD-11 Open decisions](requirements/rd-11-open-decisions.md) - unresolved decisions requiring Product Owner input
+    - [RD-12 Tenant catalog (variants, modifiers, outlet price)](requirements/rd-12-tenant-catalog.md)
+    - [RD-13 Tenant stock (opname, transfer, adjustments, PO)](requirements/rd-13-tenant-stock.md)
+    - [RD-14 Tenant team (roles, PIN, attendance, blind close)](requirements/rd-14-tenant-team.md)
+    - [RD-15 Tenant reports (sales reports suite)](requirements/rd-15-tenant-reports.md)
+    - [RD-16 Tenant settings (tax PBJT/PPN, rounding, payments, receipt)](requirements/rd-16-tenant-settings.md)
 27. [EARS standard](requirements/acceptance-criteria-ears-standard.md) - five EARS patterns, IDs and test mapping rule
 28. [Market research](research/market.md) - market context
 29. [Competitor research](research/competitor-analysis.md) - competitor landscape

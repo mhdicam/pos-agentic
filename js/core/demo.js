@@ -6,6 +6,7 @@
   'use strict';
   var Orbis = g.Orbis;
   var DAY = 86400000, HOUR = 3600000;
+  Orbis.demoHooks = Orbis.demoHooks || [];   // push(fn(ctx)) from feature files; runs inside the demo batch as owner-capable roles via ctx.as
 
   function as(role, actor, outlet, courierId) {
     Orbis.tx(function (d) {
@@ -219,6 +220,8 @@
         var pb = P.createPo({ supplierId: sup[2].id, lines: [{ skuId: skus[3].id, qty: 50, unitCost: skus[3].cost }, { skuId: skus[4].id, qty: 50, unitCost: skus[4].cost }], note: 'Roti & cookie mingguan' });
         P.submit(pb.id); P.approve(pb.id); P.receive(pb.id, [{ skuId: skus[3].id, qty: 30 }], 'RCV-RT-01');
       });
+      /* feature modules append their own history (stock counts, transfers, attendance ...) */
+      (Orbis.demoHooks || []).forEach(function (fn) { fn({ now: now, t0: t0, DAY: DAY, HOUR: HOUR, as: as, at: at, pick: pick, skus: skus, suppliers: sup }); });
     } finally {
       Orbis.tx(function (d) { d.session = Object.assign(d.session, saved); });
     }

@@ -5,6 +5,11 @@
 @import "tailwindcss";
 @source "../../js";
 @source "../../index.html";
+@import "./x-catalog.css";
+@import "./x-stock.css";
+@import "./x-team.css";
+@import "./x-reports.css";
+@import "./x-settings.css";
 
 /* ---------- shadcn tokens (light) ---------- */
 :root {
