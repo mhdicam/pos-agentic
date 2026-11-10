@@ -41,11 +41,6 @@
   <script src="js/screens/overview.js"></script>
   <script src="js/screens/team.js"></script>
   <script src="js/screens/owner.js"></script>
-  <script src="js/screens/x-catalog.js"></script>
-  <script src="js/screens/x-stock.js"></script>
-  <script src="js/screens/x-team.js"></script>
-  <script src="js/screens/x-reports.js"></script>
-  <script src="js/screens/x-settings.js"></script>
   <script src="js/screens/pos.js"></script>
   <script src="js/screens/orders.js"></script>
   <script src="js/screens/refunds.js"></script>
@@ -64,6 +59,13 @@
   <script src="js/screens/inbox.js"></script>
   <script src="js/screens/ai.js"></script>
   <script src="js/screens/integrations.js"></script>
+
+  <!-- tenant back-office batches: load after all base screens so their overrides win -->
+  <script src="js/screens/x-catalog.js"></script>
+  <script src="js/screens/x-stock.js"></script>
+  <script src="js/screens/x-team.js"></script>
+  <script src="js/screens/x-reports.js"></script>
+  <script src="js/screens/x-settings.js"></script>
 
   <script src="js/core/app.js"></script>
 </body>
