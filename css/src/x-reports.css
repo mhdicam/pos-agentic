@@ -1,1 +1,18 @@
 /* Tenant back-office: reports batch styles (imported by css/src/app.css). */
+@layer components {
+  .rpt { @apply grid gap-4; grid-template-columns: 220px minmax(0, 1fr); }
+  .rpt-nav { @apply flex flex-col gap-1 self-start rounded-lg border bg-card p-2; }
+  .rpt-link { @apply rounded-md border-0 bg-transparent px-3 py-2 text-left text-sm text-muted-foreground transition-colors; }
+  .rpt-link:hover { @apply bg-muted text-foreground; }
+  .rpt-link.on { @apply bg-accent font-medium text-foreground; }
+  .rpt-main { @apply min-w-0; }
+  .rpt-note { @apply mb-3 text-sm text-muted-foreground; }
+  .rpt-chart { @apply m-0 mb-4; }
+  .rpt-chart svg { @apply block h-36 w-full fill-primary; }
+  .rpt-chart figcaption { @apply mt-1 text-xs text-muted-foreground; }
+  @media (max-width: 860px) {
+    .rpt { grid-template-columns: minmax(0, 1fr); }
+    .rpt-nav { @apply flex-row overflow-x-auto bg-muted p-1; }
+    .rpt-link { @apply whitespace-nowrap; }
+  }
+}
