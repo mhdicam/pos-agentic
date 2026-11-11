@@ -1,1 +1,12 @@
 /* Tenant back-office: team batch styles (imported by css/src/app.css). */
+@layer components {
+  .xt-hint { @apply mb-3 text-xs; }
+  .xt-filters { @apply mb-2 grid grid-cols-2 gap-x-3 sm:grid-cols-4; }
+  .xt-denoms { @apply grid grid-cols-2 gap-x-3 sm:grid-cols-4; }
+  .xt-outlets { @apply mb-3 rounded-md border px-3 py-2; }
+  .xt-outlets legend { @apply px-1 text-xs font-medium text-muted-foreground; }
+  .xt-zr h4 { @apply mt-3 mb-1 text-sm font-semibold; }
+}
+@media print {
+  .mdl .xt-zr { @apply text-xs; }
+}
