@@ -31,3 +31,7 @@ For each source B-xxx: assign owner, record final decision or fix, link ADR/FR/A
 - **RD11-02** (Event): When a blocker is closed, the owner shall record the final decision or fix, link the ADR, FR, API or ERD change, attach reproducible evidence and update the sign-off reviewer before status changes to CLOSED. Tests: NONE (gap)
 - **RD11-03** (Unwanted): If evidence is inferred from mock data, then the blocker shall not be marked passed or closed. Tests: `P23-X41`, `P23-UX-n22-acceptance`
 - **RD11-04** (Unwanted): If an RD conflicts with preserved source, then the author shall record the conflict here and shall not silently choose an incompatible contract. Tests: NONE (gap)
+
+## Tenant settings decisions (RD-16, 2026-11-10; not in the CSV yet)
+- **D-RD16-a Tax model per outlet (PPN vs PBJT):** prototype lets each outlet pick none / PBJT (≤10%, regional) / PPN 12% with DPP 11/12, exclusive or inclusive, with a tenant default ([RD-16](rd-16-tenant-settings.md)). Open: whether one outlet needs both (restaurant PBJT + retail PPN items, i.e. per-product tax), whether the PBJT base includes service per region (unverified), and handling of the DKI Rp42jt/month exemption. Sources: benchmark X1–X3, P1. Sign-off: Product, Finance/Tax.
+- **D-RD16-b e-Faktur/Coretax export scope:** no benchmarked POS shows direct e-Faktur export (benchmark "unverified" list, X4). Direction: MVP keeps NPWP/PKP fields and exportable per-order tax data (`tax`, `taxIncluded`, `taxLabel`); Coretax XML export stays out of scope until decided. Sign-off: Product, Finance/Tax.
