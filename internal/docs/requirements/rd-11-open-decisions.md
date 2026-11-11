@@ -35,3 +35,12 @@ For each source B-xxx: assign owner, record final decision or fix, link ADR/FR/A
 ## Tenant settings decisions (RD-16, 2026-11-10; not in the CSV yet)
 - **D-RD16-a Tax model per outlet (PPN vs PBJT):** prototype lets each outlet pick none / PBJT (≤10%, regional) / PPN 12% with DPP 11/12, exclusive or inclusive, with a tenant default ([RD-16](rd-16-tenant-settings.md)). Open: whether one outlet needs both (restaurant PBJT + retail PPN items, i.e. per-product tax), whether the PBJT base includes service per region (unverified), and handling of the DKI Rp42jt/month exemption. Sources: benchmark X1–X3, P1. Sign-off: Product, Finance/Tax.
 - **D-RD16-b e-Faktur/Coretax export scope:** no benchmarked POS shows direct e-Faktur export (benchmark "unverified" list, X4). Direction: MVP keeps NPWP/PKP fields and exportable per-order tax data (`tax`, `taxIncluded`, `taxLabel`); Coretax XML export stays out of scope until decided. Sign-off: Product, Finance/Tax.
+
+## Tenant review-gap decisions (RD-17, 2026-11-11; not in the CSV yet)
+Source: [tenant gap analysis](../research/2026-11-11-tenant-gap-analysis.md). Owner: Product Owner unless noted.
+- **D-RD17-a Wave selection:** which of W1–W5 enter the next slice. Recommendation: W1 (G2 sync visibility, G9 audited corrections) then W2 (G1 recipes).
+- **D-RD17-b Delivery-platform channel depth (G6):** simulated channel orders only, or a per-channel price list with menu sync. Recommendation: per-channel price/availability model first; real APIs only after provider contracts.
+- **D-RD17-c Recipe stock policy (G1):** block a sale when an ingredient is short, or allow negative with a flagged movement. Recommendation: allow negative + flag (F&B practice), tenant-switchable. Sign-off: Product + Finance.
+- **D-RD17-d Customer credit (G8) accounting:** receivable recognition and write-off rules. Sign-off: Finance.
+- **D-RD17-e Plan matrix (G10):** which modules are paid add-ons vs included. Sign-off: Product + Finance (see `business/pricing-rationale.md`).
+

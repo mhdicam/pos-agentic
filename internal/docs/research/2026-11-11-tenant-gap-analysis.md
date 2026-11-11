@@ -6,7 +6,7 @@ Baseline: Orbis Commerce PRD v1.4.5 + Phase 2.3 handoff
 ## Sources
 - [`Indonesian POS review mining`](2026-11-11-id-pos-review-mining.md) — Google Play ranking (Kasir Pintar 4.8/53.6K, Qasir 4.3/31.9K, Loyverse 4.8/18.1K, Moka 4.5/12.6K; majoo benchmarked by features).
 - [`Global POS review mining`](2026-11-11-global-pos-review-mining.md) — G2/Capterra ranking (Square 4.6/~4.3K, Lightspeed Retail, Toast, Shopify POS, Clover, Loyverse).
-- [`Tenant back-office benchmark`](2026-11-10-tenant-backoffice-benchmark.md) — feature-level baseline already implemented as RD-12..16.
+- [`Tenant back-office benchmark`](../references/2026-11-10-tenant-backoffice-benchmark.md) — feature-level baseline already implemented as RD-12..16.
 
 Prototype state compared: branch `feat/tenant-backoffice` (245 tests), owner/manager/cashier/finance navigation, RD-12..16 EARS.
 
@@ -40,6 +40,9 @@ Prototype state compared: branch `feat/tenant-backoffice` (245 tests), owner/man
 | G12 | **Support & onboarding inside the app** (help center links, guided setup, contact human) | ID theme 5, global theme 4 | Onboarding checklist only | S |
 
 Out of scope for the prototype (needs real infrastructure): actual QRIS/EDC settlement, printer/hardware drivers, accounting sync (Jurnal/Accurate/QuickBooks), real marketplace APIs.
+
+## Follow-up
+Recommendations are formalised as EARS in [RD-17](../requirements/rd-17-tenant-review-gaps.md), slice S9 in [roadmap](../operations/roadmap.md), decisions D-RD17-a..e in [open decisions](../requirements/rd-11-open-decisions.md) and [ADR-0011](../adr/0011-recipe-ingredient-stock.md) for G1.
 
 ## Decision requests
 - Pick the next batch from G1–G12 (recommended order below), confirm scope per item before EARS are written.

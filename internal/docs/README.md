@@ -36,10 +36,14 @@ Date: 2026-11-10
     - [RD-14 Tenant team (roles, PIN, attendance, blind close)](requirements/rd-14-tenant-team.md)
     - [RD-15 Tenant reports (sales reports suite)](requirements/rd-15-tenant-reports.md)
     - [RD-16 Tenant settings (tax PBJT/PPN, rounding, payments, receipt)](requirements/rd-16-tenant-settings.md)
+    - [RD-17 Tenant review-driven gaps G1-G12 (recommendation)](requirements/rd-17-tenant-review-gaps.md)
 27. [EARS standard](requirements/acceptance-criteria-ears-standard.md) - five EARS patterns, IDs and test mapping rule
 28. [Market research](research/market.md) - market context
 29. [Competitor research](research/competitor-analysis.md) - competitor landscape
 30. [Sizing research](research/market-sizing.md) - market sizing
+    - [Indonesian POS review mining 2026-11-11](research/2026-11-11-id-pos-review-mining.md) - Play Store ranking, praise/complaints of top ID POS apps
+    - [Global POS review mining 2026-11-11](research/2026-11-11-global-pos-review-mining.md) - G2/Capterra ranking, praise/complaints, table-stakes features
+    - [Tenant gap analysis 2026-11-11](research/2026-11-11-tenant-gap-analysis.md) - review-driven gaps G1-G12 vs prototype, recommended order
 31. [Brand strategy](brand/README.md) - positioning, design intent, voice
 32. [Architecture stack](architecture/stack.md) - proposed stack and module boundaries
 33. [Data model](architecture/data-model.md) - hierarchy, entities, integrity contracts
@@ -58,6 +62,7 @@ Date: 2026-11-10
 46. [ADR-0008 Platform approvals](adr/0008-privileged-platform-approvals.md) - privileged plane and maker/checker
 47. [ADR-0009 API versioning](adr/0009-api-versioning-idempotency.md) - versioned API and replay-safe mutation
 48. [ADR-0010 Courier location & COD](adr/0010-courier-location-cod.md) - foreground courier location and COD separation
+    - [ADR-0011 Recipe ingredient stock & HPP](adr/0011-recipe-ingredient-stock.md) - recipes as ledger movements, menu cost snapshot (proposed, G1)
 49. [Security standard](security/security-standard.md) - security requirements
 50. [Threat model](security/threat-model.md) - trust boundaries, highest-risk threats, release tests
 51. [Security baseline audit 2026-11-03](security/2026-11-03-baseline-audit.md) - dated baseline audit
@@ -78,9 +83,6 @@ Date: 2026-11-10
 66. [Phase 2.2O dispatcher/courier QA report](references/PHASE_2_2O_DISPATCHER_COURIER_QA_REPORT.md) - scoped UX QA report, delivery operations
 67. [Phase 2.2O prototype](references/posverse_phase_2_2o_delivery_operations.html) - single-file UI prototype, not production code
 68. [Tenant back-office benchmark 2026-11-10](references/2026-11-10-tenant-backoffice-benchmark.md) - Indonesian + global POS back-office features, gaps, UX patterns
-    - [Indonesian POS review mining 2026-11-11](references/2026-11-11-id-pos-review-mining.md) - Play Store ranking, praise/complaints of top ID POS apps
-    - [Global POS review mining 2026-11-11](references/2026-11-11-global-pos-review-mining.md) - G2/Capterra ranking, praise/complaints, table-stakes features
-    - [Tenant gap analysis 2026-11-11](references/2026-11-11-tenant-gap-analysis.md) - review-driven gaps G1-G12 vs prototype, recommended order
 69. [Phase 2.3 handoff](handoff/PHASE_2_3_ENGINEERING_HANDOFF_DRAFT.md) - UX acceptance and engineering handoff
 70. [Phase 2.3 regression & sign-off report](handoff/PHASE_2_3_REGRESSION_AND_SIGNOFF_REPORT.md) - route smoke evidence and pending gates
 71. [Screen traceability](handoff/PHASE_2_3_SCREEN_FR_API_DATA_PERMISSION_TRACEABILITY.csv) - Screen to FR to API to Data to Permission to Acceptance to Slice

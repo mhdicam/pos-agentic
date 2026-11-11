@@ -33,3 +33,4 @@ Date: YYYY-MM-DD
 - [0008 — Privileged platform plane and maker/checker](0008-privileged-platform-approvals.md) — MFA, JIT support grants, approver distinct from requester.
 - [0009 — Versioned API and replay-safe mutation](0009-api-versioning-idempotency.md) — `/v1`, `Idempotency-Key`, `If-Match`, privacy-safe errors.
 - [0010 — Foreground courier location and COD separation](0010-courier-location-cod.md) — consented foreground location only; COD collected/remitted/verified as distinct states.
+- [0011 — Recipe-driven ingredient stock and menu cost](0011-recipe-ingredient-stock.md) — extends 0004 (ingredients are ledger SKUs, `RECIPE_USE` movement per order) and 0005 (HPP snapshot per line); gap G1 from [RD-17](../requirements/rd-17-tenant-review-gaps.md).
