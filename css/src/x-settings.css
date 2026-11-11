@@ -1,1 +1,9 @@
 /* Tenant back-office: settings batch styles (imported by css/src/app.css). */
+@layer components {
+  .xs-paper { @apply mx-auto flex w-full flex-col gap-0.5 rounded-md border border-dashed bg-white p-3 font-mono text-xs break-words text-foreground; }
+  .xs-58 { @apply max-w-[220px]; }
+  .xs-80 { @apply max-w-[300px]; }
+  .xs-logo { @apply mx-auto mb-1 grid size-8 place-items-center rounded-full bg-primary font-sans font-bold text-primary-foreground; }
+  .f3 { @apply grid gap-3 sm:grid-cols-3; }
+  .xs-qr { @apply mx-auto mt-1 grid size-16 place-items-center border-4 border-double border-foreground font-sans text-[10px]; }
+}
