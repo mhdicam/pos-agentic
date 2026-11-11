@@ -16,6 +16,7 @@
     undo: '<path d="M9 14L4 9l5-5M4 9h10a6 6 0 010 12h-3"/>', plug: '<path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 01-12 0zM12 18v4"/>',
     spark: '<path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z"/>', building: '<path d="M4 21V3h10v18M14 9h6v12M8 7h2M8 11h2M8 15h2"/>',
     shield: '<path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/>', device: '<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/>', list: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+    panel: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/>',
     x: '<path d="M6 6l12 12M18 6L6 18"/>', menu: '<path d="M3 6h18M3 12h18M3 18h18"/>', plus: '<path d="M12 5v14M5 12h14"/>', check: '<path d="M5 13l4 4L19 7"/>'
   };
   Orbis.icon = function (n, size) {

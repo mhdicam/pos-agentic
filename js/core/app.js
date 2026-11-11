@@ -30,7 +30,7 @@
   function navHtml(role) {
     return Orbis.navFor(role).map(function (grp) {
       return '<div class="nav-g"><div class="nav-t">' + esc(grp.title) + '</div>' + grp.items.map(function (i) {
-        return '<a href="#/' + esc(i[0]) + '" class="nav-i' + (state.route === i[0] ? ' on' : '') + '" data-act="go" data-args="' + esc(JSON.stringify([i[0]])) + '"' + (state.route === i[0] ? ' aria-current="page"' : '') + '>' + Orbis.icon(i[2]) + '<span>' + esc(i[1]) + '</span></a>';
+        return '<a href="#/' + esc(i[0]) + '" class="nav-i' + (state.route === i[0] ? ' on' : '') + '" data-act="go" data-args="' + esc(JSON.stringify([i[0]])) + '"' + (state.route === i[0] ? ' aria-current="page"' : '') + ' title="' + esc(i[1]) + '">' + Orbis.icon(i[2]) + '<span>' + esc(i[1]) + '</span></a>';
       }).join('') + '</div>';
     }).join('');
   }
@@ -40,7 +40,9 @@
     var scope = Orbis.ROLES[s.role].scope;
     var roles = Object.keys(Orbis.ROLES).map(function (r) { return '<option value="' + r + '"' + (r === s.role ? ' selected' : '') + '>' + esc(Orbis.ROLES[r].label) + '</option>'; }).join('');
     var tenants = d.tenants.map(function (x) { return '<option value="' + x.id + '"' + (x.id === s.tenant ? ' selected' : '') + '>' + esc(x.name) + '</option>'; }).join('');
+    var mini = sideMini(), tip = (mini ? 'Lebarkan' : 'Ciutkan') + ' menu (Ctrl+B)';
     return '<header class="top"><button type="button" class="ico only-m" data-act="toggleNav" aria-label="Buka menu">' + Orbis.icon('menu') + '</button>' +
+      '<button type="button" class="ico only-d" data-act="toggleSide" aria-label="' + tip + '" title="' + tip + '" aria-pressed="' + mini + '">' + Orbis.icon('panel') + '</button>' +
       '<div class="brand">' + logoSvg() + '<b>Orbis</b><span class="chip chip-mute">Demo</span></div><div class="top-sp"></div>' +
       '<label class="sel"><span>Peran (demo)</span><select data-change="setRole">' + roles + '</select></label>' +
       (scope === 'tenant' ? '<label class="sel"><span>Tenant</span><select data-change="setTenant">' + tenants + '</select></label>' : '') +
@@ -76,7 +78,7 @@
     var fn = Orbis.screens[state.route];
     var body = fn ? safe(fn, d) : Orbis.empty('Layar "' + state.route + '" belum tersedia.');
     root.innerHTML = topbar(d) +
-      '<div class="shell' + (Orbis._navOpen ? ' nav-open' : '') + '"><nav class="side" aria-label="Navigasi utama">' + sidebar(d) + '</nav><div class="scrim" data-act="toggleNav"></div>' +
+      '<div class="shell' + (Orbis._navOpen ? ' nav-open' : '') + (sideMini() ? ' side-mini' : '') + '"><nav class="side" aria-label="Navigasi utama">' + sidebar(d) + '</nav><div class="scrim" data-act="toggleNav"></div>' +
       '<main id="main" tabindex="-1" class="main">' + body + '</main></div>';
   }
   function safe(fn, d) {
@@ -113,12 +115,26 @@
     if (fn) Orbis.attempt(function () { return fn(el.value, ev); });
     if (el.hasAttribute('data-input-render')) { clearTimeout(inputTimer); inputTimer = setTimeout(function () { Orbis.render(); }, 180); }
   });
-  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') Orbis.closeModal(); });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') Orbis.closeModal();
+    if ((ev.ctrlKey || ev.metaKey) && (ev.key === 'b' || ev.key === 'B') && document.querySelector('.shell')) { ev.preventDefault(); A.toggleSide(); }
+  });
 
   /* ---------- shell actions ---------- */
   var A = Orbis.actions;
   A.go = function (route) { Orbis._navOpen = false; Orbis.closeModal(true); Orbis.go(route); };
   A.toggleNav = function () { Orbis._navOpen = !Orbis._navOpen; Orbis.render(); };
+  /* Collapsed (icon-rail) sidebar on desktop. Per-viewer UI preference only, so localStorage (guarded). */
+  var SIDE_KEY = 'orbis-side-mini', miniPref = null;
+  function sideMini() {
+    if (miniPref === null) { try { miniPref = g.localStorage.getItem(SIDE_KEY) === '1'; } catch (e) { miniPref = false; } }
+    return miniPref;
+  }
+  A.toggleSide = function () {
+    miniPref = !sideMini();
+    try { g.localStorage.setItem(SIDE_KEY, miniPref ? '1' : '0'); } catch (e) { /* private mode: keep in memory */ }
+    Orbis.render();
+  };
   A.closeModal = function () { Orbis.closeModal(); };
   A.enter = function (role) {
     Orbis.tx(function (d) { d.session.role = role; d.session.view = 'app'; d.session.actor = Orbis.ROLES[role].label; if (role === 'platform' || role === 'support') d.session.tenant = d.session.tenant || 't1'; });
