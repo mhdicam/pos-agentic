@@ -4,7 +4,7 @@
   'use strict';
   var Orbis = g.Orbis;
   var KEY = 'orbis-v2-prototype';
-  var VERSION = 3;   // bump when seed shape changes so stale localStorage reseeds
+  var VERSION = 4;   // bump when seed shape changes so stale localStorage reseeds
   var listeners = [];
   var batchDepth = 0, batchDirty = false;
   var db = null;

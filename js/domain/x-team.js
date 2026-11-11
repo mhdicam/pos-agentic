@@ -26,7 +26,11 @@
     'catalog.write': 'Kelola produk', 'stock.adjust': 'Penyesuaian stok', 'po.write': 'Buat PO', 'po.approve': 'Setujui PO', 'refund.approve': 'Setujui refund',
     'promo.write': 'Kelola promo', 'storefront.edit': 'Ubah storefront', 'expense.write': 'Catat biaya', 'expense.approve': 'Setujui biaya', 'expense.pay': 'Bayar biaya',
     'report.read': 'Lihat laporan', 'delivery.dispatch': 'Dispatch pengiriman', 'cod.review': 'Review COD & setoran', 'inbox.reply': 'Balas inbox',
-    'ai.configure': 'Atur AI agent', 'integration.write': 'Kelola integrasi', 'attendance.read': 'Lihat laporan absensi', 'shift.report': 'Lihat riwayat & laporan shift'
+    'ai.configure': 'Atur AI agent', 'integration.write': 'Kelola integrasi', 'attendance.read': 'Lihat laporan absensi', 'shift.report': 'Lihat riwayat & laporan shift',
+    'member.settings': 'Atur program poin member', 'pos.settings': 'Atur pajak & service kasir', 'fleet.operate': 'Pakai perangkat kasir (offline)',
+    'fleet.resolve': 'Selesaikan konflik sinkron', 'inbox.simulate': 'Simulasi pesan masuk (demo)', 'tenant.settings': 'Ubah pengaturan bisnis',
+    'billing.read': 'Lihat langganan & tagihan', 'billing.request': 'Ajukan ganti paket', 'audit.read': 'Lihat log audit',
+    'stock.opname.approve': 'Setujui stok opname', 'transfer.write': 'Kelola transfer stok', 'catalog.read': 'Lihat produk'
   };
   /** Keys the matrix may override: tenant-scoped, minus platform.* and team.write (role changes stay owner-only). */
   team.editablePerms = function () {
