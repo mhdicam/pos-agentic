@@ -20,6 +20,11 @@ Baseline FR: FR-18; Phase 2.3 UX registry. Primary crosswalk: [`handoff traceabi
 - **RD10-07** (Optional): Where an action is sensitive, the system shall show pending, failed or conflict state with a recovery action and an immutable audit entry, not only a success toast. Tests: `P23-X47`
 - **RD10-08** (Unwanted): If route smoke passes but a role journey has not been executed, then the release gate shall not count the journey as accepted. Tests: `P23-X45`, `P23-UX-n22-acceptance`
 
+- **RD10-POS-01** (Ubiquitous): The POS cashier screen shall run full-screen without the admin sidebar, with a register bar showing outlet, shift state and cashier, and a "Keluar POS" action back to the back office. Tests: browser smoke `reg.mjs` (prototype)
+- **RD10-POS-02** (Event): When the cashier pays, the system shall show the payment sheet with only the enabled methods, quick cash amounts ("Uang pas" and next round notes) and live change/shortfall, and shall block confirmation while cash received is below the total. Tests: browser smoke `reg.mjs`
+- **RD10-POS-03** (Event): When payment succeeds, the system shall show a success screen with change, receipt and WhatsApp share (when a phone exists) and a single "Pesanan baru" action that returns to an empty order. Tests: browser smoke `reg.mjs`
+- **RD10-POS-04** (Ubiquitous): Members shall be attached by searching name or phone (min. 2 characters), never by typing an internal id. Tests: browser smoke `reg.mjs`
+- **RD10-POS-05** (State): While the viewport is ≤860px, the order panel shall be a bottom drawer opened from a sticky total bar, and no POS view shall scroll horizontally at 390px. Tests: browser smoke `reg.mjs`, `final.mjs`
 ## Primary workflow
 Run positive/negative journeys for 12 roles on desktop/mobile, including public auth, checkout, offline queue, cross-tenant, courier/COD and Super Admin approval.
 

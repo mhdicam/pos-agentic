@@ -10,6 +10,7 @@
 @import "./x-team.css";
 @import "./x-reports.css";
 @import "./x-settings.css";
+@import "./x-register.css";
 
 /* ---------- shadcn tokens (light) ---------- */
 :root {

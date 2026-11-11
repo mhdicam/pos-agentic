@@ -77,6 +77,8 @@
     if (!Orbis.routeAllowed(s.role, state.route)) state.route = Orbis.firstRoute(s.role);
     var fn = Orbis.screens[state.route];
     var body = fn ? safe(fn, d) : Orbis.empty('Layar "' + state.route + '" belum tersedia.');
+    // full-screen routes (cashier register) render their own header and no admin sidebar
+    if (fn && fn.fullscreen) { root.innerHTML = '<main id="main" tabindex="-1" class="fs">' + body + '</main>'; return; }
     root.innerHTML = topbar(d) +
       '<div class="shell' + (Orbis._navOpen ? ' nav-open' : '') + (sideMini() ? ' side-mini' : '') + '"><nav class="side" aria-label="Navigasi utama">' + sidebar(d) + '</nav><div class="scrim" data-act="toggleNav"></div>' +
       '<main id="main" tabindex="-1" class="main">' + body + '</main></div>';
