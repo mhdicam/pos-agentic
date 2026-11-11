@@ -48,6 +48,11 @@
     }, { audit: { action: 'stock.adjust', entity: 'sku', entityId: skuId } });
   };
 
+  /** Low stock: available <= the SKU's reorder point at this outlet (stock batch), else <= 5. */
+  inv.isLow = function (d, row) {
+    var S = Orbis.domain.stock, p = S && S.reorderPoint ? S.reorderPoint(d, row.sku.id, d.session.outlet) : 0;
+    return row.available <= (p || 5);
+  };
   inv.catalog = function (d) {
     var t = d.session.tenant;
     return d.skus.filter(function (s) { return s.tenant === t; }).map(function (s) {

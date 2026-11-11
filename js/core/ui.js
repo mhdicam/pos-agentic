@@ -25,7 +25,7 @@
   /** Status chips always carry text (never colour alone) — design-system rule. */
   var TONE = {
     ACTIVE: 'ok', PAID: 'ok', DELIVERED: 'ok', COMPLETED: 'ok', VERIFIED: 'ok', APPROVED: 'ok', RECEIVED: 'ok', ONLINE: 'ok', ACCEPTED: 'ok', READY: 'ok', connected: 'ok', RECONCILED: 'ok', WON: 'ok',
-    PENDING: 'warn', PLACED: 'warn', PREPARING: 'warn', ASSIGNED: 'warn', SUBMITTED: 'warn', REQUESTED: 'warn', TRIALING: 'warn', DRAFT: 'warn', COLLECTION_PENDING: 'warn', PENDING_SYNC: 'warn', PARTIAL: 'warn', READY_FOR_ASSIGNMENT: 'warn', RETRY_PENDING: 'warn', AWAITING_APPROVAL: 'warn',
+    PENDING: 'warn', PLACED: 'warn', PREPARING: 'warn', ASSIGNED: 'warn', SUBMITTED: 'warn', REQUESTED: 'warn', TRIALING: 'warn', DRAFT: 'warn', COLLECTION_PENDING: 'warn', PENDING_SYNC: 'warn', PARTIAL: 'warn', READY_FOR_ASSIGNMENT: 'warn', SENT: 'warn', SUBMITTED_COUNT: 'warn', COUNTING: 'warn', RETRY_PENDING: 'warn', AWAITING_APPROVAL: 'warn',
     CANCELLED: 'bad', REJECTED: 'bad', FAILED: 'bad', DELIVERY_FAILED: 'bad', DISPUTED: 'bad', SUSPENDED: 'bad', REVOKED: 'bad', FLAGGED: 'bad', CONFLICT: 'bad', OFFLINE: 'mute', RETURN_TO_STORE: 'bad', RETURNED: 'mute', REFUNDED: 'mute'
   };
   Orbis.chip = function (status, label) {

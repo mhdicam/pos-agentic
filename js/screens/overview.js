@@ -19,7 +19,7 @@
     var open = live.filter(function (o) { return o.status !== 'COMPLETED' && o.status !== 'RETURNED'; });
     var deliveries = Orbis.mine(d, 'deliveries').filter(function (x) { return ['DELIVERED', 'RETURNED', 'CANCELLED'].indexOf(x.status) < 0; });
     var inv = Orbis.domain.inventory;
-    var low = inv.catalog(d).filter(function (r) { return r.available <= 5; });
+    var low = inv.catalog(d).filter(function (r) { return !r.sku.archived && inv.isLow(d, r); });
     var pendingSync = Orbis.mine(d, 'outbox').filter(function (x) { return x.status === 'PENDING_SYNC'; }).length;
 
     var days = [];
@@ -61,7 +61,7 @@
       Orbis.stat('Penjualan hari ini', Orbis.idr(todayRev), delta == null ? 'belum ada pembanding' : (delta >= 0 ? '▲ ' : '▼ ') + Math.abs(delta) + '% vs kemarin') +
       Orbis.stat('Pendapatan 7 hari', Orbis.idr(Orbis.sum(days, function (x) { return x.v; })), 'rata-rata ' + Orbis.idr(aov) + ' / pesanan') +
       Orbis.stat('Pesanan berjalan', String(open.length), deliveries.length + ' pengiriman aktif') +
-      Orbis.stat('Stok menipis', String(low.length), 'tersedia ≤ 5') + '</div>' +
+      Orbis.stat('Stok menipis', String(low.length), 'di bawah titik pesan ulang') + '</div>' +
       (att.length ? Orbis.card('Perlu tindakan', '<ul class="list">' + att.map(function (x) {
         return '<li><span>' + Orbis.chip(x.tone, String(x.n)) + ' ' + esc(x.label) + '</span>' + Orbis.btn('Buka', 'go', [x.route], { kind: 'sm' }) + '</li>';
       }).join('') + '</ul>') : '') +
