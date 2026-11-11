@@ -1,1 +1,9 @@
 /* Tenant back-office: stock batch styles (imported by css/src/app.css). */
+@layer components {
+  .stk-neg { @apply font-medium text-destructive; }
+  .stk-pos { @apply font-medium text-success; }
+  .stk-qty { @apply h-9 w-24 rounded-md border border-input bg-card px-2 text-right text-sm shadow-xs; }
+  .stk-lines { @apply mb-3 flex max-h-96 flex-col gap-2 overflow-auto; }
+  .stk-line { @apply grid grid-cols-2 gap-2 rounded-md border p-2; }
+  .stk-line > b { @apply col-span-2 text-sm; }
+}
