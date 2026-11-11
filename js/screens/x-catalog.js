@@ -161,12 +161,16 @@
     var body = '<input type="hidden" name="id" value="' + esc(id || '') + '">' + Orbis.field('Nama grup', 'name', m ? m.name : '', { placeholder: 'mis. Topping' }) +
       Orbis.field('Wajib dipilih', 'required', m ? m.required : false, { type: 'checkbox' }) +
       '<div class="f2">' + Orbis.field('Minimal pilih', 'min', m ? m.min : 0, { type: 'number', min: 0 }) + Orbis.field('Maksimal pilih', 'max', m ? m.max : 1, { type: 'number', min: 1 }) + '</div>' +
-      Orbis.field('Pilihan (satu per baris: nama=harga)', 'options', opts, { type: 'textarea', hint: 'Contoh: Extra shot=6000 · harga 0 untuk tanpa biaya' });
+      Orbis.field('Pilihan (satu per baris: nama=harga)', 'options', opts, { type: 'textarea', hint: 'Contoh: Extra shot=6000 · harga 0 untuk tanpa biaya. Baris pertama jadi pilihan bawaan bila grup wajib.' });
     Orbis.modal(m ? 'Ubah grup modifier' : 'Grup modifier baru', body, Orbis.btn('Simpan', 'xcModSave', null, { kind: 'primary' }));
   };
   A.xcModSave = function () {
     var f = Orbis.formData();
-    var options = String(f.options || '').split('\n').map(function (l) { var p = l.split('='); return { name: p[0], price: p.length > 1 ? Number(String(p[1]).trim() || 0) : 0 }; });
+    var cur = f.id ? C.modifierGroups(Orbis.db(), true).filter(function (x) { return x.id === f.id; })[0] : null;
+    // line N keeps option N's id, so renaming "Hot" -> "Panas" does not orphan held carts or the default
+    var options = String(f.options || '').split('\n').filter(function (l) { return l.trim(); }).map(function (l, i) {
+      var p = l.split('='); return { id: cur && cur.options[i] ? cur.options[i].id : undefined, name: p[0], price: p.length > 1 ? Number(String(p[1]).trim() || 0) : 0 };
+    });
     C.saveModifierGroup({ id: f.id || null, name: f.name, required: !!f.required, min: f.min, max: f.max, options: options });
     Orbis.closeModal(); Orbis.toast('Grup modifier disimpan');
   };

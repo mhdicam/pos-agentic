@@ -10,7 +10,7 @@
     var table = Orbis.table([
       { label: 'ID', fmt: function (r) { return '<b>' + esc(r.id) + '</b><br><small>' + esc(Orbis.fmtTime(r.requestedAt)) + '</small>'; } },
       { label: 'Pesanan', fmt: function (r) { return esc(r.orderId); } },
-      { label: 'Item', fmt: function (r) { return r.lines.map(function (l) { return esc(l.qty) + ' x ' + esc(l.skuId); }).join(', '); } },
+      { label: 'Item', fmt: function (r) { var o = Orbis.domain.orders.get(d, r.orderId); return r.lines.map(function (l) { var it = o && (l.line != null ? o.items[l.line] : o.items.filter(function (x) { return x.skuId === l.skuId; })[0]); return esc(l.qty) + ' x ' + esc(it ? it.name : l.skuId); }).join(', '); } },
       { label: 'Nominal', right: true, fmt: function (r) { return esc(Orbis.idr(r.amount)); } },
       { label: 'Alasan', fmt: function (r) { return esc(r.reason); } },
       { label: 'Pemohon', fmt: function (r) { return esc(r.requestedBy); } },
@@ -27,7 +27,7 @@
       var o = U.orderId ? Orbis.domain.orders.get(d, U.orderId) : null;
       if (o) {
         form += R.remaining(d, o).map(function (r) {
-          return '<div class="fld"><label for="rf-' + esc(r.skuId) + '">' + esc(r.name) + ' (sisa ' + esc(r.remaining) + ' dari ' + esc(r.sold) + ')</label><input id="rf-' + esc(r.skuId) + '" type="number" min="0" max="' + esc(r.remaining) + '" name="qty:' + esc(r.skuId) + '" value="0"></div>';
+          return '<div class="fld"><label for="rf-' + esc(r.line) + '">' + esc(r.name) + ' (sisa ' + esc(r.remaining) + ' dari ' + esc(r.sold) + ')</label><input id="rf-' + esc(r.line) + '" type="number" min="0" max="' + esc(r.remaining) + '" name="qty:' + esc(r.line) + '" value="0"></div>';
         }).join('') + Orbis.field('Alasan (min. 5 karakter)', 'reason', '') + Orbis.btn('Ajukan refund', 'refundSubmit', null, { kind: 'primary' });
       }
       form += '</div>';
@@ -39,7 +39,7 @@
   A.refundPick = function (id) { U.orderId = id; Orbis.emit(); };
   A.refundSubmit = function () {
     var f = Orbis.readForm('#rf-form'), lines = [];
-    Object.keys(f).forEach(function (k) { if (k.indexOf('qty:') === 0 && Number(f[k]) > 0) lines.push({ skuId: k.slice(4), qty: Number(f[k]) }); });
+    Object.keys(f).forEach(function (k) { if (k.indexOf('qty:') === 0 && Number(f[k]) > 0) lines.push({ line: Number(k.slice(4)), qty: Number(f[k]) }); });
     Orbis.domain.refunds.request(U.orderId, lines, f.reason);
     U.orderId = ''; Orbis.toast('Permintaan refund diajukan');
   };

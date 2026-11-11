@@ -22,6 +22,7 @@ Baseline FR: FR-06, FR-08, FR-L22, FR-E22; Phase 2.2E/L/M. Primary crosswalk: [`
 - **RD04-09** (Unwanted): If a refund would double-reverse a payment or leave points mismatched, then the system shall reject it. Tests: `P23-X15`, `P23-UX-membership`
 - **RD04-10** (Unwanted): If a checkout snapshot is requested after a price change, then the system shall return the original snapshot and not rebuild it from current prices. Tests: `P23-X23`, `P23-UX-transaction-integrity`
 
+- **RD04-REF-LINE** (Event): When a refund is requested, the system shall price it per order line (lines of one SKU may differ by modifiers); a legacy SKU-only request is spread over that SKU's remaining lines in order. Tests: `review fixes: refund pays the chosen line, not the sku average`
 ## Primary workflow
 Checkout breakdown → promo/loyalty eligibility → payment allocation → order snapshot → return inspection → partial refund → payment/cash/points reconciliation.
 

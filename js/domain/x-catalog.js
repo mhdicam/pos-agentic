@@ -86,14 +86,15 @@
     return write(spec.id ? 'catalog.modifier.update' : 'catalog.modifier.create', 'modifierGroup', function (d) {
       var cur = spec.id ? find(d, 'modifierGroups', spec.id, 'Grup modifier') : null;
       var name = str(spec.name); Orbis.need(name, 'VALIDATION', 'Nama grup modifier wajib diisi');
-      var opts = (spec.options || []).map(function (o) { return { name: str(o.name), price: o.price }; }).filter(function (o) { return o.name; });
+      var opts = (spec.options || []).map(function (o) { return { id: o.id, name: str(o.name), price: o.price }; }).filter(function (o) { return o.name; });
       Orbis.need(opts.length >= 1, 'VALIDATION', 'Grup modifier minimal punya satu pilihan');
       var seen = {};
       opts.forEach(function (o) {
         toInt(o.price, 'Harga ' + o.name); o.price = toInt(o.price);
         Orbis.need(o.price >= 0, 'VALIDATION', 'Harga pilihan tidak boleh negatif');
         Orbis.need(!seen[o.name.toLowerCase()], 'VALIDATION', 'Pilihan "' + o.name + '" dobel'); seen[o.name.toLowerCase()] = 1;
-        var old = cur && cur.options.filter(function (x) { return x.name.toLowerCase() === o.name.toLowerCase(); })[0];
+        // stable ids: an edited option keeps its id (renames do not break held carts / defaults)
+        var old = cur && (cur.options.filter(function (x) { return o.id && x.id === o.id; })[0] || cur.options.filter(function (x) { return x.name.toLowerCase() === o.name.toLowerCase(); })[0]);
         o.id = old ? old.id : Orbis.nextId(d, 'MDO', 4);
       });
       var required = !!spec.required, min = toInt(spec.min == null || spec.min === '' ? (required ? 1 : 0) : spec.min, 'Minimal pilih'), max = toInt(spec.max == null || spec.max === '' ? opts.length : spec.max, 'Maksimal pilih');
@@ -101,6 +102,9 @@
       Orbis.need(min >= 0 && max >= 1 && min <= max && max <= opts.length, 'VALIDATION', 'Aturan pilih tidak valid: 0 <= minimal <= maksimal <= jumlah pilihan');
       var gr = cur || { id: Orbis.nextId(d, 'MDG', 3), tenant: d.session.tenant, archived: false };
       gr.name = name; gr.required = required; gr.min = min; gr.max = max; gr.options = opts;
+      // required groups need a default so channels without a picker (storefront, API) can still sell
+      var want = spec.defaultOptionId || gr.defaultOptionId;
+      gr.defaultOptionId = required ? ((opts.filter(function (o) { return o.id === want; })[0] || opts[0]).id) : null;
       if (!cur) coll(d, 'modifierGroups').push(gr);
       return gr;
     });

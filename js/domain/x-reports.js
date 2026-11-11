@@ -59,11 +59,22 @@
     };
   }
   function approvedIn(s, f) { return s.refunds.filter(function (r) { return r.status === 'APPROVED' && inDay(r.decidedAt, f); }); }
+  /** Goods part of a refund (net-sales basis): refund amount pro-rated by (subtotal - discount) / (total - deliveryFee).
+      Refunds of CANCELLED orders are excluded because their sales were never counted. */
+  function goodsRefunds(s, f) {
+    return Orbis.sum(approvedIn(s, f), function (r) {
+      var o = s.byId[r.orderId];
+      if (!o || o.status === 'CANCELLED') return 0;
+      var paidBase = (o.total || 0) - (o.deliveryFee || 0), goods = (o.subtotal || 0) - (o.discount || 0);
+      var amt = r.amount - (r.deliveryFeeIncluded ? (o.deliveryFee || 0) : 0);
+      return paidBase > 0 ? Math.round(amt * goods / paidBase) : 0;
+    });
+  }
   function itemsOf(o) { return Array.isArray(o.items) ? o.items : []; }
 
   function core(s, f) {
-    var os = s.sales, refunds = sum(approvedIn(s, f), 'amount');
-    var t = { gross: sum(os, 'subtotal'), discounts: sum(os, 'discount'), refunds: refunds, tax: sum(os, 'tax'), service: sum(os, 'service'),
+    var os = s.sales, refunds = goodsRefunds(s, f), refundsPaid = sum(approvedIn(s, f), 'amount');
+    var t = { gross: sum(os, 'subtotal'), discounts: sum(os, 'discount'), refunds: refunds, refundsPaid: refundsPaid, tax: sum(os, 'tax'), service: sum(os, 'service'),
       rounding: sum(os, 'rounding'), deliveryFee: sum(os, 'deliveryFee'), sales: sum(os, 'total'), collected: sum(s.payments, 'amount'), orders: os.length, items: 0 };
     os.forEach(function (o) { itemsOf(o).forEach(function (i) { t.items += i.qty || 0; }); });
     t.net = t.gross - t.discounts - t.refunds;
@@ -72,7 +83,7 @@
   }
   function start(d, f) { Orbis.require('report.read'); f = R.filter(d, f); return { f: f, s: scope(d, f) }; }
 
-  var SUMMARY = [['gross', 'Penjualan kotor'], ['discounts', 'Diskon'], ['refunds', 'Refund'], ['net', 'Penjualan bersih'], ['tax', 'Pajak'], ['service', 'Service'],
+  var SUMMARY = [['gross', 'Penjualan kotor'], ['discounts', 'Diskon'], ['refunds', 'Refund (porsi barang)'], ['net', 'Penjualan bersih'], ['tax', 'Pajak'], ['service', 'Service'],
     ['rounding', 'Pembulatan'], ['deliveryFee', 'Ongkir'], ['sales', 'Total tagihan pesanan'], ['collected', 'Total diterima (bayar - refund)'], ['orders', 'Jumlah pesanan'], ['avgOrder', 'Rata-rata pesanan'], ['items', 'Item terjual']];
   /** Ringkasan + comparison vs the previous period of equal length (only when from & to are set). */
   R.summary = function (d, f) {

@@ -21,6 +21,7 @@ Traceability: Screen `catalog` (tabs Produk / Kategori / Modifier, product detai
 - **RD12-09** (Event): When a catalog change commits, the system shall write one audit event in the same transaction. Tests: `x-catalog: categories CRUD, rename propagates, reorder, archive`
 - **RD12-10** (Event): When a cashier taps a product with several variants or modifier groups in POS, the system shall open a picker (variant, modifiers, note) and add a cart line priced with modifiers. Tests: NONE (UI only, manual check in `pos`)
 
+- **RD12-13** (Ubiquitous): Every required modifier group shall have a valid default option (explicit, else the first), and editing a group shall keep existing option ids so held carts and defaults stay valid. Tests: `review fixes: required modifier group from UI gets a default; renaming keeps option ids`
 ## Known gaps (requests to other owners)
 - `orders.quote` calls `resolveModifiers` only when a line carries modifiers, so a line with no picks bypasses required groups (POS picker enforces it client-side). Request to sales: call the hook for every line of a product with groups.
 - `carts.hold` keeps only `{skuId, qty}`; POS refuses to hold a cart with modifiers/notes until sales stores them.

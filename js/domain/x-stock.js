@@ -167,7 +167,13 @@
       Orbis.need(d.session.actor !== doc.createdBy && d.session.actor !== doc.submittedBy, 'SELF_APPROVAL', 'Penghitung tidak boleh menyetujui opname sendiri');
       S.variance(doc).lines.forEach(function (l) {
         if (!l.variance) return;
-        var m = inv.move(d, { skuId: l.skuId, qty: l.variance, type: 'ADJUSTMENT', ref: doc.id, outlet: doc.outlet, note: 'Stok opname ' + doc.id });
+        var q = l.variance;
+        if (q < 0) {   // sales after the snapshot may have used part of the shrink already: never go below zero, keep the gap visible
+          var avail = inv.available(d, l.skuId, doc.outlet);
+          if (-q > avail) { (doc.capped = doc.capped || []).push({ skuId: l.skuId, variance: q, applied: -avail }); q = -avail; }
+          if (!q) return;
+        }
+        var m = inv.move(d, { skuId: l.skuId, qty: q, type: 'ADJUSTMENT', ref: doc.id, outlet: doc.outlet, note: 'Stok opname ' + doc.id });
         m.reason = 'recount';
       });
       doc.approvedBy = d.session.actor; doc.approvedAt = Orbis.clock.now(); hist(doc, d, 'APPROVED');
@@ -215,6 +221,8 @@
     return Orbis.tx(function (d) {
       var t = find(d, 'stockTransfers', id, 'Transfer');
       Orbis.need(t.status === 'DRAFT', 'INVALID_STATE', 'Hanya transfer DRAFT yang bisa dikirim');
+      Orbis.need(d.session.outlet === t.from, 'OUTLET_MISMATCH', 'Transfer hanya bisa dikirim dari outlet asal');
+      Orbis.need(Orbis.mine(d, 'outlets').some(function (o) { return o.id === t.to && o.active !== false; }), 'OUTLET_INACTIVE', 'Outlet tujuan tidak aktif');
       t.lines.forEach(function (l) { inv.move(d, { skuId: l.skuId, qty: -l.qty, type: 'TRANSFER_OUT', ref: t.id, outlet: t.from, note: 'Transfer ke ' + t.to }); });
       t.sentAt = Orbis.clock.now(); hist(t, d, 'SENT');
       return t;

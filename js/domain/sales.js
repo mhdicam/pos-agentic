@@ -393,19 +393,20 @@
   refunds.list = function (d) { return Orbis.mine(d, 'refunds').slice().sort(function (a, b) { return b.requestedAt - a.requestedAt || (a.id < b.id ? 1 : -1); }); };
   refunds.get = function (d, id) { return find(d, 'refunds', id) || null; };
 
-  /** Qty still returnable per sku = sold - (REQUESTED + APPROVED). */
+  /** Returnable qty per ORDER LINE (lines of one sku can differ by modifiers/price) = sold - (REQUESTED + APPROVED).
+      Rows: {line, skuId, name, price, modifiers, sold, remaining}. Legacy refund rows without `line` count against the sku's first lines. */
   refunds.remaining = function (d, order) {
-    var used = {};
+    var used = {}, legacy = {};
     Orbis.mine(d, 'refunds').forEach(function (r) {
       if (r.orderId !== order.id || r.status === 'REJECTED') return;
-      r.lines.forEach(function (l) { used[l.skuId] = (used[l.skuId] || 0) + l.qty; });
+      r.lines.forEach(function (l) { if (l.line != null) used[l.line] = (used[l.line] || 0) + l.qty; else legacy[l.skuId] = (legacy[l.skuId] || 0) + l.qty; });
     });
-    var agg = {}, keys = [];   // one row per sku even when lines differ by modifiers
-    order.items.forEach(function (it) {
-      if (!agg[it.skuId]) { agg[it.skuId] = { skuId: it.skuId, name: it.name, price: it.price, sold: 0 }; keys.push(it.skuId); }
-      agg[it.skuId].sold += it.qty;
+    return order.items.map(function (it, i) {
+      var u = used[i] || 0, take = Math.min(legacy[it.skuId] || 0, it.qty - u);
+      if (take > 0) legacy[it.skuId] -= take;
+      return { line: i, skuId: it.skuId, name: it.name + (it.modifiers && it.modifiers.length ? ' (' + it.modifiers.map(function (m) { return m.name; }).join(', ') + ')' : ''),
+        price: it.price, modifiers: it.modifiers || [], sold: it.qty, remaining: it.qty - u - Math.max(take, 0) };
     });
-    return keys.map(function (k) { var a = agg[k]; a.remaining = a.sold - (used[k] || 0); return a; });
   };
   /** Orders a refund may still be requested for. */
   refunds.eligibleOrders = function (d) {
@@ -415,18 +416,18 @@
     });
   };
 
-  /** Share of the refundable pool (total minus delivery fee) owed to one sku; the last sku absorbs rounding. */
-  function skuPools(o) {
-    var pool = o.total - o.deliveryFee, out = {}, left = pool;
-    if (!o.subtotal) { o.items.forEach(function (it, i) { out[it.skuId] = (out[it.skuId] || 0) + (i === 0 ? pool : 0); }); return out; }
+  /** Share of the refundable pool (total minus delivery fee) owed to each order line; the last line absorbs rounding. */
+  function linePools(o) {
+    var pool = o.total - o.deliveryFee, out = [], left = pool;
     o.items.forEach(function (it, i) {
-      var share = i === o.items.length - 1 ? left : Math.round(it.qty * it.price * pool / o.subtotal);
-      out[it.skuId] = (out[it.skuId] || 0) + share; left -= share;
+      var share = !o.subtotal ? (i === 0 ? pool : 0) : i === o.items.length - 1 ? left : Math.round(it.qty * it.price * pool / o.subtotal);
+      out[i] = share; left -= share;
     });
     return out;
   }
   function shareOf(pool, sold, q) { return q >= sold ? pool : Math.floor(pool * q / sold); }
 
+  /** lines: [{line, qty}] (preferred) or legacy [{skuId, qty}] — a sku is spread over its lines in order. */
   refunds.request = function (orderId, lines, reason) {
     Orbis.require('refund.request');
     reason = Orbis.reason(reason, 'Alasan retur');
@@ -435,22 +436,29 @@
       var o = must(d, orderId);
       var cancelledPaid = o.status === 'CANCELLED' && o.refundDue > 0;
       if (!cancelledPaid && (REFUNDABLE.indexOf(o.paymentStatus) < 0 || o.paymentStatus === 'REFUNDED')) throw Orbis.Err('NOT_REFUNDABLE', 'Pesanan ini belum bisa di-refund (status bayar ' + o.paymentStatus + ')');
-      var rem = refunds.remaining(d, o), pools = skuPools(o), merged = {}, order = [];
+      var rem = refunds.remaining(d, o), pools = linePools(o), want = {};
       lines.forEach(function (l) {
         Orbis.int(l.qty, 'Qty retur'); Orbis.need(l.qty >= 1, 'VALIDATION', 'Qty retur minimal 1');
-        if (!merged[l.skuId]) { merged[l.skuId] = 0; order.push(l.skuId); }
-        merged[l.skuId] += l.qty;
+        if (l.line != null) {
+          Orbis.need(rem[l.line], 'VALIDATION', 'Item tidak ada di pesanan');
+          want[l.line] = (want[l.line] || 0) + l.qty;
+          return;
+        }
+        var rows = rem.filter(function (r) { return r.skuId === l.skuId; });
+        Orbis.need(rows.length, 'VALIDATION', 'Item tidak ada di pesanan');
+        var left = l.qty;
+        rows.forEach(function (r) { var room = r.remaining - (want[r.line] || 0), t = Math.min(room, left); if (t > 0) { want[r.line] = (want[r.line] || 0) + t; left -= t; } });
+        if (left > 0) throw Orbis.Err('OVER_REFUND', 'Qty retur ' + rows[0].name + ' melebihi sisa (' + Orbis.sum(rows, function (r) { return r.remaining; }) + ')');
       });
       var out = [];
-      order.forEach(function (skuId) {
-        var r = rem.filter(function (x) { return x.skuId === skuId; })[0];
-        Orbis.need(r, 'VALIDATION', 'Item tidak ada di pesanan');
-        if (merged[skuId] > r.remaining) throw Orbis.Err('OVER_REFUND', 'Qty retur ' + r.name + ' melebihi sisa (' + r.remaining + ')');
+      Object.keys(want).map(Number).sort(function (a, b) { return a - b; }).forEach(function (i) {
+        var r = rem[i];
+        if (want[i] > r.remaining) throw Orbis.Err('OVER_REFUND', 'Qty retur ' + r.name + ' melebihi sisa (' + r.remaining + ')');
         var before = r.sold - r.remaining;
-        out.push({ skuId: skuId, qty: merged[skuId], amount: shareOf(pools[skuId], r.sold, before + merged[skuId]) - shareOf(pools[skuId], r.sold, before) });
+        out.push({ line: i, skuId: r.skuId, qty: want[i], amount: shareOf(pools[i], r.sold, before + want[i]) - shareOf(pools[i], r.sold, before) });
       });
       var amount = Orbis.sum(out, function (l) { return l.amount; });
-      var allDone = refunds.remaining(d, o).every(function (r) { var m = merged[r.skuId] || 0; return r.remaining - m === 0; });
+      var allDone = rem.every(function (r) { return r.remaining - (want[r.line] || 0) === 0; });
       if (allDone) amount += o.deliveryFee;   // full return also gives back the delivery fee, so cumulative refund == total
       var r = { id: Orbis.nextId(d, 'RFD', 4), tenant: d.session.tenant, orderId: o.id, lines: out, amount: amount, deliveryFeeIncluded: allDone, reason: reason, status: 'REQUESTED', requestedBy: d.session.actor, requestedRole: d.session.role, requestedAt: Orbis.clock.now(), decidedBy: null, decidedAt: null };
       d.refunds.push(r);
@@ -503,7 +511,11 @@
         d.payments.push({ id: Orbis.nextId(d, 'PAY', 5), tenant: d.session.tenant, orderId: o.id, type: a.type, amount: -a.amount, at: now, shiftId: a.type === 'cash' && shift ? shift.id : null, refundId: r.id });
       });
       var restock = opts.restock === true && o.status !== 'CANCELLED';
-      if (restock) r.lines.forEach(function (l) { inv.move(d, { skuId: l.skuId, qty: l.qty, type: 'RETURN_RESTOCK', ref: r.id, outlet: o.outlet, note: 'Retur ' + o.id }); });
+      if (restock) {   // one move per sku (inventory is idempotent on type+ref+sku), so lines of the same sku are summed
+        var back = {}, keys = [];
+        r.lines.forEach(function (l) { if (!back[l.skuId]) { back[l.skuId] = 0; keys.push(l.skuId); } back[l.skuId] += l.qty; });
+        keys.forEach(function (k) { inv.move(d, { skuId: k, qty: back[k], type: 'RETURN_RESTOCK', ref: r.id, outlet: o.outlet, note: 'Retur ' + o.id }); });
+      }
       o.refunded = (o.refunded || 0) + r.amount;
       o.paymentStatus = o.refunded >= o.total ? 'REFUNDED' : 'PARTIALLY_REFUNDED';
       if (o.refundDue) o.refundDue = Math.max(0, o.total - o.refunded);

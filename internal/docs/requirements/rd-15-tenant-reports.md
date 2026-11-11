@@ -29,5 +29,6 @@ Traceability: Screen `reports` (`js/screens/x-reports.js`, replaces `Orbis.scree
 - **RD15-11** (Ubiquitous): The system shall compute each report over ~660 demo orders within 50 ms, using id maps instead of nested scans. Tests: `RD15 performance: every report under 50ms on demo data`
 - **RD15-12** (Event): When the user exports a report, the system shall download exactly the visible rows as CSV with formula-injection defence (`Orbis.domain.reports.csvCell`). Tests: NONE (UI; reuses `csvCell` tests in `tests/finance.test.js`) — gap
 
+- **RD15-13** (Ubiquitous): Net sales shall subtract only the goods part of approved refunds (pro-rated by subtotal-minus-discount over total-minus-delivery) and shall ignore refunds of cancelled orders; the cash refunded stays visible as `refundsPaid`. Tests: `review fixes: report net uses goods part of refunds and ignores cancelled orders`
 ## Open review gates
 Browser-local prototype only; server authorization, concurrency and production integrations are not covered. Gaps: served-by (waiter) attribution, per-device/terminal filter, Excel/ZIP export and scheduled email (O2), report retention window (M11), per-tenant timezone (fixed WIB), CSV export UI test.

@@ -15,6 +15,7 @@
   team.STAFF_ROLES = Object.keys(Orbis.ROLES).filter(function (r) { return Orbis.ROLES[r].scope === 'tenant' && r !== 'owner'; });
   team.MODES = ['allow', 'deny', 'approval'];
   team.APPROVAL_TTL = 2 * 60000;
+  team.PIN_LOCK_MS = 15 * 60000;
   team.MAX_PIN_FAILS = 5;
   team.DENOMS = [100000, 50000, 20000, 10000, 5000, 2000, 1000];
   /** POS-side keys (Loyverse V1 split); everything else tenant-scoped is "Back office". */
@@ -55,7 +56,9 @@
   };
   function tokenValid(d, perm) {
     var a = d.session.approval;
-    return !!(a && a.perm === perm && a.tenant === d.session.tenant && a.exp > Orbis.clock.now());
+    // bound to the requesting actor/role and usable only inside withApproval (one action)
+    return !!(a && a.perm === perm && a.tenant === d.session.tenant && a.exp > Orbis.clock.now() &&
+      a.forActor === d.session.actor && a.forRole === d.session.role && team._inApproval === perm);
   }
   /** No override rows -> undefined, so Orbis.PERMS decides (existing behaviour unchanged). Owner is never reduced. */
   Orbis.hooks.can = function (perm, role, d) {
@@ -116,30 +119,42 @@
     var r = Orbis.tx(function (d) {
       var s = staffRow(d, staffId);
       if (!s.active) return { code: 'STAFF_INACTIVE' };
+      // lock expires after PIN_LOCK_MS so another session cannot lock a colleague out indefinitely; owner reset still clears it at once
+      if (s.pinLocked && s.pinLockedAt && Orbis.clock.now() - s.pinLockedAt >= team.PIN_LOCK_MS) { s.pinLocked = false; s.pinFails = 0; }
       if (s.pinLocked) return { code: 'PIN_LOCKED' };
       if (!s.pinHash) return { code: 'PIN_NOT_SET' };
       if (pinMatches(s, pin)) { s.pinFails = 0; return { ok: true, staff: Orbis.clone(s) }; }
       s.pinFails = (s.pinFails || 0) + 1;
-      if (s.pinFails >= team.MAX_PIN_FAILS) s.pinLocked = true;
+      if (s.pinFails >= team.MAX_PIN_FAILS) { s.pinLocked = true; s.pinLockedAt = Orbis.clock.now(); }
       return { code: s.pinLocked ? 'PIN_LOCKED' : 'PIN_WRONG', left: team.MAX_PIN_FAILS - s.pinFails };
     }, { audit: function (r) { return { action: r.ok ? 'team.pin.ok' : 'team.pin.fail', entity: 'staff', entityId: staffId, detail: r.code || null }; } });
     if (r.ok) return r.staff;
-    var msg = { STAFF_INACTIVE: 'Staf nonaktif', PIN_LOCKED: 'PIN terkunci setelah 5 kali salah. Minta owner mereset PIN.', PIN_NOT_SET: 'PIN belum diatur', PIN_WRONG: 'PIN salah, sisa ' + r.left + ' percobaan' };
+    var msg = { STAFF_INACTIVE: 'Staf nonaktif', PIN_LOCKED: 'PIN terkunci 15 menit setelah 5 kali salah, atau minta owner mereset PIN.', PIN_NOT_SET: 'PIN belum diatur', PIN_WRONG: 'PIN salah, sisa ' + r.left + ' percobaan' };
     throw Orbis.Err(r.code, msg[r.code]);
   };
 
   /* ================= manager approval ("Perlu PIN manajer") ================= */
   /** Manager/owner PIN records a short-lived approval token for ONE perm in d.session.approval (TTL 2 min).
       Use withApproval() to run exactly one action with it; the token is cleared right after (consumed once). */
+  team.MAX_APPROVAL_FAILS = 5;   // per session; then the session must wait APPROVAL_TTL (blocks PIN guessing)
   team.approve = function (pin, perm) {
-    var d0 = Orbis.db();
+    var d0 = Orbis.db(), f = d0.session.approvalFails || { n: 0, until: 0 };
+    Orbis.need(!(f.until > Orbis.clock.now()), 'PIN_LOCKED', 'Terlalu banyak PIN salah. Coba lagi dalam 2 menit.');
     var approver = Orbis.mine(d0, 'staff').filter(function (s) { return s.active && !s.pinLocked && pinMatches(s, pin); })[0];
-    Orbis.need(approver, 'PIN_WRONG', 'PIN manajer salah');
+    if (!approver) {
+      // the failed attempt is recorded (and audited) in its own tx, then the error is thrown outside it
+      Orbis.tx(function (d) {
+        var x = d.session.approvalFails = d.session.approvalFails && !(d.session.approvalFails.until > 0 && d.session.approvalFails.until <= Orbis.clock.now()) ? d.session.approvalFails : { n: 0, until: 0 };
+        x.n++; if (x.n >= team.MAX_APPROVAL_FAILS) { x.until = Orbis.clock.now() + team.APPROVAL_TTL; x.n = 0; }
+      }, { audit: { action: 'team.approval.fail', entity: 'staff', detail: perm } });
+      throw Orbis.Err('PIN_WRONG', 'PIN manajer salah');
+    }
     var mm = team.mode(d0, 'manager', perm);   // a manager approves only what managers may do outright
     Orbis.need(approver.role === 'owner' || (approver.role === 'manager' && (mm === 'allow' || (!mm && (Orbis.PERMS[perm] || []).indexOf('manager') >= 0))),
       'FORBIDDEN', 'Staf ini tidak berwenang menyetujui aksi tersebut');
     return Orbis.tx(function (d) {
-      d.session.approval = { perm: perm, tenant: d.session.tenant, by: approver.id, exp: Orbis.clock.now() + team.APPROVAL_TTL };
+      d.session.approvalFails = { n: 0, until: 0 };
+      d.session.approval = { perm: perm, tenant: d.session.tenant, by: approver.id, forActor: d.session.actor, forRole: d.session.role, exp: Orbis.clock.now() + team.APPROVAL_TTL };
       return d.session.approval;
     }, { audit: { action: 'team.approval.grant', entity: 'staff', entityId: approver.id, detail: perm } });
   };
@@ -149,7 +164,8 @@
   };
   team.withApproval = function (pin, perm, fn) {
     team.approve(pin, perm);
-    try { return Orbis.batch(fn); } finally { team.consume(); }
+    var prev = team._inApproval; team._inApproval = perm;
+    try { return Orbis.batch(fn); } finally { team._inApproval = prev; team.consume(); }
   };
 
   /* ================= staff profile ================= */
