@@ -78,6 +78,9 @@ Date: 2026-11-10
 66. [Phase 2.2O dispatcher/courier QA report](references/PHASE_2_2O_DISPATCHER_COURIER_QA_REPORT.md) - scoped UX QA report, delivery operations
 67. [Phase 2.2O prototype](references/posverse_phase_2_2o_delivery_operations.html) - single-file UI prototype, not production code
 68. [Tenant back-office benchmark 2026-11-10](references/2026-11-10-tenant-backoffice-benchmark.md) - Indonesian + global POS back-office features, gaps, UX patterns
+    - [Indonesian POS review mining 2026-11-11](references/2026-11-11-id-pos-review-mining.md) - Play Store ranking, praise/complaints of top ID POS apps
+    - [Global POS review mining 2026-11-11](references/2026-11-11-global-pos-review-mining.md) - G2/Capterra ranking, praise/complaints, table-stakes features
+    - [Tenant gap analysis 2026-11-11](references/2026-11-11-tenant-gap-analysis.md) - review-driven gaps G1-G12 vs prototype, recommended order
 69. [Phase 2.3 handoff](handoff/PHASE_2_3_ENGINEERING_HANDOFF_DRAFT.md) - UX acceptance and engineering handoff
 70. [Phase 2.3 regression & sign-off report](handoff/PHASE_2_3_REGRESSION_AND_SIGNOFF_REPORT.md) - route smoke evidence and pending gates
 71. [Screen traceability](handoff/PHASE_2_3_SCREEN_FR_API_DATA_PERMISSION_TRACEABILITY.csv) - Screen to FR to API to Data to Permission to Acceptance to Slice
