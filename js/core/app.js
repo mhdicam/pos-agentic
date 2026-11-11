@@ -15,6 +15,7 @@
     var d = Orbis.db(), role = d.session.role;
     if (d.session.view !== 'app' && route !== 'store' && route !== 'track') d.session.view = 'app';
     if (!Orbis.routeAllowed(role, route)) route = Orbis.firstRoute(role);   // deny-by-default guard
+    if (route !== state.route) Orbis.closeModal(true);   // a dialog belongs to the screen that opened it
     state.route = route;
     if (g.history && g.history.replaceState) g.history.replaceState(null, '', '#/' + route);
     Orbis.render();
@@ -116,7 +117,7 @@
 
   /* ---------- shell actions ---------- */
   var A = Orbis.actions;
-  A.go = function (route) { Orbis._navOpen = false; Orbis.go(route); };
+  A.go = function (route) { Orbis._navOpen = false; Orbis.closeModal(true); Orbis.go(route); };
   A.toggleNav = function () { Orbis._navOpen = !Orbis._navOpen; Orbis.render(); };
   A.closeModal = function () { Orbis.closeModal(); };
   A.enter = function (role) {

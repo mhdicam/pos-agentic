@@ -77,7 +77,9 @@ test('x-catalog: modifier picks rejected (foreign, required missing, over max, d
   var tops = ['Extra shot', 'Oat milk', 'Boba'].map(function (n) { return opt(O, 'Topping', n); });
   T.throws(function () { q(O, [{ skuId: 'k4', qty: 1, modifiers: [hot] }]); }, 'MODIFIER_INVALID');          // croissant has no groups
   T.throws(function () { q(O, [{ skuId: 'k2', qty: 1, modifiers: [hot, tops[0]] }]); }, 'MODIFIER_INVALID'); // topping not attached to Americano
-  T.throws(function () { q(O, [{ skuId: 'k1', qty: 1, modifiers: [hot] }]); }, 'MODIFIER_INVALID');          // Gula required
+  T.eq(q(O, [{ skuId: 'k1', qty: 1, modifiers: [hot] }]).items[0].modifiers.map(function (m) { return m.name; }), ['Hot', 'Normal'], 'required Gula falls back to its default');
+  O.tx(function (d) { d.modifierGroups.forEach(function (g) { if (g.name === 'Gula') delete g.defaultOptionId; }); });
+  T.throws(function () { q(O, [{ skuId: 'k1', qty: 1, modifiers: [hot] }]); }, 'MODIFIER_INVALID', 'required without default must be picked');
   T.throws(function () { q(O, [{ skuId: 'k1', qty: 1, modifiers: [hot, normal, opt(O, 'Gula', 'No sugar')] }]); }, 'MODIFIER_INVALID'); // Gula max 1
   T.throws(function () { q(O, [{ skuId: 'k1', qty: 1, modifiers: [hot, normal, tops[0], tops[0]] }]); }, 'MODIFIER_INVALID');
   T.eq(q(O, [{ skuId: 'k1', qty: 1, modifiers: [hot, normal].concat(tops) }]).subtotal, 28000 + 19000, 'max 3 toppings ok');
@@ -129,4 +131,14 @@ test('x-catalog: demo adds Large variant', function (O, T) {
   O.demoHistory();
   var d = O.db(), large = O.mine(d, 'skus').filter(function (s) { return s.sku === 'KA-100L'; })[0];
   T.ok(large && large.productId === 'p1' && large.price === 34000);
+});
+
+test('quote enforces required modifier groups even with no picks; held cart keeps options', (O, T) => {
+  O.domain.catalog2 && O.domain.catalog2.install && O.domain.catalog2.install();
+  const q = () => O.domain.orders.quote(O.db(), { channel: 'pos', items: [{ skuId: 'k1', qty: 1 }] });
+  T.eq(q().items[0].modifiers.map(m => m.name), ['Hot', 'Normal'], 'defaults applied on a direct API call');
+  O.tx(d => { d.modifierGroups.forEach(g => { delete g.defaultOptionId; }); });
+  T.throws(q, 'MODIFIER_INVALID');
+  const c = O.domain.carts.hold({ items: [{ skuId: 'k1', qty: 1, modifiers: ['x1'], note: 'less ice' }] });
+  T.eq(O.domain.carts.resume(c.id).items[0].note, 'less ice');
 });

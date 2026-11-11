@@ -237,11 +237,11 @@
   R.taxes = function (d, f) {
     var m = {};
     start(d, f).s.sales.forEach(function (o) {
-      var k = o.taxLabel || 'Pajak', r = m[k] = m[k] || { key: k, name: k, orders: 0, base: 0, tax: 0, service: 0 };
-      r.orders++; r.base += (o.subtotal || 0) - (o.discount || 0); r.tax += o.tax || 0; r.service += o.service || 0;
+      var k = o.taxLabel || 'Pajak', r = m[k] = m[k] || { key: k, name: k, orders: 0, base: 0, tax: 0, taxIncluded: 0, service: 0 };
+      r.orders++; r.base += (o.subtotal || 0) - (o.discount || 0); r.tax += o.tax || 0; r.taxIncluded += o.taxIncluded || 0; r.service += o.service || 0;
     });
     var rows = rowsOf(m).sort(byDesc('tax'));
-    return { rows: rows, totals: { base: sum(rows, 'base'), tax: sum(rows, 'tax'), service: sum(rows, 'service') } };
+    return { rows: rows, totals: { base: sum(rows, 'base'), tax: sum(rows, 'tax'), taxIncluded: sum(rows, 'taxIncluded'), service: sum(rows, 'service') } };
   };
   /** Laba kotor ESTIMASI (RD09-03): net sales - COGS from line cost snapshots; ignores restock of refunds and waste. */
   R.margin = function (d, f) {

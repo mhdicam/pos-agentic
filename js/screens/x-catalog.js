@@ -270,15 +270,10 @@
     if (l.qty <= 0) U.cart.splice(i, 1);
     Orbis.emit();
   };
-  var baseHold = A.posHold;
-  A.posHold = function () {
-    // ponytail: carts.hold (sales) stores only {skuId, qty}; refuse instead of silently dropping modifiers. Lift when hold keeps line options.
-    if (U.cart.some(function (l) { return (l.modifiers && l.modifiers.length) || l.note; })) throw Orbis.Err('VALIDATION', 'Keranjang dengan modifier/catatan belum bisa ditahan');
-    baseHold();
-  };
+
   A.posResume = function (id) {
     var c = Orbis.domain.carts.resume(id);
-    U.cart = c.items.map(function (i) { return { skuId: i.skuId, qty: i.qty, modifiers: [], note: '' }; }); U.member = c.memberId || ''; U.promo = c.promoCode || ''; Orbis.toast('Keranjang dilanjutkan');
+    U.cart = c.items.map(function (i) { return { skuId: i.skuId, qty: i.qty, modifiers: i.modifiers || [], note: i.note || '' }; }); U.member = c.memberId || ''; U.promo = c.promoCode || ''; Orbis.toast('Keranjang dilanjutkan');
   };
   A.posCheckout = function () {
     var t = totals(Orbis.db());

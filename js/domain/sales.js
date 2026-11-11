@@ -86,7 +86,8 @@
       var name = (p.name || sku.sku) + (sku.label && sku.label !== 'Standar' ? ' - ' + sku.label : '');
       var hp = H.skuPrice ? H.skuPrice(d, sku, outlet) : undefined;
       var price = Orbis.int(hp == null ? sku.price : hp, 'Harga');
-      var mods = src.modifiers && src.modifiers.length ? (H.resolveModifiers ? H.resolveModifiers(d, sku, src.modifiers) : null) : [];
+      // with a resolver installed every line is checked (required groups apply even with no picks)
+      var mods = H.resolveModifiers ? H.resolveModifiers(d, sku, src.modifiers || []) : (src.modifiers && src.modifiers.length ? null : []);
       Orbis.need(mods, 'VALIDATION', 'Modifier belum didukung');
       var line = { skuId: skuId, name: name, qty: src.qty, price: price + Orbis.sum(mods, function (m) { return Orbis.int(m.price, 'Harga modifier'); }), cost: Orbis.int(sku.cost, 'HPP') };
       if (mods.length) { line.modifiers = mods.map(function (m) { return { id: m.id, name: m.name, price: m.price }; }); line.basePrice = price; }
@@ -123,14 +124,16 @@
     var base = subtotal - discount;
     var tax = Math.round(base * st.tax / 100), service = Math.round(base * st.service / 100), rounding = 0;
     if (H.charges) {
-      var ch = H.charges(d, { base: base, outlet: outlet, channel: channel, method: method });
+      var pt = spec.payment && spec.payment.type, tender = pt ? (pt === 'split' ? 'split' : pt) : undefined;
+      var ch = H.charges(d, { base: base, outlet: outlet, channel: channel, method: method, tender: tender });
       tax = Orbis.int(ch.tax, 'Pajak'); service = Orbis.int(ch.service, 'Service'); rounding = Orbis.int(ch.rounding || 0, 'Pembulatan');
       if (ch.taxLabel) var taxLabel = String(ch.taxLabel);
+      var taxIncluded = Orbis.int(ch.taxIncluded || 0, 'Pajak termasuk');
     }
     var deliveryFee = method === 'delivery' ? DELIVERY_FEE : 0;
     return {
       channel: channel, method: method, items: items, customer: customer, address: address, subtotal: subtotal, discount: discount,
-      promo: promo, redeemValue: redeem, redeemPoints: redeemPoints, tax: tax, taxLabel: taxLabel || 'Pajak', service: service, rounding: rounding, deliveryFee: deliveryFee,
+      promo: promo, redeemValue: redeem, redeemPoints: redeemPoints, tax: tax, taxLabel: taxLabel || 'Pajak', taxIncluded: taxIncluded || 0, service: service, rounding: rounding, deliveryFee: deliveryFee,
       total: base + tax + service + rounding + deliveryFee
     };
   };
@@ -142,6 +145,7 @@
     Orbis.need(total > 0, 'VALIDATION', 'Total pesanan harus lebih dari 0');
     if (type === 'cod') {
       Orbis.need(method === 'delivery', 'COD_NOT_ALLOWED', 'COD hanya untuk pesanan delivery');
+      if (Orbis.hooks.tenderEnabled && spec._d) Orbis.need(Orbis.hooks.tenderEnabled(spec._d, 'cod') !== false, 'TENDER_DISABLED', 'Metode cod tidak aktif di pengaturan');
       return { legs: [{ type: 'cod', amount: total }], status: 'COLLECTION_PENDING', tendered: 0, change: 0 };
     }
     if (type === 'split') {
@@ -198,7 +202,7 @@
     var status = pay.status === 'PAID' ? 'ACCEPTED' : 'PLACED';
     var order = {
       id: id, tenant: d.session.tenant, outlet: d.session.outlet, channel: channel, customer: q.customer, items: q.items,
-      subtotal: q.subtotal, discount: q.discount, tax: q.tax, taxLabel: q.taxLabel, service: q.service, rounding: q.rounding, deliveryFee: q.deliveryFee, total: q.total,
+      subtotal: q.subtotal, discount: q.discount, tax: q.tax, taxLabel: q.taxLabel, taxIncluded: q.taxIncluded, service: q.service, rounding: q.rounding, deliveryFee: q.deliveryFee, total: q.total,
       method: q.method, address: q.address, status: status, paymentStatus: pay.status, shiftId: shift ? shift.id : null,
       memberId: spec.memberId || null, promoId: q.promo ? q.promo.promoId : null, tendered: pay.tendered, change: pay.change,
       refunded: 0, refundDue: 0, createdAt: now, createdBy: d.session.actor,
@@ -369,7 +373,7 @@
     Orbis.need(cart && Array.isArray(cart.items) && cart.items.length > 0, 'EMPTY_CART', 'Keranjang kosong');
     cart.items.forEach(function (it) { Orbis.int(it.qty, 'Qty'); Orbis.need(it.qty >= 1, 'VALIDATION', 'Qty minimal 1'); });
     return Orbis.tx(function (d) {
-      var c = { id: Orbis.nextId(d, 'HLD', 3), tenant: d.session.tenant, outlet: d.session.outlet, items: cart.items.map(function (i) { return { skuId: i.skuId, qty: i.qty }; }), memberId: cart.memberId || null, promoCode: cart.promoCode || '', label: String(cart.label || '').trim(), at: Orbis.clock.now(), by: d.session.actor };
+      var c = { id: Orbis.nextId(d, 'HLD', 3), tenant: d.session.tenant, outlet: d.session.outlet, items: cart.items.map(function (i) { var x = { skuId: i.skuId, qty: i.qty }; if (i.modifiers && i.modifiers.length) x.modifiers = i.modifiers.slice(); if (i.note) x.note = String(i.note).slice(0, 120); return x; }), memberId: cart.memberId || null, promoCode: cart.promoCode || '', label: String(cart.label || '').trim(), at: Orbis.clock.now(), by: d.session.actor };
       d.heldCarts.push(c);
       return c;
     }, { audit: function (c) { return { action: 'cart.hold', entity: 'cart', entityId: c.id }; } });

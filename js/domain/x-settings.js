@@ -73,29 +73,12 @@
   };
 
   /* ---------- hooks ---------- */
-  var tenderNow;   // set by the quote wrapper below; charges() has no tender argument in the hook contract
   B.charges = function (d, x) {
-    return B.calc(B.taxFor(d, x.outlet || d.session.outlet), orders.settings(d), B.rounding(d), x.base, x.method === 'delivery' ? orders.DELIVERY_FEE : 0, x.tender || tenderNow);
+    return B.calc(B.taxFor(d, x.outlet || d.session.outlet), orders.settings(d), B.rounding(d), x.base, x.method === 'delivery' ? orders.DELIVERY_FEE : 0, x.tender);
   };
   B.tenderEnabled = function (d, type) { var p = B.payments(d)[type]; return !!(p && p.enabled); };
   B.install = function () { Orbis.hooks.charges = B.charges; Orbis.hooks.tenderEnabled = B.tenderEnabled; };
   B.install();
-
-  // ponytail: bridge until sales.js passes the tender to charges() and snapshots taxIncluded (requested). Remove then.
-  var quote0 = orders.quote, place0 = orders.place;
-  function tenderOf(spec) { var p = spec && spec.payment; return p ? (p.type === 'split' ? 'split' : p.type || 'cash') : undefined; }
-  orders.quote = function (d, spec) {
-    var prev = tenderNow; tenderNow = tenderOf(spec);
-    try { return quote0(d, spec); } finally { tenderNow = prev; }
-  };
-  orders.place = function (d, spec) {
-    // sales.js skips tenderEnabled for COD; enforce it here (same tx, nothing moved yet)
-    if (spec && spec.payment && spec.payment.type === 'cod') Orbis.need(B.tenderEnabled(d, 'cod'), 'TENDER_DISABLED', 'Metode cod tidak aktif di pengaturan');
-    var o = place0(d, spec);
-    var c = B.charges(d, { base: o.subtotal - o.discount, outlet: o.outlet, method: o.method, tender: tenderOf(spec) });
-    if (c.taxIncluded) o.taxIncluded = c.taxIncluded;
-    return o;
-  };
 
   /* ---------- validation + writes (owner: tenant.settings) ---------- */
   function cleanTax(f) {
@@ -183,7 +166,11 @@
     if (r.showNpwp && p.npwp) L.push('NPWP ' + p.npwp);
     L.push(o.id + ' · ' + Orbis.fmtTime(o.createdAt));
     if (r.showCashier && o.createdBy) L.push('Kasir: ' + o.createdBy);
-    o.items.forEach(function (i) { L.push(i.qty + ' x ' + i.name + ' ' + idr(i.qty * i.price)); });
+    o.items.forEach(function (i) {
+      L.push(i.qty + ' x ' + i.name + ' ' + idr(i.qty * i.price));
+      if (i.modifiers && i.modifiers.length) L.push('  + ' + i.modifiers.map(function (m) { return m.name + (m.price ? ' ' + idr(m.price) : ''); }).join(', '));
+      if (i.note) L.push('  "' + i.note + '"');
+    });
     L.push('Subtotal ' + idr(o.subtotal));
     if (o.discount) L.push('Diskon -' + idr(o.discount));
     if (o.service) L.push('Service ' + idr(o.service));

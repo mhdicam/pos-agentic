@@ -85,11 +85,13 @@ test('RD15 shifts: sales and variance per shift; estimated margin', function (O,
 });
 
 test('RD15 modifiers: empty without modifier data, aggregated when lines carry modifiers', function (O, T) {
-  var d = demo(O), R = O.domain.reports2;
-  T.eq(R.modifiers(d, wide(O)).rows.length, 0);
-  O.tx(function (dd) { dd.orders.filter(function (o) { return o.tenant === 't1' && o.status !== 'CANCELLED'; })[0].items[0].modifiers = [{ id: 'mx1', name: 'Extra shot', price: 5000 }]; });
-  var m = R.modifiers(O.db(), wide(O));
-  T.eq(m.rows.length, 1); T.eq(m.rows[0].name, 'Extra shot'); T.ok(m.totals.sales >= 5000);
+  var R = O.domain.reports2;
+  T.eq(R.modifiers(O.db(), wide(O)).rows.length, 0, 'no orders yet');
+  var d = demo(O);
+  var m = R.modifiers(d, wide(O));
+  T.ok(m.rows.some(function (r) { return r.name === 'Hot'; }), 'default modifiers from demo coffee sales');
+  var lines = 0; d.orders.forEach(function (o) { if (o.tenant === 't1' && o.status !== 'CANCELLED') o.items.forEach(function (i) { (i.modifiers || []).forEach(function (x) { if (x.name === 'Hot') lines += i.qty; }); }); });
+  T.eq(m.rows.filter(function (r) { return r.name === 'Hot'; })[0].qty, lines, 'qty aggregated from order lines');
 });
 
 test('RD15 permission and scope: cashier FORBIDDEN, manager pinned to own outlet, other tenant sees nothing', function (O, T) {

@@ -138,6 +138,9 @@
     });
     groups.forEach(function (gr) {
       var n = count[gr.id] || 0;
+      // required group with a default option and no pick: apply the default (Toast/Moka "default modifier")
+      var def = !n && gr.required && gr.defaultOptionId && gr.options.filter(function (o) { return o.id === gr.defaultOptionId; })[0];
+      if (def) { out.push({ id: def.id, name: def.name, price: def.price }); n = 1; }
       if (gr.required) Orbis.need(n >= Math.max(1, gr.min), 'MODIFIER_INVALID', 'Pilih ' + gr.name + ' (wajib, minimal ' + Math.max(1, gr.min) + ')');
       else if (n) Orbis.need(n >= gr.min, 'MODIFIER_INVALID', gr.name + ': pilih minimal ' + gr.min);
       Orbis.need(n <= gr.max, 'MODIFIER_INVALID', gr.name + ': maksimal ' + gr.max + ' pilihan');
@@ -189,6 +192,7 @@
     function group(name, required, min, max, opts) {
       var gr = { id: Orbis.nextId(db, 'MDG', 3), tenant: 't1', name: name, required: required, min: min, max: max, archived: false,
         options: opts.map(function (o) { return { id: Orbis.nextId(db, 'MDO', 4), name: o[0], price: o[1] }; }) };
+      if (required) gr.defaultOptionId = gr.options[0].id;   // first option = default (Hot, Normal)
       db.modifierGroups.push(gr); return gr.id;
     }
     var suhu = group('Suhu', true, 1, 1, [['Hot', 0], ['Iced', 0]]);

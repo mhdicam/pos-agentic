@@ -44,7 +44,7 @@
       kpis: function (t) { return [['Refund disetujui', idr(t.amount)], ['Jumlah disetujui', String(t.count)], ['Menunggu', String(t.pending)]]; } },
     voids: { cols: [{ k: 'name', label: 'Pesanan' }, { k: 'at', label: 'Waktu', t: 'time' }, { k: 'amount', label: 'Nominal', t: M }, { k: 'reason', label: 'Alasan' }, { k: 'cashier', label: 'Kasir' }, { k: 'approver', label: 'Dibatalkan oleh' }],
       empty: 'Tidak ada pesanan dibatalkan pada filter ini.', kpis: function (t) { return [['Pesanan batal', String(t.count)], ['Nominal', idr(t.amount)]]; } },
-    taxes: { cols: [{ k: 'name', label: 'Nama pajak' }, C.orders, { k: 'base', label: 'DPP', t: M }, { k: 'tax', label: 'Pajak', t: M }, { k: 'service', label: 'Service', t: M }],
+    taxes: { cols: [{ k: 'name', label: 'Nama pajak' }, C.orders, { k: 'base', label: 'DPP', t: M }, { k: 'tax', label: 'Pajak (ditambahkan)', t: M }, { k: 'taxIncluded', label: 'Pajak (termasuk harga)', t: M }, { k: 'service', label: 'Service', t: M }],
       kpis: function (t) { return [['Pajak', idr(t.tax)], ['Service', idr(t.service)], ['DPP', idr(t.base)]]; } },
     margin: { cols: [C.name, C.qty, C.sales, C.cogs, C.profit], chart: 'profit', note: 'Estimasi: penjualan bersih dikurangi HPP snapshot per baris; belum memperhitungkan susut, retur restok, dan biaya operasional.',
       kpis: function (t) { return [['Penjualan bersih', idr(t.net)], ['HPP', idr(t.cogs)], ['Laba kotor (estimasi)', idr(t.profit)], ['Margin (estimasi)', String(t.marginPct).replace('.', ',') + '%']]; } }

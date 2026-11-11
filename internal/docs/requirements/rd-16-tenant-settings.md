@@ -38,3 +38,6 @@ Traceability: Screen `settings` (tabs Profil & struk, Pajak & service, Pembulata
 
 ## Open review gates
 Browser-local prototype only; server authorization, concurrency and production integrations are not covered. Tax model per outlet and e-Faktur/Coretax scope are open decisions in [RD-11](rd-11-open-decisions.md). Regional PBJT base (with or without service) is unverified and therefore a setting.
+
+## Integration notes (2026-11-11)
+`orders.quote` passes the payment `tender` to `Orbis.hooks.charges` and snapshots `taxIncluded` on the quote and order; `normalisePayment` checks `tenderEnabled` for COD as well. The Batch 5 tax report shows both added tax (`tax`) and tax included in price (`taxIncluded`).
