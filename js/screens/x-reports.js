@@ -105,10 +105,7 @@
     var body = Orbis.card(label + (res.estimated ? ' · Estimasi' : ''), (def.note ? '<p class="rpt-note">' + esc(def.note) + '</p>' : '') + kpis + visual + table(def, res.rows), dl);
     return Orbis.pageHead('Laporan', 'Hari dihitung dengan zona WIB (UTC+7). ' + (manager ? 'Hanya outlet Anda.' : 'Pilih outlet atau semua outlet.')) + filters + '<div class="rpt">' + nav + '<div class="rpt-main">' + body + '</div></div>';
   }
-  // screens/reports.js loads later in index.html and reassigns the route; re-claim it before app.js boots (its listener registers after ours).
-  // ponytail: drop the listener once index.html loads this file after reports.js (or reports.js is removed).
-  Orbis.screens.reports = screen;
-  if (g.document && g.document.readyState === 'loading') g.document.addEventListener('DOMContentLoaded', function () { Orbis.screens.reports = screen; });
+  Orbis.screens.reports = screen;   // index.html loads x-* screens after base screens, so this override wins
 
   A.rpt2Pick = function (k) { ui.rep = k; rerender(); };
   A.rpt2Apply = function () {
