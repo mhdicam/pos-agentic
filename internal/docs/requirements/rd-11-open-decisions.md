@@ -38,7 +38,7 @@ For each source B-xxx: assign owner, record final decision or fix, link ADR/FR/A
 
 ## Tenant review-gap decisions (RD-17, 2026-11-11; not in the CSV yet)
 Source: [tenant gap analysis](../research/2026-11-11-tenant-gap-analysis.md). Owner: Product Owner unless noted.
-- **D-RD17-a Wave selection:** which of W1–W5 enter the next slice. Recommendation: W1 (G2 sync visibility, G9 audited corrections) then W2 (G1 recipes).
+- **D-RD17-a Wave selection:** which of W1–W5 enter the next slice. **Decided 2026-11-12 (Product Owner):** build all waves in the recommended order W1→W5. Remaining D-RD17-b..e use the recommended defaults in the prototype until signed off.
 - **D-RD17-b Delivery-platform channel depth (G6):** simulated channel orders only, or a per-channel price list with menu sync. Recommendation: per-channel price/availability model first; real APIs only after provider contracts.
 - **D-RD17-c Recipe stock policy (G1):** block a sale when an ingredient is short, or allow negative with a flagged movement. Recommendation: allow negative + flag (F&B practice), tenant-switchable. Sign-off: Product + Finance.
 - **D-RD17-d Customer credit (G8) accounting:** receivable recognition and write-off rules. Sign-off: Finance.

@@ -21,6 +21,7 @@ Feature batches must not edit each other's files. They plug in through these cor
 - `Orbis.hooks.skuPrice(d, sku, outlet)` → int|undefined (per-outlet price) · `Orbis.hooks.resolveModifiers(d, sku, ids)` → `[{id,name,price}]` (throws on invalid pick) — **B2 catalog**
 - `Orbis.hooks.charges(d, {base, outlet, channel, method})` → `{tax, service, rounding, taxLabel}` · `Orbis.hooks.tenderEnabled(d, type)` → bool — **B6 settings**
 - `Orbis.hooks.can(perm, role, d)` → true|false|undefined (tenant role overrides; undefined = default `Orbis.PERMS`) — **B4 team**
+- RD-17: `Orbis.hooks.lineCost(d, sku, mods, outlet)` → int|undefined (recipe HPP per unit) · `Orbis.hooks.autoDiscount(d, {items, subtotal, channel, outlet, promoCode})` → `{amount, promoId, name}`|null · `Orbis.hooks.afterPlace.push(fn(d, order))` · `Orbis.hooks.afterReverse.push(fn(d, order, {ref, kind:'cancel'|'refund'|'void', ratio?, lines?}))` — all run inside the caller's tx.
 - `Orbis.seedHooks.push(fn(db, T0))` adds base seed rows for your own collections. `Orbis.batch(fn)` = many tx, one persist/render, all-or-nothing.
 - Order lines may carry `modifiers:[{id,name,price}]`, `basePrice`, `note`; same sku with different modifiers = separate lines. Orders carry `rounding`, `taxLabel`.
 - `d.session.outlet` is switchable in the topbar (`setOutlet`): POS, shift, stock and outlet filters must read it, never assume `o1`.

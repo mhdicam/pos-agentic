@@ -14,8 +14,14 @@
       resolveModifiers(d, sku, ids) -> [{id,name,price}] validates modifier picks (B2)
       charges(d, {base, outlet, channel, method}) -> {tax, service, rounding}  tax/service/rounding (B6)
       tenderEnabled(d, type) -> bool                   payment-method switch (B6)
-      can(perm, role, d) -> true|false|undefined        tenant role overrides (B4) */
+      can(perm, role, d) -> true|false|undefined        tenant role overrides (B4)
+      lineCost(d, sku, mods, outlet) -> int|undefined   recipe HPP per unit (RD17 W2)
+      autoDiscount(d, {items, subtotal, channel, outlet, promoCode}) -> {amount, promoId, name} | null   automatic promos (RD17 W3)
+      afterPlace: [fn(d, order)]                        extra writes in the order tx (RD17 W2 ingredient use)
+      afterReverse: [fn(d, order, {ref, kind, ratio?, lines?})]   cancel / refund-restock / void (RD17 W2) */
   Orbis.hooks = Orbis.hooks || {};
+  Orbis.hooks.afterPlace = Orbis.hooks.afterPlace || [];
+  Orbis.hooks.afterReverse = Orbis.hooks.afterReverse || [];
 
   /** Integer IDR only. Throws on non-integers so float money can never enter the ledger. */
   Orbis.int = function (n, label) {

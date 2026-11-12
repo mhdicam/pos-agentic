@@ -163,8 +163,8 @@
       { label: 'Setoran COD belum diverifikasi', n: c('remittances', function (r) { return r.status === 'SUBMITTED'; }), route: 'cod', tone: 'PENDING' },
       { label: 'Pesanan online menunggu diproses', n: c('orders', function (o) { return o.channel === 'store' && o.status === 'PLACED'; }), route: 'orders', tone: 'PENDING' },
       { label: 'Stok menipis', n: inv ? inv.catalog(d).filter(function (r) { return !r.sku.archived && inv.isLow(d, r); }).length : 0, route: Orbis.domain.stock ? 'stock' : 'procurement', tone: 'FAILED' },
-      { label: 'Transaksi offline belum sinkron', n: c('outbox', function (x) { return x.status === 'PENDING_SYNC'; }), route: 'overview', tone: 'FAILED' }
-    ].filter(function (x) { return x.n > 0; });
+      { label: 'Transaksi offline belum sinkron', n: c('outbox', function (x) { return x.status === 'PENDING_SYNC'; }), route: Orbis.domain.trust ? 'sync' : 'overview', tone: 'FAILED' }
+    ].filter(function (x) { return x.n > 0; }).concat(Orbis.domain.trust ? Orbis.domain.trust.attention(d) : []);
   };
 
   /* ---------- audit (owner, own tenant only, newest first) ---------- */

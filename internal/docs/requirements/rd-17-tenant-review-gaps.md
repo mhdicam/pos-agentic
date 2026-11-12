@@ -22,11 +22,11 @@ Out of scope for the prototype: real QRIS/EDC settlement, printer drivers, accou
 
 ## Acceptance Criteria (EARS)
 ### W1 — Trust (G2, G9)
-- **RD17-01** (Ubiquitous): The system shall show the tenant owner, per outlet and device, the count of transactions pending sync, the count of sync conflicts and the time of the last successful sync. Tests: NONE (gap)
-- **RD17-02** (State): While a device has transactions pending sync for longer than the configured threshold (default 15 minutes, server time), the system shall flag that device on the owner overview with a "perlu perhatian" item. Tests: NONE (gap)
-- **RD17-03** (Unwanted): If an offline transaction is rejected during sync, then the system shall keep it in a conflict list with the original payload and reason, and shall not drop it until an owner or manager resolves it. Tests: NONE (gap)
-- **RD17-04** (Event): When a paid sale is voided or corrected, the system shall require a reason of at least 5 characters and an approver with `order.void` (or a manager PIN under RD14-02), write reversing stock and payment movements, and leave the original order immutable. Tests: NONE (gap)
-- **RD17-05** (Unwanted): If a void is attempted on a sale whose shift is closed, then the system shall post the reversal to the current open shift and reference the original shift, never edit the closed shift. Tests: NONE (gap)
+- **RD17-01** (Ubiquitous): The system shall show the tenant owner, per outlet and device, the count of transactions pending sync, the count of sync conflicts and the time of the last successful sync. Tests: `RD17-01/02 sync: per-device pending, conflicts, last sync; stale after 15 min` (prototype, tests/x-trust.test.js)
+- **RD17-02** (State): While a device has transactions pending sync for longer than the configured threshold (default 15 minutes, server time), the system shall flag that device on the owner overview with a "perlu perhatian" item. Tests: `RD17-01/02 sync: per-device pending, conflicts, last sync; stale after 15 min` (prototype, tests/x-trust.test.js)
+- **RD17-03** (Unwanted): If an offline transaction is rejected during sync, then the system shall keep it in a conflict list with the original payload and reason, and shall not drop it until an owner or manager resolves it. Tests: `RD17-03 sync: rejected offline item kept as conflict with payload until resolved; DISCARD keeps the row` (prototype, tests/x-trust.test.js)
+- **RD17-04** (Event): When a paid sale is voided or corrected, the system shall require a reason of at least 5 characters and an approver with `order.void` (or a manager PIN under RD14-02), write reversing stock and payment movements, and leave the original order immutable. Tests: `RD17-04 void: reason + permission, reverses money per tender, stock and points; original lines untouched`, `RD17-04 void: QRIS money reversed without shift; unpaid and pending-refund orders refused`, `RD17-04 void with manager PIN when role rule is approval` (prototype, tests/x-trust.test.js)
+- **RD17-05** (Unwanted): If a void is attempted on a sale whose shift is closed, then the system shall post the reversal to the current open shift and reference the original shift, never edit the closed shift. Tests: `RD17-05 void after shift closed: cash posted to current open shift, closed shift unchanged` (prototype, tests/x-trust.test.js)
 
 ### W2 — Recipes & ingredient stock (G1)
 - **RD17-06** (Ubiquitous): The system shall let a variant or a modifier option carry a recipe of ingredient SKUs with integer quantities in the ingredient's base unit (g, ml, pcs). Tests: NONE (gap)
@@ -52,6 +52,10 @@ Out of scope for the prototype: real QRIS/EDC settlement, printer drivers, accou
 - **RD17-20** (Ubiquitous): The plan page shall show, per plan, the included modules, limits and paid add-ons in one matrix, and the owner's current usage against each limit. Tests: NONE (gap)
 - **RD17-21** (Event): When a gift card is sold or redeemed, the system shall keep a balance ledger in integer IDR and shall reject redemption beyond the remaining balance. Tests: NONE (gap)
 - **RD17-22** (Ubiquitous): Every owner screen shall link to contextual help and a "hubungi tim" action that records a support request with the screen and tenant context. Tests: NONE (gap)
+
+## Implementation status (prototype)
+- **W1 done (2026-11-12):** `js/domain/x-trust.js`, `js/screens/x-trust.js` (route `sync` "Sinkron Offline" for owner/manager; "Void penjualan" on order detail). New perms `order.void` (owner, manager; cashier via "Perlu PIN manajer") and `sync.read`. Void reuses `SALE_REVERSAL` stock moves and negative payment rows tagged `voidOf`.
+- Core extension points for W2/W3 added in `js/domain/sales.js`: `Orbis.hooks.lineCost`, `autoDiscount`, `afterPlace[]`, `afterReverse[]` (see CONTRACT.md).
 
 ## Open review gates
 - Product Owner selects waves and confirms D-RD17-a..e before EARS are frozen and tests are assigned in `handoff/EARS_TEST_TRACEABILITY.csv`.

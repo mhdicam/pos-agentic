@@ -138,11 +138,11 @@ FRD-21,P23-ROLE-033;P23-X28,requirements/frd.md,DESIGNED_NOT_EXECUTED
 FRD-22,P23-ROLE-029;P23-X32;P23-X34,requirements/frd.md,DESIGNED_NOT_EXECUTED
 FRD-23,P23-ROLE-016;P23-X40,requirements/frd.md,DESIGNED_NOT_EXECUTED
 FRD-24,P23-X47,requirements/frd.md,DESIGNED_NOT_EXECUTED
-RD17-01,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
-RD17-02,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
-RD17-03,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
-RD17-04,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
-RD17-05,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
+RD17-01,tests/x-trust.test.js,requirements/rd-17-tenant-review-gaps.md,PROTOTYPE_TEST_PASSED
+RD17-02,tests/x-trust.test.js,requirements/rd-17-tenant-review-gaps.md,PROTOTYPE_TEST_PASSED
+RD17-03,tests/x-trust.test.js,requirements/rd-17-tenant-review-gaps.md,PROTOTYPE_TEST_PASSED
+RD17-04,tests/x-trust.test.js,requirements/rd-17-tenant-review-gaps.md,PROTOTYPE_TEST_PASSED
+RD17-05,tests/x-trust.test.js,requirements/rd-17-tenant-review-gaps.md,PROTOTYPE_TEST_PASSED
 RD17-06,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
 RD17-07,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
 RD17-08,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED

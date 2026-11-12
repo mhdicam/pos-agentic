@@ -92,6 +92,7 @@
       var line = { skuId: skuId, name: name, qty: src.qty, price: price + Orbis.sum(mods, function (m) { return Orbis.int(m.price, 'Harga modifier'); }), cost: Orbis.int(sku.cost, 'HPP') };
       if (mods.length) { line.modifiers = mods.map(function (m) { return { id: m.id, name: m.name, price: m.price }; }); line.basePrice = price; }
       if (src.note) line.note = String(src.note).trim().slice(0, 120);
+      if (H.lineCost) { var lc = H.lineCost(d, sku, mods, outlet); if (lc != null) line.cost = Orbis.int(lc, 'HPP'); }   // recipe HPP snapshot (RD17-08)
       return line;
     });
     var subtotal = Orbis.sum(items, function (i) { return i.qty * i.price; });
@@ -119,7 +120,9 @@
       var pv = mm.preview(d, { memberId: spec.memberId, subtotal: subtotal, redeemPoints: spec.redeemPoints });
       redeem = Orbis.int(pv.redeemValue || 0, 'Nilai poin'); redeemPoints = spec.redeemPoints;
     }
-    var discount = Math.min(subtotal, (promo ? promo.discount : 0) + redeem);
+    var auto = H.autoDiscount ? H.autoDiscount(d, { items: items, subtotal: subtotal, channel: channel, outlet: outlet, promoCode: spec.promoCode }) : null;
+    var autoAmt = auto ? Orbis.int(auto.amount || 0, 'Diskon otomatis') : 0;
+    var discount = Math.min(subtotal, (promo ? promo.discount : 0) + redeem + autoAmt);
     var st = orders.settings(d);
     var base = subtotal - discount;
     var tax = Math.round(base * st.tax / 100), service = Math.round(base * st.service / 100), rounding = 0;
@@ -133,7 +136,7 @@
     var deliveryFee = method === 'delivery' ? DELIVERY_FEE : 0;
     return {
       channel: channel, method: method, items: items, customer: customer, address: address, subtotal: subtotal, discount: discount,
-      promo: promo, redeemValue: redeem, redeemPoints: redeemPoints, tax: tax, taxLabel: taxLabel || 'Pajak', taxIncluded: taxIncluded || 0, service: service, rounding: rounding, deliveryFee: deliveryFee,
+      promo: promo, autoPromo: auto && autoAmt ? auto : null, redeemValue: redeem, redeemPoints: redeemPoints, tax: tax, taxLabel: taxLabel || 'Pajak', taxIncluded: taxIncluded || 0, service: service, rounding: rounding, deliveryFee: deliveryFee,
       total: base + tax + service + rounding + deliveryFee
     };
   };
@@ -204,7 +207,7 @@
       id: id, tenant: d.session.tenant, outlet: d.session.outlet, channel: channel, customer: q.customer, items: q.items,
       subtotal: q.subtotal, discount: q.discount, tax: q.tax, taxLabel: q.taxLabel, taxIncluded: q.taxIncluded, service: q.service, rounding: q.rounding, deliveryFee: q.deliveryFee, total: q.total,
       method: q.method, address: q.address, status: status, paymentStatus: pay.status, shiftId: shift ? shift.id : null,
-      memberId: spec.memberId || null, promoId: q.promo ? q.promo.promoId : null, tendered: pay.tendered, change: pay.change,
+      memberId: spec.memberId || null, promoId: q.promo ? q.promo.promoId : null, autoPromo: q.autoPromo || null, tendered: pay.tendered, change: pay.change,
       refunded: 0, refundDue: 0, createdAt: now, createdBy: d.session.actor,
       history: [{ at: now, by: d.session.actor, from: null, to: status }]
     };
@@ -214,6 +217,7 @@
     });
     if (q.promo) { var pm = dom('promos', 'consume'); if (pm) pm.consume(d, q.promo.promoId, id); }
     if (spec.memberId) { var mm = dom('members', 'commit'); if (mm) mm.commit(d, { memberId: spec.memberId, orderId: id, total: q.total, redeemPoints: q.redeemPoints }); }
+    (Orbis.hooks.afterPlace || []).forEach(function (fn) { fn(d, order); });   // e.g. recipe ingredient use (RD17-07)
     return order;
   };
 
@@ -295,6 +299,7 @@
       o.history[o.history.length - 1].reason = reason;
       o.cancelReason = reason;
       o.items.forEach(function (it) { inv.move(d, { skuId: it.skuId, qty: it.qty, type: 'SALE_REVERSAL', ref: o.id, outlet: o.outlet, note: 'Batal: ' + reason }); });
+      (Orbis.hooks.afterReverse || []).forEach(function (fn) { fn(d, o, { ref: o.id, ratio: 1, kind: 'cancel' }); });
       var mm = dom('members', 'reverse'); if (mm && o.memberId) mm.reverse(d, o.id, 1);
       o.refundDue = refundDueNow(o);   // flag only: the refund itself goes through refunds.request/approve
       return o;
@@ -515,6 +520,7 @@
         var back = {}, keys = [];
         r.lines.forEach(function (l) { if (!back[l.skuId]) { back[l.skuId] = 0; keys.push(l.skuId); } back[l.skuId] += l.qty; });
         keys.forEach(function (k) { inv.move(d, { skuId: k, qty: back[k], type: 'RETURN_RESTOCK', ref: r.id, outlet: o.outlet, note: 'Retur ' + o.id }); });
+        (Orbis.hooks.afterReverse || []).forEach(function (fn) { fn(d, o, { ref: r.id, lines: r.lines, kind: 'refund' }); });
       }
       o.refunded = (o.refunded || 0) + r.amount;
       o.paymentStatus = o.refunded >= o.total ? 'REFUNDED' : 'PARTIALLY_REFUNDED';
