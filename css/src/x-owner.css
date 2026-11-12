@@ -1,0 +1,11 @@
+/* RD-17 W3 owner value: promo builder form, P&L waterfall (imported by css/src/app.css). */
+@layer components {
+  .op-row { @apply grid gap-3; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+  .op-days { @apply mb-3 flex flex-wrap gap-3 rounded-md border p-3; }
+  .op-days legend { @apply px-1 text-sm text-muted-foreground; }
+  .op-wf { @apply m-0 flex list-none flex-col p-0; }
+  .op-wf > li { @apply flex items-center justify-between gap-3 border-b py-2 text-sm; }
+  .op-wf-minus { @apply pl-4 text-muted-foreground; }
+  .op-wf-total { @apply font-medium; }
+  .op-wf-result { @apply border-b-0 text-base font-semibold; }
+}
