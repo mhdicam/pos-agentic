@@ -147,11 +147,11 @@ RD17-06,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
 RD17-07,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
 RD17-08,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
 RD17-09,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
-RD17-10,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
-RD17-11,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
-RD17-12,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
-RD17-13,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
-RD17-14,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
+RD17-10,tests/x-owner.test.js,requirements/rd-17-tenant-review-gaps.md,PROTOTYPE_TEST_PASSED
+RD17-11,tests/x-owner.test.js,requirements/rd-17-tenant-review-gaps.md,PROTOTYPE_TEST_PASSED
+RD17-12,tests/x-owner.test.js,requirements/rd-17-tenant-review-gaps.md,PROTOTYPE_TEST_PASSED
+RD17-13,tests/x-owner.test.js,requirements/rd-17-tenant-review-gaps.md,PROTOTYPE_TEST_PASSED
+RD17-14,tests/x-owner.test.js,requirements/rd-17-tenant-review-gaps.md,PROTOTYPE_TEST_PASSED
 RD17-15,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
 RD17-16,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
 RD17-17,,requirements/rd-17-tenant-review-gaps.md,NO_TEST_DEFINED
