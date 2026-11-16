@@ -39,3 +39,10 @@ Status: draft for review — prototype styling only, not a production UI-package
 - **Public landing** (`js/screens/landing.js`, `Orbis.landing`, `lp-*` classes): nav, hero with role entry, features, steps, pricing from seed `plans` (FR-13, labelled illustrative), trust, FAQ, final CTA, footer. Copy follows PRD v1.4.5 §01 value proposition; PRD KPIs are pilot targets and must not be shown as results. Preview card is labelled "Ilustrasi" (not live data).
 - **Collapsed sidebar** (desktop ≥861px): header button or Ctrl/⌘+B toggles a 64px icon rail; labels stay in the DOM (visually hidden) and each item has a `title` tooltip. The choice is a per-viewer preference in `localStorage` (`orbis-side-mini`, guarded). Mobile keeps the slide-in drawer.
 - **Cashier register** (`js/screens/x-register.js`, `rg-*` classes): full-screen route (`Orbis.screens.pos.fullscreen = true`), product tiles with colour initials (deterministic tone per name), category pills, order panel with member search, payment sheet and success screen. QRIS uses a decorative simulated code labelled as simulation. Toasts move to the top on the register so they never cover the pay button.
+
+## Prototype v2 visual pass (2026-11-16, draft)
+Status: draft for review — prototype styling only. Awwwards-style craft pass on `css/src/app.css`; no markup, route or domain change.
+- **Type:** fluid `clamp()` for h1, stat values, landing hero/section heads; tight tracking (-0.02 to -0.045em); uppercase tracked micro-labels for `.stat-l`, `.nav-t`, `.lp-eyebrow`.
+- **Colour:** borders become low-opacity foreground (`/ 0.09`); background/foreground slightly cooler/deeper; `--radius` 0.75rem.
+- **Motion:** `--ease-out` (power4.out) tokens; page content rise-in (<=600ms, staggered), stat/tile hover lift, button press scale. All disabled by the existing `prefers-reduced-motion` rule.
+- Not changed: palette hue (Orbis blue), light-only, state chips always with text, class names.
